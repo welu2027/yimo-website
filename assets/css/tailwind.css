@@ -1,36 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
   .bg-graphing {
-    background-color: rgba(254, 230, 154, 1.0);
-    background-image: url("static/Ffish.png");
-    background-size: 500px;
-    background-position: right;  /* Centers the image */
-
-    background-repeat: no-repeat;
+    background-image: linear-gradient(140deg, #f6d365, #fda085, #f7797d);
+    background-size: cover;
+    background-position: center;
   }
 
   .bg-graph-dark {
-    background-color: rgba(31, 41, 55, 1.0);
+    background-color: #2c1632; /* very dark mauve / charcoal */
   }
 
   .bg-graph-light {
-    background-color: rgba(254, 230, 154, 1.0);
+    background: linear-gradient(120deg, #ffe9df, #fec5bb);
   }
 
   .nav-container {
-    @apply sticky top-0 p-3 backdrop-filter backdrop-blur-sm bg-graph bg-opacity-30 dark:bg-opacity-30 flex flex-col md:flex-row;
+    @apply sticky top-0 z-50 px-6 py-4 bg-purple-950/95 border-b border-purple-700 shadow-lg;
+  }
+
+  .nav-brand {
+    @apply flex items-center justify-between w-full gap-4;
+  }
+
+  .nav-title {
+    @apply text-white text-xl md:text-2xl font-extrabold tracking-tight;
   }
 
   .menu-link {
-    @apply font-mono block mx-auto md:mx-2 text-center md:text-right text-black dark:text-white hover:text-red-500 hover:underline;
+    @apply font-semibold block mx-2 text-center text-white whitespace-nowrap hover:text-white/70 hover:bg-white/10 rounded-lg px-2 py-1;
   }
 
+  .nav-menu {
+    @apply hidden;
+  }
+
+  .menu-toggle {
+    @apply hidden md:hidden cursor-pointer text-white stroke-current z-50;
+  }
 
   .social-icons {
-    @apply flex flex-row md:my-auto mx-auto my-3 md:mr-3 md:ml-16;
+    @apply flex flex-row md:my-auto mx-auto my-3 md:mr-3 md:ml-auto;
   }
 
   .social-icon {
@@ -38,40 +52,99 @@
   }
 
   .social-img {
-    @apply w-auto mx-2;
+    @apply w-auto h-6 mx-2 filter brightness-110;
   }
 
   .nav-logo {
-    @apply h-8 mx-auto my-auto md:mr-3 md:ml-2 w-8;
+    @apply h-10 w-10 rounded-full object-cover border-2 border-white shadow-md;
+  }
+
+
+  .nav-logo-gold {
+    @apply h-10 w-10 rounded-full object-cover border-2 border-amber-300 shadow-lg;
   }
 
   .nav-title {
-    @apply text-black my-2 block text-2xl font-bold tracking-wide;
-  }
-
-  .menu-toggle {
-    @apply absolute md:hidden top-6 cursor-pointer text-black left-8 dark:text-white stroke-current;
-  }
-
-  .nav-menu {
-    @apply flex md:justify-end transition-all ease-in-out duration-300 transform overflow-hidden origin-top md:my-auto flex-col md:flex-grow md:flex-row;
+    @apply text-white my-2 block text-lg md:text-xl font-extrabold tracking-wide;
   }
 
   .content-wrapper {
-    @apply mt-5 h-full flex-grow w-full;
+    @apply mt-6 h-full flex-grow w-full px-4 md:px-8 pb-8;
+  }
+
+  .content-card,
+  .card {
+    @apply bg-white border border-blue-100 rounded-3xl shadow-lg p-6 md:p-8 transition duration-300 ease-in-out hover:shadow-xl;
+  }
+
+  .hero-banner {
+    @apply bg-gradient-to-r from-blue-500 to-blue-400 text-white rounded-3xl p-8 md:p-12 shadow-2xl;
+  }
+
+  .hero-section {
+    @apply bg-transparent text-white;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-pink-500 via-purple-500 to-orange-400;
+  }
+
+  .form-control,
+  .textbox,
+  .section-box {
+    @apply bg-white/95 border border-blue-200 rounded-2xl shadow-inner p-6;
   }
 }
 
 @layer base {
   html {
-    font-family: sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: "Poppins", "Inter", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  }
+
+  *,
+  *::before,
+  *::after {
+    font-family: "Poppins", "Inter", "Segoe UI", Roboto, "Helvetica Neue", sans-serif !important;
+  }
+
+  body {
+    color: #0f172a;
+    @apply leading-relaxed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-extrabold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-7xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
   }
 
 
+  .prose a {
+    @apply text-blue-700 hover:text-blue-800 font-semibold;
+  }
 
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    @apply text-slate-900;
+  }
 
-.bg-graph {
-  @apply bg-graph-light dark:bg-graph-dark;
-}
+  .prose-dark a {
+    @apply text-blue-300 hover:text-blue-200;
+  }
 
+  .bg-graph {
+    @apply bg-graph-light dark:bg-graph-dark;
+  }
 }

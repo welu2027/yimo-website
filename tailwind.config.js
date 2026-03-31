@@ -13,59 +13,65 @@ module.exports = {
       typography: (theme) => ({
         default: {
           css: {
-            color: theme('colors.gray.900'),
+            color: theme('colors.slate.900'),
 
             a: {
-              color: theme('colors.red.600'),
+              color: theme('colors.blue.600'),
               '&:hover': {
-                color: theme('colors.red.700'),
+                color: theme('colors.blue.700'),
               },
             },
 
+            h1: {
+              color: theme('colors.slate.900'),
+            },
+            h2: {
+              color: theme('colors.slate.800'),
+            },
           },
         },
 
         dark: {
           css: {
-            color: theme('colors.gray.100'),
+            color: theme('colors.slate.100'),
 
             a: {
-              color: theme('colors.red.600'),
+              color: theme('colors.blue.300'),
               '&:hover': {
-                color: theme('colors.red.700'),
+                color: theme('colors.blue.200'),
               },
             },
             h1: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.slate.100'),
             },
             h2: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.slate.100'),
             },
             h3: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.slate.100'),
             },
             h4: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.slate.100'),
             },
             h5: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.slate.100'),
             },
             h6: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.slate.100'),
             },
 
             strong: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.slate.100'),
             },
 
             code: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.slate.100'),
             },
             th: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.slate.100'),
             },
             figcaption: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.slate.100'),
             },
           },
         },

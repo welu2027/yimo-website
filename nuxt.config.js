@@ -1,4 +1,5 @@
 export default {
+  ssr: false,
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   generate: {
@@ -6,14 +7,14 @@ export default {
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Gunn Math Competition',
+    title: 'Youth International Math Olympiad',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Compete in Gunn High School\'s first annual competition!' }
+      { hid: 'description', name: 'description', content: 'Join YIMO — an international youth math competition for middle and high school students.' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
+      { rel: 'icon', type: 'image/png', href: '/yimo-logo.png', sizes: '256x256' }
     ]
   },
 
@@ -49,9 +50,9 @@ export default {
       lang: 'en'
     },
     meta:{
-      name:'Gunn Math Competition',
-      description:'Gunn\'s first annual mathematics competition, hosted by dedicated high school students.',
-      theme_color:'#BF1A19',
+      name:'Youth International Math Olympiad',
+      description:'YIMO: International youth math competition for middle and high school students.',
+      theme_color:'#3B82F6',
       ogHost:'https://compete.gunnmathcircle.org',
       twitterCard:'summary_large_image',
       ogImage:{

@@ -1,30 +1,36 @@
 <template>
-  <div class="mb-10">
-  <div class="prose prose-tr:border-red-600/50 prose-thead:border-red-600 prose-red dark:prose-dark  mx-auto px-5 max-w-sm  sm:max-w-xl md:max-w-5xl">
-    <h1 class="">{{doc.title}}</h1>
-    <nuxt-content  :document="doc" />
+  <div class="w-full">
+    <!-- Hero Section -->
+    <section class="hero-section py-20 md:py-32 px-4 relative overflow-hidden w-full max-w-none" style="margin-left: calc(50% - 50vw + 40px); margin-right: calc(50% - 50vw - 40px);">
+      <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
+        <div class="flex-1 text-center md:text-left">
+          <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-wider text-white mb-4">Youth International Math Olympiad</h1>
+          <p class="text-lg md:text-2xl text-white/90 mb-2">May 24/25, 2026 • Global Competition</p>
+          <p class="text-white/80 text-sm md:text-base mb-8">All Students Welcome</p>
+        </div>
+        <img class="mx-auto h-80 w-80 md:h-96 md:w-96 object-contain" src="/yimo-logo.png" alt="YIMO logo" />
+      </div>
+    </section>
+
+    <!-- Navigation Card Links -->
+    <section class="py-16 px-4 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <a href="/about" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl p-8 text-center text-white transition">
+          <h3 class="text-2xl font-bold">About YIMO</h3>
+          <p class="mt-3 text-white/80">Full competition mission, structure, and rules.</p>
+        </a>
+        <a href="/schedule" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl p-8 text-center text-white transition">
+          <h3 class="text-2xl font-bold">Schedule</h3>
+          <p class="mt-3 text-white/80">Registration timeline, preparation, and contest day flow.</p>
+        </a>
+        <a href="/sponsors" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl p-8 text-center text-white transition">
+          <h3 class="text-2xl font-bold">Sponsors</h3>
+          <p class="mt-3 text-white/80">Supporting organizations and sponsor prizes.</p>
+        </a>
+      </div>
+    </section>
   </div>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto px-5 max-w-sm  sm:max-w-xl md:max-w-5xl" >
-      <a target="_blank" :href="sponsor.link" class="block mx-3 my-3 bg-white dark:bg-gray-600 shadow-md hover:shadow-2xl rounded-md px-6 py-4" :key="sponsor.name" v-for="sponsor of sponsors">
-        <h1 class="text-red mb-2 transition-shadow duration-300 font-xl font-semibold tracking-wide">{{sponsor.name}}</h1>
-        <img class="dark:hidden block  max-h-24 my-auto mx-auto h-auto w-auto" :src="sponsor.light_image"/>
-        <img class="hidden dark:block max-h-24 my-auto mx-auto h-auto w-auto" :src="sponsor.dark_image"/>
-      </a>
-    </div>
-
-    </div>
 </template>
-
-<script>
-export default {
-  async asyncData({$content}){
-    const doc = await $content('home').fetch();
-    const {sponsors} = await $content('sponsors').fetch();
-    return {doc, sponsors};
-  }
-
-}
-</script>
 
 <style>
 h2::before {

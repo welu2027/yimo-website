@@ -14,7 +14,7 @@
           <a class="menu-link" href="/faq">FAQ</a>
           <a class="rounded-full border border-white bg-white/10 px-4 py-2 text-white font-bold hover:bg-white/20" href="https://docs.google.com/forms/d/15qfpm1l_RyHm-rlCFLj24xgC_Tb98UrKqFKSqP-3Xlg/edit#responses" target="_blank" rel="noopener">Register</a>
           <a class="p-1 text-white hover:text-purple-300 transition" href="https://discord.gg" target="_blank" rel="noopener" aria-label="Discord">
-            <img class="h-6 w-6" src="/discord-logo-white.png" alt="Discord" />
+            <img class="h-6 w-6" src="/Discord-Logo-White.png" alt="Discord" />
           </a>
           <a class="p-1 text-white hover:text-purple-300 transition" href="/" aria-label="Home">
             <img class="h-7 w-7 -mt-1" src="/home-logo.png" alt="Home" />

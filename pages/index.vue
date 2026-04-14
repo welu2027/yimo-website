@@ -4,13 +4,13 @@
     <section class="hero-section py-20 md:py-32 px-4 relative overflow-hidden w-full max-w-none" style="margin-left: calc(50% - 50vw + 40px); margin-right: calc(50% - 50vw - 40px);">
       <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
         <div class="flex-1 text-center md:text-left">
-          <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-wider text-white mb-4">Youth International Math Olympiad</h1>
-          <p class="text-lg md:text-2xl text-white/90 mb-2">May 24/25, 2026 • Global Competition</p>
-          <p class="text-white/80 text-sm md:text-base mb-4">All Students Welcome • No Experience Required</p>
-          <p class="text-white/70 text-xs md:text-sm mb-6">Run by <a class="underline hover:text-white" href="https://www.nxthorizon.org/" target="_blank" rel="noopener">NxtHorizon</a> & <a class="underline hover:text-white" href="https://www.stemise.org/" target="_blank" rel="noopener">Stemise</a></p>
-          <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-            <a class="rounded-full bg-white text-purple-900 font-bold px-5 py-2 hover:bg-white/90" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register by May 17</a>
-            <a class="rounded-full border border-white text-white font-bold px-5 py-2 hover:bg-white/10" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Join Discord</a>
+          <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-wider text-white mb-6">Youth International Math Olympiad</h1>
+          <p class="text-xl md:text-3xl font-semibold tracking-wide text-white mb-3">May 24/25, 2026 <span class="opacity-60 mx-2">•</span> Global Competition</p>
+          <p class="text-base md:text-lg font-medium tracking-wide uppercase text-white/85 mb-4">All Students Welcome <span class="opacity-60 mx-1">•</span> No Experience Required</p>
+          <p class="text-sm md:text-base font-light tracking-widest uppercase text-white/70 mb-8">Run by <a class="font-semibold underline decoration-white/40 underline-offset-4 hover:text-white hover:decoration-white" href="https://www.nxthorizon.org/" target="_blank" rel="noopener">NxtHorizon</a> &amp; <a class="font-semibold underline decoration-white/40 underline-offset-4 hover:text-white hover:decoration-white" href="https://www.stemise.org/" target="_blank" rel="noopener">Stemise</a></p>
+          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+            <a class="rounded-full bg-amber-50 text-purple-950 font-extrabold tracking-wide px-7 py-3 text-base md:text-lg shadow-lg hover:bg-white transition" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register by May 17</a>
+            <a class="rounded-full bg-purple-900 text-white font-bold tracking-wide px-7 py-3 text-base md:text-lg shadow-lg hover:bg-purple-800 transition" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Join Discord</a>
           </div>
         </div>
         <img class="mx-auto h-80 w-80 md:h-96 md:w-96 object-contain" src="/yimo-logo.png" alt="YIMO logo" />

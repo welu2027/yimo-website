@@ -2,7 +2,7 @@
   <div class="px-4 py-16 max-w-4xl mx-auto">
     <h1 class="text-5xl font-black text-purple-950 mb-6">Youth International Math Olympiad (YIMO)</h1>
     <p class="text-lg text-gray-700 mb-4">YIMO is a global youth-led math competition designed with fairness, community, and growth as core values. Open to all students - no prior competition experience required.</p>
-    <p class="text-gray-700 mb-8">Run by <a class="text-purple-700 underline" href="https://www.nxthorizon.org/" target="_blank" rel="noopener">NxtHorizon</a> and <a class="text-purple-700 underline" href="https://www.stemise.org/" target="_blank" rel="noopener">Stemise</a>.</p>
+    <p class="text-gray-700 mb-8">Run by NxtHorizon and Stemise.</p>
 
     <section class="mb-10">
       <h2 class="text-3xl font-bold text-purple-900 mb-4">Overview</h2>

@@ -38,7 +38,7 @@
 
     <section>
       <h2 class="text-3xl font-bold text-purple-900 mb-3">Who runs YIMO?</h2>
-      <p class="text-gray-600">YIMO is run by <a class="text-purple-700 underline" href="https://www.nxthorizon.org/" target="_blank" rel="noopener">NxtHorizon</a> and <a class="text-purple-700 underline" href="https://www.stemise.org/" target="_blank" rel="noopener">Stemise</a>. Join our <a class="text-purple-700 underline" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a> for updates.</p>
+      <p class="text-gray-600">YIMO is run by NxtHorizon and Stemise. Join our <a class="text-purple-700 underline" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a> for updates.</p>
     </section>
   </div>
 </template>

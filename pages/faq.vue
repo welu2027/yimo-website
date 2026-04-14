@@ -31,7 +31,7 @@
       <ul class="list-disc ml-6 text-gray-600 space-y-2">
         <li>Written test: 20 questions (10 MCQ + 10 AIME-style integer)</li>
         <li>Top 8 per division advance to a Final Round with computational and proof problems</li>
-        <li>Awards: Final Round 1st–4th placements, plus Gold/Silver/Bronze (Top 10/20/30%) on the written test</li>
+        <li>Awards: Final Round 1st–8th placements, plus Gold/Silver/Bronze (Top 10/20/30%) on the written test</li>
         <li>No team rounds, no guts rounds</li>
       </ul>
     </section>

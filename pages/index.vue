@@ -21,12 +21,12 @@
     <section class="py-16 px-4 max-w-6xl mx-auto">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <a href="/about" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl p-8 text-center text-white transition">
-          <h3 class="text-2xl font-bold">About YIMO</h3>
-          <p class="mt-3 text-white/80">Full competition mission, structure, and rules.</p>
+          <h3 class="text-2xl font-bold">Contest</h3>
+          <p class="mt-3 text-white/80">Divisions, format, schedule, registration, and prizes.</p>
         </a>
-        <a href="/schedule" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl p-8 text-center text-white transition">
-          <h3 class="text-2xl font-bold">Schedule</h3>
-          <p class="mt-3 text-white/80">Registration timeline, preparation, and contest day flow.</p>
+        <a href="/faq" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl p-8 text-center text-white transition">
+          <h3 class="text-2xl font-bold">FAQ</h3>
+          <p class="mt-3 text-white/80">Common questions about joining and competing.</p>
         </a>
         <a href="/sponsors" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl p-8 text-center text-white transition">
           <h3 class="text-2xl font-bold">Sponsors</h3>

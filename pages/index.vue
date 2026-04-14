@@ -6,7 +6,12 @@
         <div class="flex-1 text-center md:text-left">
           <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-wider text-white mb-4">Youth International Math Olympiad</h1>
           <p class="text-lg md:text-2xl text-white/90 mb-2">May 24/25, 2026 • Global Competition</p>
-          <p class="text-white/80 text-sm md:text-base mb-8">All Students Welcome</p>
+          <p class="text-white/80 text-sm md:text-base mb-4">All Students Welcome • No Experience Required</p>
+          <p class="text-white/70 text-xs md:text-sm mb-6">Run by <a class="underline hover:text-white" href="https://www.nxthorizon.org/" target="_blank" rel="noopener">NxtHorizon</a> & <a class="underline hover:text-white" href="https://www.stemise.org/" target="_blank" rel="noopener">Stemise</a></p>
+          <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+            <a class="rounded-full bg-white text-purple-900 font-bold px-5 py-2 hover:bg-white/90" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register by May 17</a>
+            <a class="rounded-full border border-white text-white font-bold px-5 py-2 hover:bg-white/10" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Join Discord</a>
+          </div>
         </div>
         <img class="mx-auto h-80 w-80 md:h-96 md:w-96 object-contain" src="/yimo-logo.png" alt="YIMO logo" />
       </div>

@@ -12,8 +12,8 @@
           <a class="menu-link" href="/about">About</a>
           <a class="menu-link" href="/sponsors">Sponsors</a>
           <a class="menu-link" href="/faq">FAQ</a>
-          <a class="rounded-full border border-white bg-white/10 px-4 py-2 text-white font-bold hover:bg-white/20" href="https://docs.google.com/forms/d/15qfpm1l_RyHm-rlCFLj24xgC_Tb98UrKqFKSqP-3Xlg/edit#responses" target="_blank" rel="noopener">Register</a>
-          <a class="p-1 text-white hover:text-purple-300 transition" href="https://discord.gg" target="_blank" rel="noopener" aria-label="Discord">
+          <a class="rounded-full border border-white bg-white/10 px-4 py-2 text-white font-bold hover:bg-white/20" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register</a>
+          <a class="p-1 text-white hover:text-purple-300 transition" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener" aria-label="Discord">
             <img class="h-6 w-6" src="/Discord-Logo-White.png" alt="Discord" />
           </a>
           <a class="p-1 text-white hover:text-purple-300 transition" href="/" aria-label="Home">

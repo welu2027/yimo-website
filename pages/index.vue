@@ -17,6 +17,17 @@
       </div>
     </section>
 
+    <!-- Partners Section -->
+    <section class="py-10 px-4 max-w-3xl mx-auto text-center">
+      <p class="text-white/70 text-sm font-light tracking-widest uppercase mb-6">In partnership with</p>
+      <div class="flex items-center justify-center">
+        <a href="https://www.usamoguide.com/" target="_blank" rel="noopener">
+          <img class="h-20 object-contain hover:opacity-80 transition" src="/Test_logo.png" alt="USAMO Guide" />
+        </a>
+      </div>
+      <p class="text-white/80 text-base mt-4">Proud to partner with <span class="font-semibold text-white">USAMO Guide</span> to bring world-class math competition resources to our participants.</p>
+    </section>
+
     <!-- Navigation Card Links -->
     <section class="py-16 px-4 max-w-6xl mx-auto">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">

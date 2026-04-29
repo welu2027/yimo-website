@@ -23,7 +23,7 @@
 
     <section class="mb-8">
       <h2 class="text-3xl font-bold text-purple-900 mb-3">When is the contest?</h2>
-      <p class="text-gray-600">Pick <strong>one</strong> window: Saturday May 24 at 20:00 EST, or Sunday May 25 at 11:00 AM EST.</p>
+      <p class="text-gray-600">Pick <strong>one</strong> window: Saturday May 23 at 20:00 EST, or Sunday May 24 at 11:00 AM EST.</p>
     </section>
 
     <section class="mb-8">

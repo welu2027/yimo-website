@@ -7,7 +7,7 @@
     <section class="mb-10">
       <h2 class="text-3xl font-bold text-purple-900 mb-4">Overview</h2>
       <ul class="list-disc ml-6 text-gray-600 space-y-2">
-        <li>Event dates: May 24–25, 2026</li>
+        <li>Event dates: May 23–24, 2026</li>
         <li>Open to all students - not limited to middle/high school. Most registrants have no prior competition experience.</li>
         <li>Individual competition (no team rounds)</li>
         <li>Two divisions based on skill level</li>
@@ -41,8 +41,8 @@
       <h2 class="text-3xl font-bold text-purple-900 mb-4">Contest windows</h2>
       <p class="text-gray-600 mb-3">Each contestant picks <strong>one</strong> window only.</p>
       <ul class="list-disc ml-6 text-gray-600 space-y-2">
-        <li><strong>Window A</strong> (American/Asia friendly): Saturday, May 24 at 20:00 EST - Sunday morning in Asia</li>
-        <li><strong>Window B</strong> (Europe/American friendly): Sunday, May 25 at 11:00 AM EST - evening in Europe</li>
+        <li><strong>Window A</strong> (American/Asia friendly): Saturday, May 23 at 20:00 EST - Sunday morning in Asia</li>
+        <li><strong>Window B</strong> (Europe/American friendly): Sunday, May 24 at 11:00 AM EST - evening in Europe</li>
       </ul>
     </section>
 

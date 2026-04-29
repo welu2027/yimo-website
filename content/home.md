@@ -1,6 +1,6 @@
 ---
 title: YIMO (Youth International Math Olympiad)
-subtitle: May 24/25, 2026 /// Global youth math championship
+subtitle: May 23/24, 2026 /// Global youth math championship
 description: "YIMO is a youth-led international math competition designed for middle and high school students."
 ---
 
@@ -8,7 +8,7 @@ description: "YIMO is a youth-led international math competition designed for mi
 YIMO is a global competition for middle and high school students designed with fairness, community, and growth as core values.
 
 ## Overview
-- Event date: May 24/25, 2026
+- Event date: May 23/24, 2026
 - Target participants: middle school and high school students
 - Registration: teams (3–4) or individuals
 - Core components: individual round, team round, guts round, tiebreakers

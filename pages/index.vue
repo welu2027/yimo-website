@@ -9,7 +9,7 @@
           <p class="text-base md:text-lg font-medium tracking-wide uppercase text-white/85 mb-4">All Students Welcome <span class="opacity-60 mx-1">•</span> No Experience Required</p>
           <p class="text-sm md:text-base font-light tracking-widest uppercase text-white/70 mb-8">Run by <span class="font-semibold">NxtHorizon</span> &amp; <span class="font-semibold">Stemise</span></p>
           <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-            <a class="rounded-full bg-amber-50 text-purple-950 font-extrabold tracking-wide px-7 py-3 text-base md:text-lg shadow-lg hover:bg-white transition" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register by May 17</a>
+            <a class="rounded-full bg-amber-50 text-purple-950 font-extrabold tracking-wide px-7 py-3 text-base md:text-lg shadow-lg hover:bg-white transition" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register by May 21</a>
             <a class="rounded-full bg-purple-900 text-white font-bold tracking-wide px-7 py-3 text-base md:text-lg shadow-lg hover:bg-purple-800 transition" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Join Discord</a>
           </div>
         </div>

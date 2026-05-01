@@ -49,7 +49,7 @@
     <section class="mb-10">
       <h2 class="text-3xl font-bold text-purple-900 mb-4">Registration</h2>
       <ul class="list-disc ml-6 text-gray-600 space-y-2">
-        <li>Sign-ups close <strong>May 17, 23:59 EST</strong></li>
+        <li>Sign-ups close <strong>May 21, 23:59 EST</strong></li>
         <li>Fill out the <a class="text-purple-700 underline" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Google form</a> with your email and upload your parental consent form</li>
         <li>Only verified students receive the exam.net link and Google Meet invite - sent 48 hours before the event</li>
       </ul>

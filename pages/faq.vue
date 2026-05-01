@@ -18,7 +18,7 @@
 
     <section class="mb-8">
       <h2 class="text-3xl font-bold text-purple-900 mb-3">How do I register?</h2>
-      <p class="text-gray-600">Fill out the <a class="text-purple-700 underline" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">registration form</a> with your email and upload your parental consent form before <strong>May 17, 23:59 EST</strong>. Verified students receive the exam link and Google Meet invite 48 hours before the contest.</p>
+      <p class="text-gray-600">Fill out the <a class="text-purple-700 underline" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">registration form</a> with your email and upload your parental consent form before <strong>May 21, 23:59 EST</strong>. Verified students receive the exam link and Google Meet invite 48 hours before the contest.</p>
     </section>
 
     <section class="mb-8">

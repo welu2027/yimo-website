@@ -60,6 +60,23 @@ export default {
           bio: "is an AMC-12 Perfect Scorer who now works as a Deputy Executive Director at STEMise. Growing up in the Netherlands, he likes to hang out with his friends and listen to music in his free time.",
           image: "/staff/junyi.png",
         },
+        {
+          name: "Daniel Edouard",
+          role: "Head of Marketing",
+          bio: "is a Merit-Based Harvard Fellow who has conducted independent computational neuropsychology research under the supervision of a Yale professor. His work sits at the intersection of AI, applied math, and neuroscience, with a focus on developing computational applications for neurodivergent developmental disorders. A frequent presenter at national research conferences, he also serves on the Workshop and Outreach team for Next Horizon. He is the founder of Les Enfants du Monde, a nonprofit focused on STEM, AI, and entrepreneurship education for youth in the Democratic Republic of the Congo. In his free time, he is an avid tennis and pickleball player and has played violin for six years.",
+          image: "/staff/danieledouard.png",
+        },
+        {
+          name: "Kristen Zhou",
+          role: "Head of Outreach",
+          bio: "is a student who enjoys competition math and teaching it. Despite missing AIME by 1.5 points, she has placed first and fourth at many regional MATHLEAGUE.ORG competitions. She is a four-year cross country runner who has qualified for the Central Coast Section three times. In her free time, she enjoys playing PJSK, watching Danganronpa, and listening to indie music.",
+          image: "/staff/kristenzhou.png",
+        },
+        {
+          name: "Shining Sun",
+          role: "Head of Problem Setting",
+          bio: "is a 6x AIME qualifier and 2x USAJMO qualifier. He also works as a problem writer for national competitions in Nepal. In his free time, he enjoys playing video games and exploring random places with friends.",
+        },
       ],
       generalStaff: [
         {
@@ -107,11 +124,6 @@ export default {
           image: "/staff/damayneanderson.png",
         },
         {
-          name: "Daniel Edouard",
-          bio: "is a Merit-Based Harvard Fellow who has conducted independent computational neuropsychology research under the supervision of a Yale professor. His work sits at the intersection of AI, applied math, and neuroscience, with a focus on developing computational applications for neurodivergent developmental disorders. A frequent presenter at national research conferences, he also serves on the Workshop and Outreach team for Next Horizon. He is the founder of Les Enfants du Monde, a nonprofit focused on STEM, AI, and entrepreneurship education for youth in the Democratic Republic of the Congo. In his free time, he is an avid tennis and pickleball player and has played violin for six years.",
-          image: "/staff/danieledouard.png",
-        },
-        {
           name: "Desmond Chen",
           bio: "has a strong passion for math contests and enjoys writing problems for competitions.",
         },
@@ -140,14 +152,13 @@ export default {
           bio: "is a 4x AIME qualifier, HMMT top 50 placer, USACHO qualifier, and Olympiad Insider officer. He enjoys chess, running, community service, and programming.",
         },
         {
+          name: "Justin Kchao",
+          bio: "is a junior from Los Angeles, California. His top achievements include not making USAMO due to sillying AIME 5 times. Apart from exploring abstract algebra in his free time, he loves tutoring others in math and playing Tetris.",
+        },
+        {
           name: "Krish Kejriwal",
           bio: "is an aspiring mathematician who has achieved distinctions at MATHCOUNTS chapter rounds and AMC 8. He is currently writing problems for the 2026 YIMO.",
           image: "/staff/krishkejriwal.png",
-        },
-        {
-          name: "Kristen Zhou",
-          bio: "is a student who enjoys competition math and teaching it. Despite missing AIME by 1.5 points, she has placed first and fourth at many regional MATHLEAGUE.ORG competitions. She is a four-year cross country runner who has qualified for the Central Coast Section three times. In her free time, she enjoys playing PJSK, watching Danganronpa, and listening to indie music.",
-          image: "/staff/kristenzhou.png",
         },
         {
           name: "Lefteris Demosthenous",

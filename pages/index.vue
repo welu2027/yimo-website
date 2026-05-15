@@ -1,70 +1,156 @@
 <template>
-  <div class="w-full">
-    <!-- Hero Section -->
-    <section class="hero-section py-20 md:py-32 px-4 relative overflow-hidden w-full max-w-none" style="margin-left: calc(50% - 50vw + 40px); margin-right: calc(50% - 50vw - 40px);">
-      <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-8">
-        <div class="flex-1 text-center md:text-left">
-          <h1 class="text-5xl md:text-7xl font-black leading-tight tracking-wider text-white mb-6">Youth International Math Olympiad</h1>
-          <p class="text-xl md:text-3xl font-semibold tracking-wide text-white mb-3">May 23/24, 2026 <span class="opacity-60 mx-2">•</span> Global Competition</p>
-          <p class="text-base md:text-lg font-medium tracking-wide uppercase text-white/85 mb-4">All Students Welcome <span class="opacity-60 mx-1">•</span> No Experience Required</p>
-          <p class="text-sm md:text-base font-light tracking-widest uppercase text-white/70 mb-8">Run by <span class="font-semibold">NxtHorizon</span> &amp; <span class="font-semibold">Stemise</span></p>
-          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-            <a class="rounded-full bg-amber-50 text-purple-950 font-extrabold tracking-wide px-7 py-3 text-base md:text-lg shadow-lg hover:bg-white transition" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register by May 21</a>
-            <a class="rounded-full bg-purple-900 text-white font-bold tracking-wide px-7 py-3 text-base md:text-lg shadow-lg hover:bg-purple-800 transition" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Join Discord</a>
-          </div>
+  <div>
+    <!-- Hero -->
+    <section class="hero">
+      <img class="hero-mascot" src="/yimo-logo-gold.png" alt="YIMO" />
+      <div class="hero-eyebrow">
+        <span class="dot"></span> Registration Open · May 21 Deadline
+      </div>
+      <h1 class="hero-title">
+        The youth <span class="accent-word">international</span> math olympiad
+      </h1>
+      <p class="hero-sub">
+        YIMO is a global, youth-led math competition designed with
+        <span class="accent">fairness, community, and growth</span>
+        as core values. Open to all students — no prior competition experience required.
+      </p>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-label">Date</span>
+          <span class="meta-value">May 23 / 24, 2026</span>
         </div>
-        <img class="mx-auto h-80 w-80 md:h-96 md:w-96 object-contain" src="/yimo-logo.png" alt="YIMO logo" />
+        <div class="meta-item">
+          <span class="meta-label">Format</span>
+          <span class="meta-value">Individual · Online</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Eligibility</span>
+          <span class="meta-value">All Students</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Divisions</span>
+          <span class="meta-value">Advanced · Beginner</span>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register →</a>
+        <a class="btn btn-secondary" href="/about">How it works</a>
+        <a class="btn btn-secondary" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Join Discord</a>
       </div>
     </section>
 
-    <!-- Partners Section -->
-    <section class="py-10 px-4 max-w-3xl mx-auto text-center">
-      <p class="text-white/70 text-sm font-light tracking-widest uppercase mb-6">In partnership with</p>
-      <div class="flex flex-wrap items-center justify-center gap-8">
-        <a href="https://www.usamoguide.com/" target="_blank" rel="noopener">
-          <img class="h-32 object-contain hover:opacity-80 transition" src="/Test_logo.png" alt="USAMO Guide" />
+    <hr class="section-divider" />
+
+    <!-- Divisions -->
+    <section class="section">
+      <p class="section-label">Divisions</p>
+      <h2 class="section-title">Choose your level</h2>
+      <p class="section-sub">Two divisions based on skill level — pick the one that fits you.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;">
+        <div class="division-card">
+          <span class="division-card-badge badge-advanced">Advanced · Division 1</span>
+          <h3>High Achievers</h3>
+          <p>Designed for early AIME to high AIME level competitors looking for a serious challenge.</p>
+          <ul>
+            <li>Written test: 20 questions (10 MCQ + 10 AIME-style)</li>
+            <li>Top 8 advance to the Final Round</li>
+            <li>Final Round: 2 computational + 2 proofs</li>
+            <li>Gold / Silver / Bronze on written test</li>
+          </ul>
+        </div>
+        <div class="division-card">
+          <span class="division-card-badge badge-beginner">Beginner · Division 2</span>
+          <h3>Rising Stars</h3>
+          <p>AMC 10 to early AIME level — great for students building competition experience.</p>
+          <ul>
+            <li>Same written format as Division 1</li>
+            <li>Top 8 advance to the Final Round</li>
+            <li>Final Round: 3 computational + 1 proof</li>
+            <li>Gold / Silver / Bronze on written test</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- Format -->
+    <section class="section">
+      <p class="section-label">Format</p>
+      <h2 class="section-title">How it works</h2>
+      <p class="section-sub">A fair, online individual competition with two test windows to choose from.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2rem;">
+        <div class="format-card">
+          <div class="format-card-num">01</div>
+          <h3>Written Test</h3>
+          <p>20 questions — 10 MCQ and 10 AIME-style integer answers. Timed, proctored via exam.net.</p>
+        </div>
+        <div class="format-card">
+          <div class="format-card-num">02</div>
+          <h3>Proctoring</h3>
+          <p>Join a Google Meet call with a webcam showing your face and desk. Use a separate device from your exam device.</p>
+        </div>
+        <div class="format-card">
+          <div class="format-card-num">03</div>
+          <h3>Final Round</h3>
+          <p>Top 8 scorers per division advance to a proof-based final round with cash and sponsor prizes.</p>
+        </div>
+        <div class="format-card">
+          <div class="format-card-num">04</div>
+          <h3>Awards</h3>
+          <p>Final Round placements 1st–8th, plus written test medals: Gold (top 10%), Silver (20%), Bronze (30%).</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">
+        <div class="window-card">
+          <span class="window-card-label">Window A</span>
+          <h3>Saturday, May 23</h3>
+          <p>21:30 EST · American / Asia friendly</p>
+        </div>
+        <div class="window-card">
+          <span class="window-card-label">Window B</span>
+          <h3>Sunday, May 24</h3>
+          <p>11:00 AM EST · Europe / American friendly</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- Partners -->
+    <section class="section" style="text-align:center;">
+      <p class="section-label">Partners</p>
+      <h2 class="section-title">In partnership with</h2>
+      <div class="sponsor-grid" style="margin-top:2rem;">
+        <a href="https://www.usamoguide.com/" target="_blank" rel="noopener" class="partner-card">
+          <img src="/Test_logo.png" alt="USAMO Guide" />
         </a>
-        <a href="https://saintlymath.com/" target="_blank" rel="noopener">
-          <img class="h-32 object-contain hover:opacity-80 transition" src="/Saintly.png" alt="Saintly" />
+        <a href="https://saintlymath.com/" target="_blank" rel="noopener" class="partner-card">
+          <img src="/Saintly.png" alt="Saintly" />
         </a>
-        <a href="https://app.reasoninginstitute.com/onboarding/topics" target="_blank" rel="noopener">
-          <img class="h-32 object-contain hover:opacity-80 transition" src="/ReasoningInstitute.png" alt="Reasoning Institute" />
+        <a href="https://app.reasoninginstitute.com/onboarding/topics" target="_blank" rel="noopener" class="partner-card">
+          <img src="/ReasoningInstitute.png" alt="Reasoning Institute" />
         </a>
-        <a href="https://usaeo.org/" target="_blank" rel="noopener">
-          <img class="h-32 object-contain hover:opacity-80 transition" src="/USAEO.png" alt="USAEO" />
+        <a href="https://usaeo.org/" target="_blank" rel="noopener" class="partner-card">
+          <img src="/USAEO.png" alt="USAEO" />
         </a>
       </div>
     </section>
 
-    <!-- Navigation Card Links -->
-    <section class="py-16 px-4 max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <a href="/about" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl p-8 text-center text-white transition">
-          <h3 class="text-2xl font-bold">Contest</h3>
-          <p class="mt-3 text-white/80">Divisions, format, schedule, registration, and prizes.</p>
-        </a>
-        <a href="/faq" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl p-8 text-center text-white transition">
-          <h3 class="text-2xl font-bold">FAQ</h3>
-          <p class="mt-3 text-white/80">Common questions about joining and competing.</p>
-        </a>
-        <a href="/sponsors" class="bg-white/10 hover:bg-white/20 border border-white/20 rounded-3xl p-8 text-center text-white transition">
-          <h3 class="text-2xl font-bold">Sponsors</h3>
-          <p class="mt-3 text-white/80">Supporting organizations and sponsor prizes.</p>
-        </a>
+    <hr class="section-divider" />
+
+    <!-- CTA Strip -->
+    <div class="cta-strip">
+      <h2>Ready to compete?</h2>
+      <p>Registration closes May 21, 23:59 EST. Sign up now and join the global math community.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;">
+        <a class="btn btn-primary" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register now →</a>
+        <a class="btn btn-secondary" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Join Discord</a>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
-<style>
-h2::before {
-  display: block;
-  content: " ";
-  margin-top: -104px;
-  height: 104px;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-
-</style>
+<script>
+export default {};
+</script>

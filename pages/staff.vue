@@ -1,34 +1,32 @@
 <template>
-  <div class="px-4 py-16 max-w-6xl mx-auto">
-    <h1 class="text-5xl font-black text-purple-950 mb-4">Staff</h1>
-    <p class="text-lg text-gray-700 mb-12">The team building pathways for the next generation of STEM leaders.</p>
+  <div style="position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:4rem 2rem 6rem;">
+    <h1 style="font-size:clamp(2rem,5vw,3rem);font-weight:900;color:var(--text);margin-bottom:0.5rem;">Staff</h1>
+    <p style="font-size:1.05rem;color:var(--text-dim);margin-bottom:3rem;">Meet the staff bringing you YIMO.</p>
 
-    <!-- Directors & Head Mentors -->
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold text-purple-900 mb-8">Competition Directors</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-        <div v-for="member in leadership" :key="member.name" class="bg-white/70 rounded-2xl shadow p-4 flex flex-col items-center text-center">
-          <img v-if="member.image" :src="member.image" :alt="member.name" class="w-24 h-24 rounded-full object-cover mb-3 bg-purple-100" />
-          <div v-else class="w-24 h-24 rounded-full mb-3 bg-purple-100 flex items-center justify-center text-3xl font-bold text-purple-400">{{ member.name[0] }}</div>
-          <p class="font-bold text-purple-950 text-base">{{ member.name }}</p>
-          <p class="text-purple-700 text-sm font-semibold mb-2">{{ member.role }}</p>
-          <p v-if="member.bio" class="text-gray-600 text-sm"><span class="font-semibold text-purple-950">{{ member.name }}</span> {{ member.bio }}</p>
-        </div>
+    <!-- Competition Directors -->
+    <p class="section-label">Leadership</p>
+    <h2 style="font-size:1.35rem;font-weight:800;color:var(--accent-soft);margin-bottom:1.5rem;">Competition Directors</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:3.5rem;">
+      <div v-for="member in leadership" :key="member.name" class="staff-card">
+        <img v-if="member.image" :src="member.image" :alt="member.name" class="staff-avatar" />
+        <div v-else class="staff-avatar-placeholder">{{ member.name[0] }}</div>
+        <p class="staff-name">{{ member.name }}</p>
+        <p class="staff-role">{{ member.role }}</p>
+        <p v-if="member.bio" class="staff-bio"><strong>{{ member.name }}</strong> {{ member.bio }}</p>
       </div>
-    </section>
+    </div>
 
     <!-- Staff -->
-    <section>
-      <h2 class="text-3xl font-bold text-purple-900 mb-8">Staff</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-        <div v-for="member in generalStaff" :key="member.name" class="bg-white/70 rounded-2xl shadow p-4 flex flex-col items-center text-center">
-          <img v-if="member.image" :src="member.image" :alt="member.name" class="w-24 h-24 rounded-full object-cover mb-3 bg-purple-100" />
-          <div v-else class="w-24 h-24 rounded-full mb-3 bg-purple-100 flex items-center justify-center text-3xl font-bold text-purple-400">{{ member.name[0] }}</div>
-          <p class="font-bold text-purple-950 text-base">{{ member.name }}</p>
-          <p v-if="member.bio" class="text-gray-600 text-sm mt-1"><span class="font-semibold text-purple-950">{{ member.name }}</span> {{ member.bio }}</p>
-        </div>
+    <p class="section-label">Team</p>
+    <h2 style="font-size:1.35rem;font-weight:800;color:var(--accent-soft);margin-bottom:1.5rem;">Staff</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;">
+      <div v-for="member in generalStaff" :key="member.name" class="staff-card">
+        <img v-if="member.image" :src="member.image" :alt="member.name" class="staff-avatar" />
+        <div v-else class="staff-avatar-placeholder">{{ member.name[0] }}</div>
+        <p class="staff-name">{{ member.name }}</p>
+        <p v-if="member.bio" class="staff-bio"><strong>{{ member.name }}</strong> {{ member.bio }}</p>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 

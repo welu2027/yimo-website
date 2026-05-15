@@ -1,49 +1,34 @@
 <template>
-  <div class="min-h-screen bg-fixed bg-base bg-graphing dark:bg-graph-dark w-screen">
-    <nav class="nav-container">
-      <div class="nav-brand flex items-center justify-between w-full gap-8">
-        <div class="flex items-center gap-3">
-          <img class="nav-logo" src="/yimo-logo-gold.png" alt="Youth International Math Olympiad gold logo" />
-          <a class="nav-title" href="/">Youth International Math Olympiad</a>
-        </div>
+  <div class="min-h-screen w-full" style="position: relative; background: #0a0805;">
+    <div class="page-bg"></div>
+    <div class="page-grid"></div>
+    <div class="top-strip"></div>
 
-        <div class="hidden md:flex items-center gap-3 ml-auto justify-end">
-          <a class="menu-link" href="/about">Contest</a>
-          <a class="menu-link" href="/sponsors">Sponsors</a>
-          <a class="menu-link" href="/staff">Staff</a>
-          <a class="menu-link" href="/faq">FAQ</a>
-          <a class="rounded-full border border-white bg-white/10 px-4 py-2 text-white font-bold hover:bg-white/20" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register</a>
-          <a class="p-1 text-white hover:text-purple-300 transition" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener" aria-label="Discord">
-            <img class="h-6 w-6" src="/Discord-Logo-White.png" alt="Discord" />
-          </a>
-          <a class="p-1 text-white hover:text-purple-300 transition" href="/" aria-label="Home">
-            <img class="h-7 w-7 -mt-1" src="/home-logo.png" alt="Home" />
-          </a>
-        </div>
-
-        <menu-icon
-          @click="menu = !menu"
-          class="menu-toggle"
-        />
+    <nav class="nav">
+      <nuxt-link to="/" class="nav-brand">
+        <img src="/yimo-logo-gold.png" alt="YIMO" />
+        <span class="nav-brand-name">YIMO</span>
+      </nuxt-link>
+      <div class="nav-links hidden md:flex">
+        <nuxt-link to="/about" class="nav-link">Contest</nuxt-link>
+        <nuxt-link to="/sponsors" class="nav-link">Partners</nuxt-link>
+        <nuxt-link to="/staff" class="nav-link">Staff</nuxt-link>
+        <nuxt-link to="/faq" class="nav-link">FAQ</nuxt-link>
+      </div>
+      <div class="nav-right">
+        <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener" class="nav-link hidden md:inline-flex" aria-label="Discord">
+          <img src="/Discord-Logo-White.png" alt="Discord" style="height:18px;width:18px;object-fit:contain;" />
+        </a>
+        <a href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener" class="nav-register">Register</a>
       </div>
     </nav>
-    <div class="content-wrapper">
+
+    <main style="position: relative; z-index: 1;">
       <Nuxt />
-    </div>
+    </main>
   </div>
 </template>
 
 <script>
-import { MenuIcon } from "vue-feather-icons";
-import { HomeIcon } from "vue-feather-icons";
-
-export default {
-  components: {
-    MenuIcon,
-    HomeIcon,
-  },
-  data: () => ({
-    menu: false,
-  }),
-};
+export default {};
 </script>

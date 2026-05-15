@@ -3,23 +3,9 @@
     <h1 class="text-5xl font-black text-purple-950 mb-4">Staff</h1>
     <p class="text-lg text-gray-700 mb-12">The team building pathways for the next generation of STEM leaders.</p>
 
-    <!-- Founders -->
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold text-purple-900 mb-8">Executive Board</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
-        <div v-for="member in founders" :key="member.name" class="bg-white/70 rounded-2xl shadow p-4 flex flex-col items-center text-center">
-          <img v-if="member.image" :src="member.image" :alt="member.name" class="w-24 h-24 rounded-full object-cover mb-3 bg-purple-100" />
-          <div v-else class="w-24 h-24 rounded-full mb-3 bg-purple-100 flex items-center justify-center text-3xl font-bold text-purple-400">{{ member.name[0] }}</div>
-          <p class="font-bold text-purple-950 text-base">{{ member.name }}</p>
-          <p class="text-purple-700 text-sm font-semibold mb-2">{{ member.role }}</p>
-          <p class="text-gray-600 text-sm"><span class="font-semibold text-purple-950">{{ member.name }}</span> {{ member.bio }}</p>
-        </div>
-      </div>
-    </section>
-
     <!-- Directors & Head Mentors -->
     <section class="mb-16">
-      <h2 class="text-3xl font-bold text-purple-900 mb-8">Leadership</h2>
+      <h2 class="text-3xl font-bold text-purple-900 mb-8">Competition Directors</h2>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
         <div v-for="member in leadership" :key="member.name" class="bg-white/70 rounded-2xl shadow p-4 flex flex-col items-center text-center">
           <img v-if="member.image" :src="member.image" :alt="member.name" class="w-24 h-24 rounded-full object-cover mb-3 bg-purple-100" />
@@ -50,33 +36,14 @@
 export default {
   data() {
     return {
-      founders: [
+      founders: [],
+      leadership: [
         {
           name: "Wenhao",
-          role: "Founder, CEO",
+          role: "Competition Director",
           bio: "is a USAJMO Honorable Mention who scored 11 on the AIME and competes in the USACO Platinum division. He loves combinatorics and algebra, and his club baseball team peaked at #75 nationally.",
           image: "/staff/wenhaolu.png",
         },
-        {
-          name: "David",
-          role: "Founder, COO",
-          bio: "is an AIME score-8 qualifier in the USACO Platinum division with a perfect AMC 8 score and AMC 10 Distinguished Honor Roll. He holds a USCF chess rating of 2000 and finished 13th at HMMT individual rounds.",
-          image: "/staff/davidzhang.png",
-        },
-        {
-          name: "Andrew",
-          role: "Founder, CTO",
-          bio: "is a USACO Gold competitor fluent in C++, Java, JavaScript, React, Vue, and Python. Outside of coding, he enjoys basketball and music and is currently exploring machine learning.",
-          image: "/staff/andrewzhao.png",
-        },
-        {
-          name: "Jonathan",
-          role: "Founder, CFO",
-          bio: "is a USACO Silver competitor and AMC 8 Honorable Mention with a love for geometry. He enjoys basketball, drawing, and cooking in his free time.",
-          image: "/staff/jonathanliu.png",
-        },
-      ],
-      leadership: [
         {
           name: "Ryan Ahn",
           role: "Competition Director",
@@ -94,30 +61,6 @@ export default {
           role: "Competition Director",
           bio: "is an AMC-12 Perfect Scorer who now works as a Deputy Executive Director at STEMise. Growing up in the Netherlands, he likes to hang out with his friends and listen to music in his free time.",
           image: "/staff/junyi.png",
-        },
-        {
-          name: "Daniel Edouard",
-          role: "Marketing Director",
-          bio: "is a Merit-Based Harvard Fellow who has conducted independent computational neuropsychology research under the supervision of a Yale professor. His work sits at the intersection of AI, applied math, and neuroscience, with a focus on developing computational applications for neurodivergent developmental disorders. A frequent presenter at national research conferences, he also serves on the Workshop and Outreach team for Next Horizon. He is the founder of Les Enfants du Monde, a nonprofit focused on STEM, AI, and entrepreneurship education for youth in the Democratic Republic of the Congo. In his free time, he is an avid tennis and pickleball player and has played violin for six years.",
-          image: "/staff/danieledouard.png",
-        },
-        {
-          name: "Charlie Yang",
-          role: "Head Mentor",
-          bio: "is a three-time AIME qualifier with AMC 10 Distinguished Honor Roll who presents independent research at academic conferences. He plays AAA ice hockey and competes on his school's varsity team.",
-          image: "/staff/charles.png",
-        },
-        {
-          name: "Adithya Balakumar",
-          role: "Head Mentor",
-          bio: "is an AIME qualifier (2026) with a Bronze Medal at the Math League International Competition and a state-level robotics innovation award. He loves exploring local parks and drinking matcha.",
-          image: "/staff/adithyabalakumar.png",
-        },
-        {
-          name: "Damayne Anderson",
-          role: "Head Mentor",
-          bio: "is a driven student-athlete and community member, focused on growth both on and off the court. He is the founder of Daily Math and actively competes in USACO, with a strong interest in qualifying for AIME. Through his involvement in a nonprofit, he works to give back while building leadership, discipline, and a commitment to excellence.",
-          image: "/staff/damayneanderson.png",
         },
       ],
       generalStaff: [
@@ -141,6 +84,16 @@ export default {
           image: "/staff/atharvkaramcheti.png",
         },
         {
+          name: "Adithya Balakumar",
+          bio: "is an AIME qualifier (2026) with a Bronze Medal at the Math League International Competition and a state-level robotics innovation award. He loves exploring local parks and drinking matcha.",
+          image: "/staff/adithyabalakumar.png",
+        },
+        {
+          name: "Charlie Yang",
+          bio: "is a three-time AIME qualifier with AMC 10 Distinguished Honor Roll who presents independent research at academic conferences. He plays AAA ice hockey and competes on his school's varsity team.",
+          image: "/staff/charles.png",
+        },
+        {
           name: "Christopher Huang",
           bio: "serves as the Executive of Education at STEMise, where he leads initiatives to make STEM learning more accessible. As a Senior SAT Tutor at Schoolhouse.world, he has mentored over 65 students across 20 countries and overseen more than 1,200 certifications. Beyond education, he has a personal interest in the intersection of dentistry and materials science.",
           image: "/staff/christopherhuang.png",
@@ -149,6 +102,16 @@ export default {
           name: "Collin Du",
           bio: "is a national K-12 chess champion with five years of competitive experience who is currently training for ISEF. He played baseball for seven years and enjoys fishing, skiing, and writing.",
           image: "/staff/collindu.png",
+        },
+        {
+          name: "Damayne Anderson",
+          bio: "is a driven student-athlete and community member, focused on growth both on and off the court. He is the founder of Daily Math and actively competes in USACO, with a strong interest in qualifying for AIME. Through his involvement in a nonprofit, he works to give back while building leadership, discipline, and a commitment to excellence.",
+          image: "/staff/damayneanderson.png",
+        },
+        {
+          name: "Daniel Edouard",
+          bio: "is a Merit-Based Harvard Fellow who has conducted independent computational neuropsychology research under the supervision of a Yale professor. His work sits at the intersection of AI, applied math, and neuroscience, with a focus on developing computational applications for neurodivergent developmental disorders. A frequent presenter at national research conferences, he also serves on the Workshop and Outreach team for Next Horizon. He is the founder of Les Enfants du Monde, a nonprofit focused on STEM, AI, and entrepreneurship education for youth in the Democratic Republic of the Congo. In his free time, he is an avid tennis and pickleball player and has played violin for six years.",
+          image: "/staff/danieledouard.png",
         },
         {
           name: "Desmond Chen",

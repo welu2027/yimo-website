@@ -10,6 +10,7 @@
         <div class="hidden md:flex items-center gap-3 ml-auto justify-end">
           <a class="menu-link" href="/about">Contest</a>
           <a class="menu-link" href="/sponsors">Sponsors</a>
+          <a class="menu-link" href="/staff">Staff</a>
           <a class="menu-link" href="/faq">FAQ</a>
           <a class="rounded-full border border-white bg-white/10 px-4 py-2 text-white font-bold hover:bg-white/20" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register</a>
           <a class="p-1 text-white hover:text-purple-300 transition" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener" aria-label="Discord">

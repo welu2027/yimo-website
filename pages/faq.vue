@@ -5,14 +5,14 @@
 
     <div class="faq-item">
       <h2>Who can join?</h2>
-      <p>YIMO is open to all students , not limited to middle or high school. Most of our registrants have no prior competition experience, so beginners are encouraged to sign up for Division 2.</p>
+      <p>YIMO is open to all students. Not limited to middle or high school. Most of our registrants have no prior competition experience, so beginners are encouraged to sign up for Division 2.</p>
     </div>
 
     <div class="faq-item">
       <h2>Which division should I pick?</h2>
       <ul>
-        <li><strong>Division 1 (Advanced)</strong> , early AIME to high AIME level</li>
-        <li><strong>Division 2 (Beginner)</strong> , AMC 10 to early AIME level</li>
+        <li><strong>Division 1 (Advanced):</strong> early AIME to high AIME level</li>
+        <li><strong>Division 2 (Beginner):</strong> AMC 10 to early AIME level</li>
       </ul>
     </div>
 

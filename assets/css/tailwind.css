@@ -313,7 +313,7 @@ body {
   .division-card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1rem; }
   .division-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.4rem; }
   .division-card li { font-size: 0.875rem; color: var(--text-dim); display: flex; align-items: baseline; gap: 0.5rem; }
-  .division-card li::before { content: '—'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+  .division-card li::before { content: '-'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
 
   .format-card {
     background: rgba(255,255,255,0.04);
@@ -470,7 +470,7 @@ body {
     justify-content: center;
   }
 
-  /* legacy compat — keep content-wrapper for _slug */
+  /* legacy compat: keep content-wrapper for _slug */
   .content-wrapper {
     position: relative;
     z-index: 1;

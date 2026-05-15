@@ -12,7 +12,7 @@
       <p class="hero-sub">
         YIMO is a global, youth-led math competition designed with
         <span class="accent">fairness, community, and growth</span>
-        as core values. Open to all students , no prior competition experience required.
+        as core values. Open to all students. No prior competition experience required.
       </p>
       <div class="hero-meta">
         <div class="meta-item">
@@ -45,7 +45,7 @@
     <section class="section">
       <p class="section-label">Divisions</p>
       <h2 class="section-title">Choose your level</h2>
-      <p class="section-sub">Two divisions based on skill level , pick the one that fits you.</p>
+      <p class="section-sub">Two divisions based on skill level. Pick the one that fits you.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;">
         <div class="division-card">
           <span class="division-card-badge badge-advanced">Advanced · Division 1</span>
@@ -61,7 +61,7 @@
         <div class="division-card">
           <span class="division-card-badge badge-beginner">Beginner · Division 2</span>
           <h3>Rising Stars</h3>
-          <p>AMC 10 to early AIME level , great for students building competition experience.</p>
+          <p>AMC 10 to early AIME level, great for students building competition experience.</p>
           <ul>
             <li>Same written format as Division 1</li>
             <li>Top 8 advance to the Final Round</li>
@@ -83,7 +83,7 @@
         <div class="format-card">
           <div class="format-card-num">01</div>
           <h3>Written Test</h3>
-          <p>20 questions , 10 MCQ and 10 AIME-style integer answers. Timed, proctored via exam.net.</p>
+          <p>20 questions: 10 MCQ and 10 AIME-style integer answers. Timed, proctored via exam.net.</p>
         </div>
         <div class="format-card">
           <div class="format-card-num">02</div>

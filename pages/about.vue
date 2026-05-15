@@ -1,13 +1,13 @@
 <template>
   <div class="content-page">
     <h1>Youth International Math Olympiad</h1>
-    <p class="page-intro">A global, youth-led math competition built on fairness, community, and growth. Open to all , no prior experience required. Run by NxtHorizon and Stemise.</p>
+    <p class="page-intro">A global, youth-led math competition built on fairness, community, and growth. Open to all. No prior experience required. Run by NxtHorizon and Stemise.</p>
 
     <section>
       <h2>Overview</h2>
       <ul>
         <li>Event dates: May 23–24, 2026</li>
-        <li>Open to all students , most registrants have no prior competition experience</li>
+        <li>Open to all students. Most registrants have no prior competition experience</li>
         <li>Individual competition (no team rounds)</li>
         <li>Two divisions based on skill level</li>
       </ul>
@@ -16,14 +16,14 @@
     <section>
       <h2>Divisions</h2>
       <ul>
-        <li><strong>Division 1 (Advanced)</strong> , early AIME to high AIME level</li>
-        <li><strong>Division 2 (Beginner)</strong> , AMC 10 to early AIME level (fewer prizes than Division 1)</li>
+        <li><strong>Division 1 (Advanced):</strong> early AIME to high AIME level</li>
+        <li><strong>Division 2 (Beginner):</strong> AMC 10 to early AIME level (fewer prizes than Division 1)</li>
       </ul>
     </section>
 
     <section>
       <h2>Problem format</h2>
-      <p><strong>Written test:</strong> 20 questions , 10 MCQs and 10 AIME-type integer answers.</p>
+      <p><strong>Written test:</strong> 20 questions: 10 MCQs and 10 AIME-type integer answers.</p>
       <ul>
         <li>Questions 1–5: 4 points each</li>
         <li>Questions 6–15: 5 points each</li>
@@ -40,8 +40,8 @@
       <h2>Contest windows</h2>
       <p>Each contestant picks <strong>one</strong> window only.</p>
       <ul>
-        <li><strong>Window A</strong> (American / Asia friendly) , Saturday, May 23 at 21:30 EST</li>
-        <li><strong>Window B</strong> (Europe / American friendly) , Sunday, May 24 at 11:00 AM EST</li>
+        <li><strong>Window A</strong> (American / Asia friendly): Saturday, May 23 at 21:30 EST</li>
+        <li><strong>Window B</strong> (Europe / American friendly): Sunday, May 24 at 11:00 AM EST</li>
       </ul>
     </section>
 
@@ -50,7 +50,7 @@
       <ul>
         <li>Sign-ups close <strong>May 21, 23:59 EST</strong></li>
         <li>Fill out the <a href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Google form</a> with your email and upload your parental consent form</li>
-        <li>Only verified students receive the exam.net link and Google Meet invite , sent 48 hours before the event</li>
+        <li>Only verified students receive the exam.net link and Google Meet invite, sent 48 hours before the event</li>
       </ul>
     </section>
 
@@ -59,7 +59,7 @@
       <ul>
         <li>Join a Google Meet breakout call with a single webcam showing your face and immediate desk area</li>
         <li>Join the call from a <strong>different device</strong> than the one taking the exam</li>
-        <li>Exam.net is a locked-down browser , screen sharing isn't needed or possible</li>
+        <li>Exam.net is a locked-down browser. Screen sharing isn't needed or possible</li>
         <li>Different divisions may share breakout rooms</li>
       </ul>
     </section>
@@ -67,7 +67,7 @@
     <section>
       <h2>Format notes</h2>
       <ul>
-        <li>Individual competition only , no team rounds, no guts rounds, no proofs on the written test</li>
+        <li>Individual competition only. No team rounds, no guts rounds, no proofs on the written test</li>
         <li>Proof problems appear only in the Final Round for qualifying top scorers</li>
       </ul>
     </section>
@@ -75,8 +75,8 @@
     <section>
       <h2>Prizes</h2>
       <ul>
-        <li><strong>Final Round placements</strong> , 1st–8th place</li>
-        <li><strong>Written test</strong> , Gold (Top 10%), Silver (Top 20%), Bronze (Top 30%)</li>
+        <li><strong>Final Round placements:</strong> 1st–8th place</li>
+        <li><strong>Written test:</strong> Gold (Top 10%), Silver (Top 20%), Bronze (Top 30%)</li>
       </ul>
     </section>
 

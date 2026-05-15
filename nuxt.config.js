@@ -11,7 +11,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Join YIMO — an international youth math competition for middle and high school students.' }
+      { hid: 'description', name: 'description', content: 'Join YIMO - an international youth math competition for middle and high school students.' }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/yimo-logo.png', sizes: '256x256' }

@@ -1,11 +1,14 @@
 <template>
   <div class="px-4 py-16 max-w-4xl mx-auto">
     <h1 class="text-5xl font-black text-purple-950 mb-6">Sponsors</h1>
-    <p class="text-lg text-gray-700 mb-8">Thank you to our sponsor partners who make YIMO possible. Below are aligned sponsor goals and prize commitments.</p>
+    <p class="text-lg text-gray-700 mb-8">Thank you to our sponsor partners who make YIMO possible.</p>
 
-    <div>
+    <div class="flex flex-wrap items-center justify-center gap-12">
       <a href="https://www.hudsonrivertrading.com/" target="_blank" rel="noopener">
-        <img class="h-40 mx-auto max-w-full" style="width: auto;" src="/hrt-logo.png" alt="HRT Logo" />
+        <img class="h-40 max-w-full" style="width: auto;" src="/hrt-logo.png" alt="HRT Logo" />
+      </a>
+      <a href="https://artofproblemsolving.com/" target="_blank" rel="noopener">
+        <img class="h-40 max-w-full" style="width: auto;" src="/aops-logo.png" alt="Art of Problem Solving Logo" />
       </a>
     </div>
   </div>

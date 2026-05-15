@@ -20,12 +20,20 @@
     <!-- Partners Section -->
     <section class="py-10 px-4 max-w-3xl mx-auto text-center">
       <p class="text-white/70 text-sm font-light tracking-widest uppercase mb-6">In partnership with</p>
-      <div class="flex items-center justify-center">
+      <div class="flex flex-wrap items-center justify-center gap-8">
         <a href="https://www.usamoguide.com/" target="_blank" rel="noopener">
-          <img class="h-20 object-contain hover:opacity-80 transition" src="/Test_logo.png" alt="USAMO Guide" />
+          <img class="h-32 object-contain hover:opacity-80 transition" src="/Test_logo.png" alt="USAMO Guide" />
+        </a>
+        <a href="https://saintlymath.com/" target="_blank" rel="noopener">
+          <img class="h-32 object-contain hover:opacity-80 transition" src="/Saintly.png" alt="Saintly" />
+        </a>
+        <a href="https://app.reasoninginstitute.com/onboarding/topics" target="_blank" rel="noopener">
+          <img class="h-32 object-contain hover:opacity-80 transition" src="/ReasoningInstitute.png" alt="Reasoning Institute" />
+        </a>
+        <a href="https://usaeo.org/" target="_blank" rel="noopener">
+          <img class="h-32 object-contain hover:opacity-80 transition" src="/USAEO.png" alt="USAEO" />
         </a>
       </div>
-      <p class="text-white/80 text-base mt-4">Proud to partner with <span class="font-semibold text-white">USAMO Guide</span> to bring world-class math competition resources to our participants.</p>
     </section>
 
     <!-- Navigation Card Links -->

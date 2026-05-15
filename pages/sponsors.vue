@@ -10,15 +10,6 @@
       <a href="https://artofproblemsolving.com/" target="_blank" rel="noopener">
         <img class="h-40 max-w-full" style="width: auto;" src="/aops-logo.png" alt="Art of Problem Solving Logo" />
       </a>
-      <a href="https://saintlymath.com/" target="_blank" rel="noopener">
-        <img class="h-40 max-w-full" style="width: auto;" src="/Saintly.png" alt="Saintly Logo" />
-      </a>
-      <a href="https://app.reasoninginstitute.com/onboarding/topics" target="_blank" rel="noopener">
-        <img class="h-40 max-w-full" style="width: auto;" src="/ReasoningInstitute.png" alt="Reasoning Institute Logo" />
-      </a>
-      <a href="https://usaeo.org/" target="_blank" rel="noopener">
-        <img class="h-40 max-w-full" style="width: auto;" src="/USAEO.png" alt="USAEO Logo" />
-      </a>
     </div>
   </div>
 </template>

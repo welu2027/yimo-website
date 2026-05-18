@@ -1,5 +1,11 @@
 <template>
   <div>
+    <!-- Instagram banner -->
+    <div style="position:relative;z-index:1;text-align:center;padding:0.6rem 1rem;background:rgba(249,115,22,0.08);border-bottom:1px solid rgba(249,115,22,0.15);font-size:0.85rem;color:var(--text-dim);">
+      Check us out on Instagram!
+      <a href="https://www.instagram.com/yimocomp_/" target="_blank" rel="noopener" style="color:var(--accent-soft);font-weight:700;text-decoration:none;margin-left:0.25rem;">@yimocomp_</a>
+    </div>
+
     <!-- Hero -->
     <section class="hero">
       <img class="hero-mascot" src="/yimo-logo-gold.png" alt="YIMO" />

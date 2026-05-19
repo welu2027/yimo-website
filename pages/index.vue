@@ -134,10 +134,7 @@
         <a href="https://saintlymath.com/" target="_blank" rel="noopener" class="partner-card">
           <img src="/Saintly.png" alt="Saintly" />
         </a>
-        <a href="https://app.reasoninginstitute.com/onboarding/topics" target="_blank" rel="noopener" class="partner-card">
-          <img src="/ReasoningInstitute.png" alt="Reasoning Institute" />
-        </a>
-        <a href="https://usaeo.org/" target="_blank" rel="noopener" class="partner-card">
+<a href="https://usaeo.org/" target="_blank" rel="noopener" class="partner-card">
           <img src="/USAEO.png" alt="USAEO" />
         </a>
       </div>

@@ -1,20 +1,16 @@
 <template>
   <div class="content-page">
     <h1>Contest Archive</h1>
-    <p class="page-intro">Past YIMO competitions and results. Explore previous years to see how the competition has evolved.</p>
+    <p class="page-intro">Download YIMO 1 contest materials below.</p>
 
     <section>
-      <h2>2026 Competition</h2>
-      <h3>Solutions</h3>
+      <h2>YIMO 1</h2>
       <ul>
-        <li><strong>Finals Round:</strong> <a href="/solutions/2026-finals-round-solutions.pdf" target="_blank" rel="noopener">View Solutions →</a></li>
-        <li><strong>Written Round:</strong> <a href="/solutions/2026-written-round-solutions.pdf" target="_blank" rel="noopener">View Solutions →</a></li>
+        <li><strong>YIMO 1 Written Round Problems:</strong> <a href="/solutions/yimo-1-written-round-problems.pdf" target="_blank" rel="noopener">Download →</a></li>
+        <li><strong>YIMO 1 Written Round Solutions:</strong> <a href="/solutions/yimo-1-written-round-solutions.pdf" target="_blank" rel="noopener">Download →</a></li>
+        <li><strong>YIMO 1 Final Round Problems:</strong> <a href="/solutions/yimo-1-final-round-problems.pdf" target="_blank" rel="noopener">Download →</a></li>
+        <li><strong>YIMO 1 Final Round Solutions:</strong> <a href="/solutions/yimo-1-final-round-solutions.pdf" target="_blank" rel="noopener">Download →</a></li>
       </ul>
-    </section>
-
-    <section>
-      <h2>Past Competitions</h2>
-      <p>Information about previous YIMO competitions coming soon.</p>
     </section>
   </div>
 </template>

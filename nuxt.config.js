@@ -40,12 +40,13 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    // https://go.nuxtjs.dev/content
-    '@nuxt/content',
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    workbox: {
+      enabled: process.env.NODE_ENV === 'production'
+    },
     manifest: {
       lang: 'en'
     },
@@ -62,11 +63,6 @@ export default {
         type:'image/png'
       }
     }
-  },
-
-  // Content module configuration: https://go.nuxtjs.dev/config-content
-  content: {
-    liveEdit: false
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

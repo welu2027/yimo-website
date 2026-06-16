@@ -18,12 +18,12 @@
 
     <div class="faq-item">
       <h2>How do I register?</h2>
-      <p>Fill out the <a href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">registration form</a> with your email and upload your parental consent form before <strong>May 21, 23:59 EST</strong>. Verified students receive the exam link and Google Meet invite 48 hours before the contest.</p>
+      <p>Fill out the <a href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">registration form</a> with your email and upload your parental consent form before <strong>August 27, 23:59 EST</strong>. Verified students receive the exam link and Google Meet invite 48 hours before the contest.</p>
     </div>
 
     <div class="faq-item">
       <h2>When is the contest?</h2>
-      <p>Pick <strong>one</strong> window: Saturday May 23 at 21:30 EST, or Sunday May 24 at 11:00 AM EST.</p>
+      <p>Pick <strong>one</strong> window: Saturday, August 29 at 21:30 EST, or Sunday, August 30 at 11:00 AM EST.</p>
     </div>
 
     <div class="faq-item">

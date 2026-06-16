@@ -6,7 +6,7 @@
     <section>
       <h2>Overview</h2>
       <ul>
-        <li>Event dates: May 23–24, 2026</li>
+        <li>Event dates: August 29-30, 2026</li>
         <li>Open to all students. Most registrants have no prior competition experience</li>
         <li>Individual competition (no team rounds)</li>
         <li>Two divisions based on skill level</li>
@@ -40,15 +40,15 @@
       <h2>Contest windows</h2>
       <p>Each contestant picks <strong>one</strong> window only.</p>
       <ul>
-        <li><strong>Window A</strong> (American / Asia friendly): Saturday, May 23 at 21:30 EST</li>
-        <li><strong>Window B</strong> (Europe / American friendly): Sunday, May 24 at 11:00 AM EST</li>
+        <li><strong>Window A</strong> (American / Asia friendly): Saturday, August 29 at 21:30 EST</li>
+        <li><strong>Window B</strong> (Europe / American friendly): Sunday, August 30 at 11:00 AM EST</li>
       </ul>
     </section>
 
     <section>
       <h2>Registration</h2>
       <ul>
-        <li>Sign-ups close <strong>May 21, 23:59 EST</strong></li>
+        <li>Sign-ups close <strong>August 27, 23:59 EST</strong></li>
         <li>Fill out the <a href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Google form</a> with your email and upload your parental consent form</li>
         <li>Only verified students receive the exam.net link and Google Meet invite, sent 48 hours before the event</li>
       </ul>

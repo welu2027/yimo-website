@@ -2,17 +2,37 @@
   <div ref="page" class="yimo-redesign">
     <section id="top" class="story-panel hero-panel">
       <canvas ref="mathCanvas" class="math-canvas" aria-hidden="true"></canvas>
-      <div class="formula-field" aria-hidden="true">
-        <span>△ABC</span>
-        <span>circumcircle</span>
-        <span>incenter</span>
-        <span>∠ABC = 60°</span>
-        <span>altitude</span>
-        <span>[ABC]</span>
-        <span>tangent</span>
-        <span>median</span>
-        <span>cyclic quad</span>
-        <span>orthocenter</span>
+      <div class="geometry-field" aria-hidden="true">
+        <svg class="geometry-form form-orbit" viewBox="0 0 220 170">
+          <ellipse cx="96" cy="86" rx="92" ry="36" />
+          <ellipse cx="118" cy="84" rx="92" ry="36" transform="rotate(58 118 84)" />
+          <ellipse cx="112" cy="85" rx="92" ry="36" transform="rotate(-47 112 85)" />
+          <circle cx="112" cy="85" r="80" />
+          <path d="M28 84 L112 22 L194 126 L62 138 Z" />
+        </svg>
+        <svg class="geometry-form form-poly" viewBox="0 0 180 180">
+          <polygon points="88,12 160,54 144,140 70,168 18,104" />
+          <polygon points="88,12 144,140 18,104 160,54 70,168" />
+          <circle cx="90" cy="90" r="70" />
+        </svg>
+        <svg class="geometry-form form-triangle" viewBox="0 0 170 150">
+          <polygon points="22,124 78,18 148,116" />
+          <circle cx="82" cy="86" r="48" />
+          <line x1="78" y1="18" x2="82" y2="124" />
+          <line x1="22" y1="124" x2="148" y2="116" />
+        </svg>
+        <svg class="geometry-form form-cyclic" viewBox="0 0 180 180">
+          <circle cx="90" cy="90" r="70" />
+          <polygon points="44,55 132,36 148,124 62,144" />
+          <line x1="44" y1="55" x2="148" y2="124" />
+          <line x1="132" y1="36" x2="62" y2="144" />
+        </svg>
+        <svg class="geometry-form form-prism" viewBox="0 0 190 160">
+          <polygon points="42,34 124,22 166,74 82,88" />
+          <polygon points="42,34 82,88 72,136 28,82" />
+          <polygon points="82,88 166,74 150,124 72,136" />
+          <line x1="124" y1="22" x2="150" y2="124" />
+        </svg>
       </div>
       <div class="hero-copy">
         <div class="logo-stage" aria-label="Youth International Math Olympiad">
@@ -66,10 +86,6 @@
 
     <section id="format" class="story-panel format-panel">
       <div class="leaderboard-side">
-        <div class="prize-counter">
-          <span>Prize pool</span>
-          <strong>${{ prizeDisplay }}</strong>
-        </div>
         <div class="leaderboard-steps frame-stage" aria-hidden="true">
           <img
             ref="podiumSequence"
@@ -77,6 +93,10 @@
             :src="podiumFrameSrc"
             alt=""
           />
+        </div>
+        <div class="prize-counter">
+          <span>Prize pool</span>
+          <strong>${{ prizeDisplay }}</strong>
         </div>
       </div>
 
@@ -186,7 +206,7 @@ export default {
   data() {
     return {
       identityWords: ['Youth', 'International', 'Math', 'Olympiad'],
-      prizeValue: 1500,
+      prizeValue: 0,
       mountainFrameSrc: '/story-frames/mountain/ezgif-frame-001.jpg',
       podiumFrameSrc: '/story-frames/podium/ezgif-frame-001.jpg',
       cleanupFns: [],
@@ -358,6 +378,7 @@ export default {
             pin: true,
             onUpdate: (self) => {
               this.setSequenceFrame('podiumSequence', 'podium', 180, self.progress)
+              this.prizeValue = gsap.utils.clamp(0, 1500, gsap.utils.mapRange(0.08, 0.72, 0, 1500, self.progress))
             },
           },
         })
@@ -491,31 +512,58 @@ export default {
   filter: blur(0.2px);
 }
 
-.formula-field {
+.geometry-field {
   position: absolute;
   inset: 5.5rem 3rem 3rem;
   z-index: 1;
   pointer-events: none;
 }
 
-.formula-field span {
+.geometry-form {
   position: absolute;
-  color: rgba(246, 240, 232, 0.18);
-  font-family: 'JetBrains Mono', monospace !important;
-  font-size: clamp(0.8rem, 1.4vw, 1.05rem);
-  letter-spacing: 0.02em;
+  width: clamp(120px, 17vw, 235px);
+  height: auto;
+  overflow: visible;
+  opacity: 0.18;
+  stroke: rgba(249, 115, 22, 0.56);
+  stroke-width: 1.4;
+  fill: none;
+  filter: drop-shadow(0 0 18px rgba(249, 115, 22, 0.13));
 }
 
-.formula-field span:nth-child(1) { left: 4%; top: 18%; }
-.formula-field span:nth-child(2) { left: 15%; top: 8%; }
-.formula-field span:nth-child(3) { right: 12%; top: 16%; }
-.formula-field span:nth-child(4) { right: 6%; bottom: 20%; }
-.formula-field span:nth-child(5) { left: 8%; bottom: 18%; }
-.formula-field span:nth-child(6) { right: 25%; bottom: 8%; }
-.formula-field span:nth-child(7) { left: 22%; bottom: 8%; }
-.formula-field span:nth-child(8) { right: 28%; top: 8%; }
-.formula-field span:nth-child(9) { left: 2%; top: 38%; }
-.formula-field span:nth-child(10) { right: 3%; top: 42%; }
+.geometry-form * {
+  vector-effect: non-scaling-stroke;
+}
+
+.form-orbit {
+  left: 5%;
+  top: 12%;
+  width: clamp(180px, 24vw, 320px);
+  opacity: 0.21;
+}
+
+.form-poly {
+  right: 7%;
+  top: 17%;
+}
+
+.form-triangle {
+  right: 21%;
+  bottom: 2%;
+  opacity: 0.11;
+}
+
+.form-cyclic {
+  left: 8%;
+  bottom: 10%;
+  opacity: 0.12;
+}
+
+.form-prism {
+  right: 4%;
+  bottom: 22%;
+  opacity: 0.13;
+}
 
 .hero-copy {
   isolation: isolate;
@@ -735,7 +783,7 @@ export default {
 
 .leaderboard-steps {
   position: relative;
-  width: min(280px, 34vw);
+  width: min(248px, 31vw);
   aspect-ratio: 9 / 16;
   height: auto;
   margin-inline: auto;
@@ -746,7 +794,7 @@ export default {
   align-items: baseline;
   justify-content: center;
   gap: 0.9rem;
-  margin-top: 0.9rem;
+  margin-top: 0.75rem;
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.16em;
@@ -756,7 +804,7 @@ export default {
 .prize-counter strong {
   display: inline-block;
   color: var(--paper);
-  font-size: clamp(2.25rem, 5vw, 4.6rem);
+  font-size: clamp(2rem, 4vw, 3.9rem);
   line-height: 1;
   letter-spacing: 0;
 }
@@ -1037,7 +1085,7 @@ export default {
     display: none;
   }
 
-  .formula-field {
+  .geometry-field {
     display: none;
   }
 
@@ -1048,10 +1096,6 @@ export default {
   .medal-grid,
   .partner-orbit {
     grid-template-columns: 1fr;
-  }
-
-  .leaderboard-steps {
-    height: 260px;
   }
 
   .leaderboard-steps {

@@ -3,12 +3,16 @@
     <section id="top" class="story-panel hero-panel">
       <canvas ref="mathCanvas" class="math-canvas" aria-hidden="true"></canvas>
       <div class="formula-field" aria-hidden="true">
-        <span>x^2+y^2=r^2</span>
-        <span>sin A / a</span>
-        <span>a^2+b^2=c^2</span>
+        <span>△ABC</span>
+        <span>circumcircle</span>
+        <span>incenter</span>
         <span>∠ABC = 60°</span>
-        <span>(x-a)(x-b)</span>
+        <span>altitude</span>
         <span>[ABC]</span>
+        <span>tangent</span>
+        <span>median</span>
+        <span>cyclic quad</span>
+        <span>orthocenter</span>
       </div>
       <div class="hero-copy">
         <div class="logo-stage" aria-label="Youth International Math Olympiad">
@@ -62,6 +66,10 @@
 
     <section id="format" class="story-panel format-panel">
       <div class="leaderboard-side">
+        <div class="prize-counter">
+          <span>Prize pool</span>
+          <strong>${{ prizeDisplay }}</strong>
+        </div>
         <div class="leaderboard-steps frame-stage" aria-hidden="true">
           <img
             ref="podiumSequence"
@@ -69,10 +77,6 @@
             :src="podiumFrameSrc"
             alt=""
           />
-        </div>
-        <div class="prize-counter">
-          <span>Prize pool</span>
-          <strong>${{ prizeDisplay }}</strong>
         </div>
       </div>
 
@@ -87,6 +91,10 @@
           <div class="write-line">
             <h3>Contest Windows</h3>
             <p>Window A: August 29 at 21:30 EST. Window B: August 30 at 11:00 AM EST.</p>
+          </div>
+          <div class="write-line">
+            <h3>Final Round</h3>
+            <p>The top 8 students in each division advance to a final round with computational and proof-style problems.</p>
           </div>
           <div class="medal-grid">
             <span><strong>30%</strong> Bronze</span>
@@ -178,7 +186,7 @@ export default {
   data() {
     return {
       identityWords: ['Youth', 'International', 'Math', 'Olympiad'],
-      prizeValue: 0,
+      prizeValue: 1500,
       mountainFrameSrc: '/story-frames/mountain/ezgif-frame-001.jpg',
       podiumFrameSrc: '/story-frames/podium/ezgif-frame-001.jpg',
       cleanupFns: [],
@@ -202,15 +210,20 @@ export default {
         { name: 'Collin Du', bio: 'National K-12 chess champion training for ISEF, with interests in fishing, skiing, and writing.' },
         { name: 'Damayne Anderson', bio: 'Student-athlete and Daily Math founder focused on USACO, AIME preparation, leadership, and community service.' },
         { name: 'George Paret', bio: '4x AIME qualifier with top algebra and geometry results across PUMaC, BMT, HMMT, MATHCOUNTS, and ARML.' },
+        { name: 'Gonçalo Franco', bio: "Gonçalo has won multiple national math and technology olympiads. He manages his own digital agency and works on multiple projects, including this website's design." },
         { name: 'Jacob Rotella Riggers', bio: 'VEX VRC Worlds competitor with strong math, programming, robotics, distance running, and baseball experience.' },
+        { name: 'Jayvant Rajesh', bio: "Jayvant serves as Chief of Staff at STEMise, where he leads organizational strategy, including revising the team's mission statement and shaping recruitment and overall direction." },
         { name: 'Justin Guo', bio: '4x AIME qualifier, HMMT top 50 placer, USACHO qualifier, and Olympiad Insider officer.' },
+        { name: 'Karam Gill', bio: 'Karam Gill is a rising 8th grader who is passionate about math and is a 3x AIME qualifier. Outside of math, he enjoys basketball, board games, and card games.' },
         { name: 'Krish Kejriwal', bio: 'Aspiring mathematician with MATHCOUNTS and AMC 8 distinctions, writing problems for YIMO.' },
         { name: 'Leo Pattison', bio: 'Track and soccer athlete who volunteers at local workshops to teach math and coding.' },
         { name: 'Nathan Zaltsman', bio: 'Next Horizon alumnus turned mentor, competitive chess player, and regular competitive coding practitioner.' },
         { name: 'Pietro Loraschi', bio: 'USACO Silver competitor preparing for USAPhO via F=ma and World Scholar Cup top placer.' },
         { name: 'Rayoon Kim', bio: 'USAMO qualifier who enjoys difficult geometry problems and contest problem solving.' },
+        { name: 'Siddh Mistry', bio: 'Siddh Mistry is a high school senior interested in mathematics and computer science. In his free time, he likes to watch anime and play sports.' },
         { name: 'Stanley Kem', bio: 'National writing competition placer, soccer captain, regional art award recipient, and hackathon builder.' },
         { name: 'Tashi Satish', bio: 'VEX VRC Worlds qualifier with robotics engineering experience and club soccer competition background.' },
+        { name: 'Vihaan Vajpeyi', bio: 'Vihaan is an AIME qualifier with AMC 10 Distinguished Honor Roll and RoboCup Nationals recognition who is interested in quantitative finance.' },
         { name: 'Wyatt Choi', bio: 'AIME qualifier, KMO Silver medalist, BMO distinction recipient, and olympiad problem writer for Solvefire and YIMO.' },
       ],
       faqs: [
@@ -345,14 +358,13 @@ export default {
             pin: true,
             onUpdate: (self) => {
               this.setSequenceFrame('podiumSequence', 'podium', 180, self.progress)
-              this.prizeValue = gsap.utils.clamp(0, 940, gsap.utils.mapRange(0.1, 0.62, 0, 940, self.progress))
             },
           },
         })
         formatTl
           .from('.written-board h2, .write-line, .medal-grid span', { y: 22, stagger: 0.08, duration: 0.7 }, 0.12)
           .from('.podium-sequence', { y: 70, scale: 0.96, duration: 0.55 }, 0.18)
-          .from('.prize-counter strong', { y: 36, autoAlpha: 0, duration: 0.45 }, 0.92)
+          .from('.prize-counter strong', { y: 24, duration: 0.45 }, 0.92)
           .to('.prize-counter, .leaderboard-side', { autoAlpha: 0, y: -80, duration: 0.45 }, 1.42)
 
         gsap.from('.compact-staff-card, .accordion', {
@@ -495,11 +507,15 @@ export default {
 }
 
 .formula-field span:nth-child(1) { left: 4%; top: 18%; }
-.formula-field span:nth-child(2) { right: 9%; top: 20%; }
-.formula-field span:nth-child(3) { left: 8%; bottom: 18%; }
+.formula-field span:nth-child(2) { left: 15%; top: 8%; }
+.formula-field span:nth-child(3) { right: 12%; top: 16%; }
 .formula-field span:nth-child(4) { right: 6%; bottom: 20%; }
-.formula-field span:nth-child(5) { left: 22%; top: 6%; }
+.formula-field span:nth-child(5) { left: 8%; bottom: 18%; }
 .formula-field span:nth-child(6) { right: 25%; bottom: 8%; }
+.formula-field span:nth-child(7) { left: 22%; bottom: 8%; }
+.formula-field span:nth-child(8) { right: 28%; top: 8%; }
+.formula-field span:nth-child(9) { left: 2%; top: 38%; }
+.formula-field span:nth-child(10) { right: 3%; top: 42%; }
 
 .hero-copy {
   isolation: isolate;
@@ -726,7 +742,11 @@ export default {
 }
 
 .prize-counter {
-  margin-top: 1.5rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-top: 0.9rem;
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.16em;
@@ -734,10 +754,9 @@ export default {
 }
 
 .prize-counter strong {
-  display: block;
-  margin-top: 0.25rem;
+  display: inline-block;
   color: var(--paper);
-  font-size: clamp(3rem, 9vw, 6.6rem);
+  font-size: clamp(2.25rem, 5vw, 4.6rem);
   line-height: 1;
   letter-spacing: 0;
 }

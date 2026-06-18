@@ -49,7 +49,7 @@
       <h2>Registration</h2>
       <ul>
         <li>Sign-ups close <strong>August 27, 23:59 EST</strong></li>
-        <li>Fill out the <a href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Google form</a> with your email and upload your parental consent form</li>
+        <li>Fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Google form</a> with your email and upload your parental consent form</li>
         <li>Only verified students receive the exam.net link and Google Meet invite, sent 48 hours before the event</li>
       </ul>
     </section>
@@ -83,7 +83,7 @@
     <section>
       <h2>Join us</h2>
       <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:0.5rem;">
-        <a class="btn btn-primary" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Registration form →</a>
+        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Registration form →</a>
         <a class="btn btn-secondary" href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a>
       </div>
     </section>

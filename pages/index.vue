@@ -54,7 +54,7 @@
           rounds, and a serious climb.
         </p>
         <div class="hero-actions">
-          <a class="primary-action" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register</a>
+          <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register</a>
           <a class="secondary-action" href="#format">Format</a>
         </div>
       </div>
@@ -188,7 +188,7 @@
       <div class="closing-cta">
         <h2>Climb on August 29 or 30.</h2>
         <p>Registration closes August 27, 23:59 EST. Pick one window and compete from anywhere.</p>
-        <a class="primary-action" href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">Register for YIMO</a>
+        <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
       </div>
     </section>
   </div>
@@ -359,7 +359,7 @@ export default {
             scrub: 1,
             pin: true,
             onUpdate: (self) => {
-              this.setSequenceFrame('mountainSequence', 'mountain', 150, self.progress)
+              this.setSequenceFrame('mountainSequence', 'mountain', 180, self.progress)
             },
           },
         })
@@ -400,7 +400,7 @@ export default {
           ease: 'power2.out',
         })
 
-        this.preloadFrames('mountain', 150)
+        this.preloadFrames('mountain', 180)
         this.preloadFrames('podium', 180)
       }, root)
 

@@ -18,7 +18,7 @@
 
     <div class="faq-item">
       <h2>How do I register?</h2>
-      <p>Fill out the <a href="https://forms.gle/QBDTLeHFffWiWbyN6" target="_blank" rel="noopener">registration form</a> with your email and upload your parental consent form before <strong>August 27, 23:59 EST</strong>. Verified students receive the exam link and Google Meet invite 48 hours before the contest.</p>
+      <p>Fill out the <a href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">registration form</a> with your email and upload your parental consent form before <strong>August 27, 23:59 EST</strong>. Verified students receive the exam link and Google Meet invite 48 hours before the contest.</p>
     </div>
 
     <div class="faq-item">

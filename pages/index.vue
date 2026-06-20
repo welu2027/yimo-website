@@ -345,7 +345,7 @@ export default {
         { name: 'AoPS', logo: '/aops-logo.png', href: 'https://artofproblemsolving.com/' },
         { name: 'USAMOguide', logo: '/Test_logo.png', href: 'https://www.usamoguide.com/' },
         { name: 'Saintly', logo: '/Saintly.png', href: 'https://saintlymath.com/' },
-        { name: 'Solvefire', logo: '/solvefire.jpeg', href: 'https://solvefire.net' },
+        { name: 'Solvefire', logo: '/solvefire.png', href: 'https://solvefire.net' },
       ],
     }
   },

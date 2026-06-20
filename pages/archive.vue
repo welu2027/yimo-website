@@ -14,11 +14,11 @@
     </section>
 
     <section>
-      <h2>Recordings</h2>
+      <h2>Slideshows</h2>
       <ul>
-        <li><strong>Estimathon Workshop:</strong> <a href="https://drive.google.com/file/d/1oh6rpw89WBEReqoPNOspdsYvr8wfMhRN/view?usp=sharing" target="_blank" rel="noopener">Watch →</a></li>
-        <li><strong>Window A Awards Ceremony:</strong> <a href="https://drive.google.com/file/d/1G-yiurPMI482UgBuHrC6nesXBHA9H1Vv/view?usp=sharing" target="_blank" rel="noopener">Watch →</a></li>
-        <li><strong>Window B Awards Ceremony:</strong> <a href="https://drive.google.com/file/d/1U8lIAZQBRyUb5RTtIY40Q1zzih_q6iUM/view?usp=sharing" target="_blank" rel="noopener">Watch →</a></li>
+        <li><strong>Estimathon Workshop:</strong> <a href="https://drive.google.com/file/d/1oh6rpw89WBEReqoPNOspdsYvr8wfMhRN/view?usp=sharing" target="_blank" rel="noopener">View →</a></li>
+        <li><strong>Window A Awards Ceremony:</strong> <a href="https://drive.google.com/file/d/1G-yiurPMI482UgBuHrC6nesXBHA9H1Vv/view?usp=sharing" target="_blank" rel="noopener">View →</a></li>
+        <li><strong>Window B Awards Ceremony:</strong> <a href="https://drive.google.com/file/d/1U8lIAZQBRyUb5RTtIY40Q1zzih_q6iUM/view?usp=sharing" target="_blank" rel="noopener">View →</a></li>
       </ul>
     </section>
   </div>

@@ -107,6 +107,7 @@
           <div class="write-line">
             <h3>Problem Format</h3>
             <p>20 written problems: 10 multiple choice and 10 AIME-style integer answers.</p>
+            <p><a href="/YIMO_Scoring_guide.pdf" target="_blank" rel="noopener">Scoring guide</a></p>
           </div>
           <div class="write-line">
             <h3>Contest Windows</h3>

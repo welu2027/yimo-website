@@ -57,6 +57,12 @@
           <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register</a>
           <a class="secondary-action" href="#format">Format</a>
         </div>
+        <p class="hero-credit">
+          Brought to you by
+          <a href="https://stemise.org" target="_blank" rel="noopener">Stemise</a>
+          and
+          <a href="https://nxthorizon.org" target="_blank" rel="noopener">NXT Horizon</a>.
+        </p>
       </div>
       <a href="#climb" class="scroll-cue" aria-label="Scroll to the climb section">
         <span></span>
@@ -66,12 +72,12 @@
     <section id="climb" class="story-panel climb-panel">
       <div class="climb-copy level-card rising-card">
         <p>Division 2</p>
-        <h2>Rising Stars</h2>
+        <h2>Beginner</h2>
         <span>AMC 10 to early AIME level. Built for students who are developing contest rhythm without needing prior olympiad experience.</span>
       </div>
       <div class="climb-copy level-card achiever-card">
         <p>Division 1</p>
-        <h2>High Achievers</h2>
+        <h2>Advanced</h2>
         <span>Early AIME to high AIME level. A sharper final round with computational and proof problems for the top eight.</span>
       </div>
       <div class="mountain-stage frame-stage" aria-label="Mountain climb frame animation">
@@ -102,8 +108,7 @@
 
       <div class="written-side">
         <div class="written-board">
-          <p class="section-kicker">Format</p>
-          <h2>Problems with AIME texture.</h2>
+          <h2>Format</h2>
           <div class="write-line">
             <h3>Problem Format</h3>
             <p>20 written problems: 10 multiple choice and 10 AIME-style integer answers.</p>
@@ -132,7 +137,7 @@
       </div>
       <div class="accordion-stack">
         <details class="accordion" open>
-          <summary>Competition Directors</summary>
+          <summary>Executive Leadership</summary>
           <div class="staff-grid">
             <article v-for="member in leadership" :key="member.name" class="compact-staff-card">
               <img v-if="member.image" :src="member.image" :alt="member.name" />
@@ -143,7 +148,18 @@
           </div>
         </details>
         <details class="accordion">
-          <summary>Problem, outreach, and operations staff</summary>
+          <summary>Former Directors</summary>
+          <div class="staff-grid">
+            <article v-for="member in formerDirectors" :key="member.name" class="compact-staff-card">
+              <img v-if="member.image" :src="member.image" :alt="member.name" />
+              <div v-else class="staff-initial">{{ member.name[0] }}</div>
+              <h3>{{ member.name }}</h3>
+              <p>{{ member.role }}</p>
+            </article>
+          </div>
+        </details>
+        <details class="accordion">
+          <summary>Staff</summary>
           <div class="staff-description-list">
             <details v-for="member in generalStaff" :key="member.name" class="staff-description">
               <summary>{{ member.name }}</summary>
@@ -211,18 +227,20 @@ export default {
       podiumFrameSrc: '/story-frames/podium/ezgif-frame-001.jpg',
       cleanupFns: [],
       leadership: [
-        { name: 'Wenhao', role: 'Competition Director', image: '/staff/wenhaolu.png' },
-        { name: 'Ryan Ahn', role: 'Competition Director', image: '/staff/ryanahn.png' },
-        { name: 'Andrew Zhang', role: 'Competition Director', image: '/staff/andrewzhang.png' },
-        { name: 'Hyunjun Yi', role: 'Competition Director', image: '/staff/junyi.png' },
-        { name: 'Daniel Edouard', role: 'Head of Marketing', image: '/staff/danieledouard.png' },
-        { name: 'Kristen Zhou', role: 'Head of Outreach', image: '/staff/kristenzhou.png' },
-        { name: 'Shining Sun', role: 'Head of Problem Setting' },
+        { name: 'Wenhao', role: 'Competition Director · Head of Tech & Web Development', image: '/staff/wenhaolu.png' },
+        { name: 'Hyunjun Yi', role: 'Competition Director · Head of Logistics', image: '/staff/junyi.png' },
+        { name: 'Daniel Edouard', role: 'Competition Director · Head of Marketing', image: '/staff/danieledouard.png' },
+        { name: 'Kristen Zhou', role: 'Competition Director · Head of Outreach', image: '/staff/kristenzhou.png' },
+        { name: 'Shining Sun', role: 'Head of Problem Writing' },
+        { name: 'Abhiram Jetty', role: 'Head of Internal Operations', image: '/staff/abhiramjetty.png' },
+      ],
+      formerDirectors: [
+        { name: 'Ryan Ahn', role: 'Former Competition Director', image: '/staff/ryanahn.png' },
+        { name: 'Andrew Zhang', role: 'Former Competition Director', image: '/staff/andrewzhang.png' },
       ],
       generalStaff: [
         { name: 'Aarin Patkar', bio: 'Competitive speech and debate student with a strong passion for mathematics and Spanish.' },
         { name: 'Aaron Qin', bio: 'A 2x AIME qualifier interested in creative problem-solving, startup culture, filmmaking, songwriting, and coding.' },
-        { name: 'Abhiram Jetty', bio: 'USAJMO qualifier, TXSEF finalist, Thermo Fisher finalist, and AMC 10 Distinguished Honor Roll recipient.' },
         { name: 'Atharv Karamcheti', bio: 'Freshman interested in biomedical engineering, robotics, chemistry, origami, digital art, photography, and piano.' },
         { name: 'Adithya Balakumar', bio: 'AIME qualifier with Math League International recognition and a state-level robotics innovation award.' },
         { name: 'Charlie Yang', bio: 'Three-time AIME qualifier with AMC 10 Distinguished Honor Roll and independent research presentation experience.' },
@@ -237,7 +255,7 @@ export default {
         { name: 'Karam Gill', bio: 'Karam Gill is a rising 8th grader who is passionate about math and is a 3x AIME qualifier. Outside of math, he enjoys basketball, board games, and card games.' },
         { name: 'Krish Kejriwal', bio: 'Aspiring mathematician with MATHCOUNTS and AMC 8 distinctions, writing problems for YIMO.' },
         { name: 'Leo Pattison', bio: 'Track and soccer athlete who volunteers at local workshops to teach math and coding.' },
-        { name: 'Nathan Zaltsman', bio: 'Next Horizon alumnus turned mentor, competitive chess player, and regular competitive coding practitioner.' },
+        { name: 'Nathan Zaltsman', bio: 'NXT Horizon alumnus turned mentor, competitive chess player, and regular competitive coding practitioner.' },
         { name: 'Pietro Loraschi', bio: 'USACO Silver competitor preparing for USAPhO via F=ma and World Scholar Cup top placer.' },
         { name: 'Rayoon Kim', bio: 'USAMO qualifier who enjoys difficult geometry problems and contest problem solving.' },
         { name: 'Siddh Mistry', bio: 'Siddh Mistry is a high school senior interested in mathematics and computer science. In his free time, he likes to watch anime and play sports.' },
@@ -253,7 +271,7 @@ export default {
         },
         {
           q: 'Which division should I pick?',
-          a: 'Rising Stars fits AMC 10 to early AIME level. High Achievers fits early AIME through high AIME competitors.',
+          a: 'Beginner fits AMC 10 to early AIME level. Advanced fits early AIME through high AIME competitors.',
         },
         {
           q: 'When is the contest?',
@@ -634,6 +652,23 @@ export default {
   justify-content: center;
   gap: 0.85rem;
   margin-top: 1.55rem;
+}
+
+.hero-credit {
+  margin-top: 1.1rem;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+.hero-credit a {
+  color: var(--accent-soft);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.hero-credit a:hover {
+  text-decoration: underline;
 }
 
 .primary-action,

@@ -38,7 +38,7 @@
 
     <div class="faq-item">
       <h2>Who runs YIMO?</h2>
-      <p>YIMO is run by NxtHorizon and Stemise. Join our <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a> for updates.</p>
+      <p>YIMO is run by NXT Horizon and Stemise. Join our <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a> for updates.</p>
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="content-page">
     <h1>Youth International Math Olympiad</h1>
-    <p class="page-intro">A global, youth-led math competition built on fairness, community, and growth. Open to all. No prior experience required. Run by NxtHorizon and Stemise.</p>
+    <p class="page-intro">A global, youth-led math competition built on fairness, community, and growth. Open to all. No prior experience required. Run by NXT Horizon and Stemise.</p>
 
     <section>
       <h2>Overview</h2>

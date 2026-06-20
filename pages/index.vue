@@ -59,7 +59,7 @@
         </div>
         <p class="hero-credit">
           Brought to you by
-          <a href="https://stemise.org" target="_blank" rel="noopener">Stemise</a>
+          <a href="https://stemise.org" target="_blank" rel="noopener">STEMise</a>
           and
           <a href="https://nxthorizon.org" target="_blank" rel="noopener">NXT Horizon</a>.
         </p>
@@ -100,10 +100,6 @@
             alt=""
           />
         </div>
-        <div class="prize-counter">
-          <span>Prize pool</span>
-          <strong>${{ prizeDisplay }}</strong>
-        </div>
       </div>
 
       <div class="written-side">
@@ -137,13 +133,25 @@
       </div>
       <div class="accordion-stack">
         <details class="accordion" open>
-          <summary>Executive Leadership</summary>
+          <summary>Executive Directors</summary>
           <div class="staff-grid">
-            <article v-for="member in leadership" :key="member.name" class="compact-staff-card">
-              <img v-if="member.image" :src="member.image" :alt="member.name" />
-              <div v-else class="staff-initial">{{ member.name[0] }}</div>
-              <h3>{{ member.name }}</h3>
-              <p>{{ member.role }}</p>
+            <article
+              v-for="member in executiveDirectors"
+              :key="member.name"
+              class="flip-card"
+              :class="{ flipped: flipped['exec-' + member.name] }"
+              @click="toggleFlip('exec-' + member.name)"
+            >
+              <div class="flip-inner">
+                <div class="flip-front">
+                  <img :src="member.image" :alt="member.name" />
+                  <h3>{{ member.name }}</h3>
+                </div>
+                <div class="flip-back">
+                  <h3>{{ member.name }}</h3>
+                  <p class="flip-bio">{{ member.bio }}</p>
+                </div>
+              </div>
             </article>
           </div>
         </details>
@@ -160,11 +168,51 @@
         </details>
         <details class="accordion">
           <summary>Staff</summary>
-          <div class="staff-description-list">
-            <details v-for="member in generalStaff" :key="member.name" class="staff-description">
-              <summary>{{ member.name }}</summary>
-              <p>{{ member.bio }}</p>
-            </details>
+          <p class="staff-subhead">Leadership</p>
+          <div class="staff-grid">
+            <article
+              v-for="member in staffLeadership"
+              :key="member.name"
+              class="flip-card"
+              :class="{ flipped: flipped['lead-' + member.name] }"
+              @click="toggleFlip('lead-' + member.name)"
+            >
+              <div class="flip-inner">
+                <div class="flip-front">
+                  <img :src="member.image" :alt="member.name" />
+                  <h3>{{ member.name }}</h3>
+                  <p>{{ member.role }}</p>
+                </div>
+                <div class="flip-back">
+                  <h3>{{ member.name }}</h3>
+                  <p class="flip-bio">{{ member.bio }}</p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <p class="staff-subhead">Team</p>
+          <div class="staff-grid">
+            <article
+              v-for="member in generalStaff"
+              :key="member.name"
+              class="flip-card"
+              :class="{ flipped: flipped['staff-' + member.name] }"
+              @click="toggleFlip('staff-' + member.name)"
+            >
+              <div class="flip-inner">
+                <div class="flip-front">
+                  <div class="staff-initial">{{ member.name[0] }}</div>
+                  <h3>{{ member.name }}</h3>
+                  <span class="flip-hint">Tap for bio</span>
+                </div>
+                <div class="flip-back">
+                  <img v-if="member.image" :src="member.image" :alt="member.name" />
+                  <div v-else class="staff-initial">{{ member.name[0] }}</div>
+                  <h3>{{ member.name }}</h3>
+                  <p class="flip-bio">{{ member.bio }}</p>
+                </div>
+              </div>
+            </article>
           </div>
         </details>
       </div>
@@ -181,6 +229,10 @@
           <p>{{ item.a }}</p>
         </details>
       </div>
+      <p class="faq-note">
+        Still have questions? Ask them in our
+        <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a>.
+      </p>
     </section>
 
     <section id="partners" class="story-panel partners-panel">
@@ -222,17 +274,19 @@ export default {
   data() {
     return {
       identityWords: ['Youth', 'International', 'Math', 'Olympiad'],
-      prizeValue: 0,
       mountainFrameSrc: '/story-frames/mountain/ezgif-frame-001.jpg',
       podiumFrameSrc: '/story-frames/podium/ezgif-frame-001.jpg',
       cleanupFns: [],
-      leadership: [
-        { name: 'Wenhao', role: 'Competition Director · Head of Tech & Web Development', image: '/staff/wenhaolu.png' },
-        { name: 'Hyunjun Yi', role: 'Competition Director · Head of Logistics', image: '/staff/junyi.png' },
-        { name: 'Daniel Edouard', role: 'Competition Director · Head of Marketing', image: '/staff/danieledouard.png' },
-        { name: 'Kristen Zhou', role: 'Competition Director · Head of Outreach', image: '/staff/kristenzhou.png' },
-        { name: 'Shining Sun', role: 'Head of Problem Writing' },
-        { name: 'Abhiram Jetty', role: 'Head of Internal Operations', image: '/staff/abhiramjetty.png' },
+      flipped: {},
+      executiveDirectors: [
+        { name: 'Wenhao Lu', image: '/staff/wenhaolu.png', bio: 'is a USAJMO Honorable Mention who scored 11 on the AIME and competes in the USACO Platinum division. He loves combinatorics and algebra, and his club baseball team peaked at #75 nationally.' },
+        { name: 'Hyunjun Yi', image: '/staff/junyi.png', bio: 'is an AMC 12 Perfect Scorer who works as a Deputy Executive Director at STEMise. Growing up in the Netherlands, he likes to hang out with friends and listen to music in his free time.' },
+        { name: 'Daniel Edouard', image: '/staff/danieledouard.png', bio: 'is a Merit-Based Harvard Fellow who has conducted independent computational neuropsychology research under a Yale professor. His work sits at the intersection of AI, applied math, and neuroscience, with a focus on neurodivergent developmental disorders. He founded Les Enfants du Monde, a nonprofit for STEM, AI, and entrepreneurship education for youth in the Democratic Republic of the Congo. In his free time, he plays tennis and pickleball and has played violin for six years.' },
+        { name: 'Kristen Zhou', image: '/staff/kristenzhou.png', bio: 'is a student who enjoys competition math and teaching it. Despite missing AIME by 1.5 points, she has placed first and fourth at many regional MATHLEAGUE.ORG competitions. She is a four-year cross country runner who has qualified for the Central Coast Section three times. In her free time, she enjoys PJSK and indie music.' },
+      ],
+      staffLeadership: [
+        { name: 'Daniel Edouard', role: 'Head of Marketing', image: '/staff/danieledouard.png', bio: 'is a Merit-Based Harvard Fellow whose work sits at the intersection of AI, applied math, and neuroscience. He founded Les Enfants du Monde, a nonprofit for STEM, AI, and entrepreneurship education for youth in the Democratic Republic of the Congo, and in his free time plays tennis, pickleball, and violin.' },
+        { name: 'Abhiram Jetty', role: 'Head of Internal Operations', image: '/staff/abhiramjetty.png', bio: 'is a USAJMO qualifier, TXSEF finalist, Thermo Fisher finalist, and AMC 10 Distinguished Honor Roll recipient. As a 9th grader, he likes to play video games, swim, and write math problems for contests like YIMO.' },
       ],
       formerDirectors: [
         { name: 'Ryan Ahn', role: 'Former Competition Director', image: '/staff/ryanahn.png' },
@@ -240,29 +294,30 @@ export default {
       ],
       generalStaff: [
         { name: 'Aarin Patkar', bio: 'Competitive speech and debate student with a strong passion for mathematics and Spanish.' },
-        { name: 'Aaron Qin', bio: 'A 2x AIME qualifier interested in creative problem-solving, startup culture, filmmaking, songwriting, and coding.' },
-        { name: 'Atharv Karamcheti', bio: 'Freshman interested in biomedical engineering, robotics, chemistry, origami, digital art, photography, and piano.' },
-        { name: 'Adithya Balakumar', bio: 'AIME qualifier with Math League International recognition and a state-level robotics innovation award.' },
-        { name: 'Charlie Yang', bio: 'Three-time AIME qualifier with AMC 10 Distinguished Honor Roll and independent research presentation experience.' },
-        { name: 'Christopher Huang', bio: 'STEMise education executive and Senior SAT Tutor at Schoolhouse.world, mentoring students internationally.' },
-        { name: 'Collin Du', bio: 'National K-12 chess champion training for ISEF, with interests in fishing, skiing, and writing.' },
-        { name: 'Damayne Anderson', bio: 'Student-athlete and Daily Math founder focused on USACO, AIME preparation, leadership, and community service.' },
+        { name: 'Aaron Qin', image: '/staff/aaronqin.png', bio: 'A 2x AIME qualifier interested in creative problem-solving, startup culture, filmmaking, songwriting, and coding.' },
+        { name: 'Atharv Karamcheti', image: '/staff/atharvkaramcheti.png', bio: 'Freshman interested in biomedical engineering, robotics, chemistry, origami, digital art, photography, and piano.' },
+        { name: 'Adithya Balakumar', image: '/staff/adithyabalakumar.png', bio: 'AIME qualifier with Math League International recognition and a state-level robotics innovation award.' },
+        { name: 'Charlie Yang', image: '/staff/charles.png', bio: 'Three-time AIME qualifier with AMC 10 Distinguished Honor Roll and independent research presentation experience.' },
+        { name: 'Christopher Huang', image: '/staff/christopherhuang.png', bio: 'STEMise education executive and Senior SAT Tutor at Schoolhouse.world, mentoring students internationally.' },
+        { name: 'Collin Du', image: '/staff/collindu.png', bio: 'National K-12 chess champion training for ISEF, with interests in fishing, skiing, and writing.' },
+        { name: 'Damayne Anderson', image: '/staff/damayneanderson.png', bio: 'Student-athlete and Daily Math founder focused on USACO, AIME preparation, leadership, and community service.' },
         { name: 'George Paret', bio: '4x AIME qualifier with top algebra and geometry results across PUMaC, BMT, HMMT, MATHCOUNTS, and ARML.' },
         { name: 'Gonçalo Franco', bio: "Gonçalo has won multiple national math and technology olympiads. He manages his own digital agency and works on multiple projects, including this website's design." },
-        { name: 'Jacob Rotella Riggers', bio: 'VEX VRC Worlds competitor with strong math, programming, robotics, distance running, and baseball experience.' },
+        { name: 'Jacob Rotella Riggers', image: '/staff/jacobriggers.png', bio: 'VEX VRC Worlds competitor with strong math, programming, robotics, distance running, and baseball experience.' },
         { name: 'Jayvant Rajesh', bio: "Jayvant serves as Chief of Staff at STEMise, where he leads organizational strategy, including revising the team's mission statement and shaping recruitment and overall direction." },
         { name: 'Justin Guo', bio: '4x AIME qualifier, HMMT top 50 placer, USACHO qualifier, and Olympiad Insider officer.' },
         { name: 'Karam Gill', bio: 'Karam Gill is a rising 8th grader who is passionate about math and is a 3x AIME qualifier. Outside of math, he enjoys basketball, board games, and card games.' },
-        { name: 'Krish Kejriwal', bio: 'Aspiring mathematician with MATHCOUNTS and AMC 8 distinctions, writing problems for YIMO.' },
-        { name: 'Leo Pattison', bio: 'Track and soccer athlete who volunteers at local workshops to teach math and coding.' },
-        { name: 'Nathan Zaltsman', bio: 'NXT Horizon alumnus turned mentor, competitive chess player, and regular competitive coding practitioner.' },
-        { name: 'Pietro Loraschi', bio: 'USACO Silver competitor preparing for USAPhO via F=ma and World Scholar Cup top placer.' },
+        { name: 'Krish Kejriwal', image: '/staff/krishkejriwal.png', bio: 'Aspiring mathematician with MATHCOUNTS and AMC 8 distinctions, writing problems for YIMO.' },
+        { name: 'Leo Pattison', image: '/staff/leopattison.png', bio: 'Track and soccer athlete who volunteers at local workshops to teach math and coding.' },
+        { name: 'Nathan Zaltsman', image: '/staff/nathanzaltsman.png', bio: 'NXT Horizon alumnus turned mentor, competitive chess player, and regular competitive coding practitioner.' },
+        { name: 'Pietro Loraschi', image: '/staff/pietroloraschi.png', bio: 'USACO Silver competitor preparing for USAPhO via F=ma and World Scholar Cup top placer.' },
         { name: 'Rayoon Kim', bio: 'USAMO qualifier who enjoys difficult geometry problems and contest problem solving.' },
+        { name: 'Shining Sun', bio: 'is a 6x AIME qualifier and 2x USAJMO qualifier who also writes problems for national competitions in Nepal. In his free time, he enjoys video games and exploring random places with friends.' },
         { name: 'Siddh Mistry', bio: 'Siddh Mistry is a high school senior interested in mathematics and computer science. In his free time, he likes to watch anime and play sports.' },
-        { name: 'Stanley Kem', bio: 'National writing competition placer, soccer captain, regional art award recipient, and hackathon builder.' },
-        { name: 'Tashi Satish', bio: 'VEX VRC Worlds qualifier with robotics engineering experience and club soccer competition background.' },
+        { name: 'Stanley Kem', image: '/staff/stanleykem.png', bio: 'National writing competition placer, soccer captain, regional art award recipient, and hackathon builder.' },
+        { name: 'Tashi Satish', image: '/staff/tashisatish.png', bio: 'VEX VRC Worlds qualifier with robotics engineering experience and club soccer competition background.' },
         { name: 'Vihaan Vajpeyi', bio: 'Vihaan is an AIME qualifier with AMC 10 Distinguished Honor Roll and RoboCup Nationals recognition who is interested in quantitative finance.' },
-        { name: 'Wyatt Choi', bio: 'AIME qualifier, KMO Silver medalist, BMO distinction recipient, and olympiad problem writer for Solvefire and YIMO.' },
+        { name: 'Wyatt Choi', image: '/staff/wyattchoi.png', bio: 'AIME qualifier, KMO Silver medalist, BMO distinction recipient, and olympiad problem writer for Solvefire and YIMO.' },
       ],
       faqs: [
         {
@@ -291,14 +346,9 @@ export default {
         { name: 'AoPS', logo: '/aops-logo.png', href: 'https://artofproblemsolving.com/' },
         { name: 'USAMOguide', logo: '/Test_logo.png', href: 'https://www.usamoguide.com/' },
         { name: 'Saintly', logo: '/Saintly.png', href: 'https://saintlymath.com/' },
-        { name: 'USAEO', logo: '/USAEO.png', href: 'https://usaeo.org/' },
+        { name: 'Solvefire', logo: '/solvefire.jpeg', href: 'https://solvefire.net' },
       ],
     }
-  },
-  computed: {
-    prizeDisplay() {
-      return Math.round(this.prizeValue).toLocaleString('en-US')
-    },
   },
   mounted() {
     this.initAnimations()
@@ -311,6 +361,9 @@ export default {
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
   },
   methods: {
+    toggleFlip(id) {
+      this.$set(this.flipped, id, !this.flipped[id])
+    },
     framePath(folder, frame) {
       return `/story-frames/${folder}/ezgif-frame-${String(frame).padStart(3, '0')}.jpg`
     },
@@ -396,17 +449,15 @@ export default {
             pin: true,
             onUpdate: (self) => {
               this.setSequenceFrame('podiumSequence', 'podium', 180, self.progress)
-              this.prizeValue = gsap.utils.clamp(0, 1500, gsap.utils.mapRange(0.08, 0.72, 0, 1500, self.progress))
             },
           },
         })
         formatTl
           .from('.written-board h2, .write-line, .medal-grid span', { y: 22, stagger: 0.08, duration: 0.7 }, 0.12)
           .from('.podium-sequence', { y: 70, scale: 0.96, duration: 0.55 }, 0.18)
-          .from('.prize-counter strong', { y: 24, duration: 0.45 }, 0.92)
-          .to('.prize-counter, .leaderboard-side', { autoAlpha: 0, y: -80, duration: 0.45 }, 1.42)
+          .to('.leaderboard-side', { autoAlpha: 0, y: -80, duration: 0.45 }, 1.42)
 
-        gsap.from('.compact-staff-card, .accordion', {
+        gsap.from('.compact-staff-card, .flip-card, .accordion', {
           scrollTrigger: {
             trigger: '.content-band',
             start: 'top 75%',
@@ -671,6 +722,23 @@ export default {
   text-decoration: underline;
 }
 
+.faq-note {
+  margin-top: 1.6rem;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 1rem;
+}
+
+.faq-note a {
+  color: var(--accent-soft);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.faq-note a:hover {
+  text-decoration: underline;
+}
+
 .primary-action,
 .secondary-action {
   display: inline-flex;
@@ -824,26 +892,6 @@ export default {
   margin-inline: auto;
 }
 
-.prize-counter {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 0.9rem;
-  margin-top: 0.75rem;
-  color: var(--text-dim);
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.72rem;
-}
-
-.prize-counter strong {
-  display: inline-block;
-  color: var(--paper);
-  font-size: clamp(2rem, 4vw, 3.9rem);
-  line-height: 1;
-  letter-spacing: 0;
-}
-
 .written-board {
   position: relative;
   padding: clamp(1.5rem, 4vw, 3rem);
@@ -987,6 +1035,103 @@ export default {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+.staff-subhead {
+  margin: 0.25rem 0 0.85rem;
+  padding: 0 1.25rem;
+  color: var(--accent-soft);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.flip-card {
+  perspective: 1000px;
+  cursor: pointer;
+  min-height: 250px;
+  background: transparent;
+  padding: 0;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(246, 240, 232, 0.1);
+  background: rgba(10, 8, 5, 0.45);
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.flip-front img,
+.flip-back img,
+.flip-card .staff-initial {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 0.7rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(246, 240, 232, 0.15);
+  flex-shrink: 0;
+}
+
+.flip-front h3,
+.flip-back h3 {
+  margin: 0;
+  color: var(--paper);
+  font-size: 0.96rem;
+}
+
+.flip-front p {
+  margin: 0.3rem 0 0;
+  color: var(--accent-soft);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.flip-bio {
+  margin: 0.55rem 0 0;
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.flip-hint {
+  margin-top: 0.55rem;
+  color: var(--text-dim);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  opacity: 0.55;
 }
 
 .name-river {

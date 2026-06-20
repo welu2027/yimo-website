@@ -179,7 +179,8 @@
             >
               <div class="flip-inner">
                 <div class="flip-front">
-                  <img :src="member.image" :alt="member.name" />
+                  <img v-if="member.image" :src="member.image" :alt="member.name" />
+                  <div v-else class="staff-initial">{{ member.name[0] }}</div>
                   <h3>{{ member.name }}</h3>
                   <p>{{ member.role }}</p>
                 </div>
@@ -200,10 +201,8 @@
               @click="toggleFlip('staff-' + member.name)"
             >
               <div class="flip-inner">
-                <div class="flip-front">
-                  <div class="staff-initial">{{ member.name[0] }}</div>
+                <div class="flip-front flip-front-nametag">
                   <h3>{{ member.name }}</h3>
-                  <span class="flip-hint">Tap for bio</span>
                 </div>
                 <div class="flip-back">
                   <img v-if="member.image" :src="member.image" :alt="member.name" />
@@ -238,7 +237,7 @@
     <section id="partners" class="story-panel partners-panel">
       <div class="partner-heading">
         <p class="section-kicker">Partners</p>
-        <h2>Backed by the right rooms.</h2>
+        <h2>Partners &amp; Sponsors</h2>
       </div>
       <div class="partner-orbit">
         <a
@@ -254,7 +253,7 @@
         </a>
       </div>
       <div class="closing-cta">
-        <h2>Climb on August 29 or 30.</h2>
+        <h2>Climb with us on August 29 or 30.</h2>
         <p>Registration closes August 27, 23:59 EST. Pick one window and compete from anywhere.</p>
         <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
       </div>
@@ -287,6 +286,7 @@ export default {
       staffLeadership: [
         { name: 'Daniel Edouard', role: 'Head of Marketing', image: '/staff/danieledouard.png', bio: 'is a Merit-Based Harvard Fellow whose work sits at the intersection of AI, applied math, and neuroscience. He founded Les Enfants du Monde, a nonprofit for STEM, AI, and entrepreneurship education for youth in the Democratic Republic of the Congo, and in his free time plays tennis, pickleball, and violin.' },
         { name: 'Abhiram Jetty', role: 'Head of Internal Operations', image: '/staff/abhiramjetty.png', bio: 'is a USAJMO qualifier, TXSEF finalist, Thermo Fisher finalist, and AMC 10 Distinguished Honor Roll recipient. As a 9th grader, he likes to play video games, swim, and write math problems for contests like YIMO.' },
+        { name: 'Shining Sun', role: 'Head of Problem Writing', bio: 'is a 6x AIME qualifier and 2x USAJMO qualifier who also writes problems for national competitions in Nepal. In his free time, he enjoys video games and exploring random places with friends.' },
       ],
       formerDirectors: [
         { name: 'Ryan Ahn', role: 'Former Competition Director', image: '/staff/ryanahn.png' },
@@ -312,7 +312,6 @@ export default {
         { name: 'Nathan Zaltsman', image: '/staff/nathanzaltsman.png', bio: 'NXT Horizon alumnus turned mentor, competitive chess player, and regular competitive coding practitioner.' },
         { name: 'Pietro Loraschi', image: '/staff/pietroloraschi.png', bio: 'USACO Silver competitor preparing for USAPhO via F=ma and World Scholar Cup top placer.' },
         { name: 'Rayoon Kim', bio: 'USAMO qualifier who enjoys difficult geometry problems and contest problem solving.' },
-        { name: 'Shining Sun', bio: 'is a 6x AIME qualifier and 2x USAJMO qualifier who also writes problems for national competitions in Nepal. In his free time, he enjoys video games and exploring random places with friends.' },
         { name: 'Siddh Mistry', bio: 'Siddh Mistry is a high school senior interested in mathematics and computer science. In his free time, he likes to watch anime and play sports.' },
         { name: 'Stanley Kem', image: '/staff/stanleykem.png', bio: 'National writing competition placer, soccer captain, regional art award recipient, and hackathon builder.' },
         { name: 'Tashi Satish', image: '/staff/tashisatish.png', bio: 'VEX VRC Worlds qualifier with robotics engineering experience and club soccer competition background.' },
@@ -1132,6 +1131,16 @@ export default {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   opacity: 0.55;
+}
+
+.flip-front-nametag {
+  justify-content: center;
+}
+
+.flip-front-nametag h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
 }
 
 .name-river {

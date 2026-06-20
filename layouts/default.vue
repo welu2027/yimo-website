@@ -11,6 +11,7 @@
       </nuxt-link>
       <div class="nav-links hidden md:flex">
         <nuxt-link to="/archive" class="nav-link">Archive</nuxt-link>
+        <a href="/#faq" class="nav-link">FAQ</a>
       </div>
       <div class="nav-right">
         <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener" class="nav-link hidden md:inline-flex" aria-label="Discord">

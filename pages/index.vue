@@ -219,8 +219,7 @@
 
     <section id="faq" class="content-band faq-band">
       <div class="band-heading">
-        <p class="section-kicker">FAQ</p>
-        <h2>Quick answers.</h2>
+        <h2>FAQ</h2>
       </div>
       <div class="accordion-stack">
         <details v-for="item in faqs" :key="item.q" class="accordion">
@@ -302,20 +301,23 @@ export default {
         { name: 'Collin Du', image: '/staff/collindu.png', bio: 'National K-12 chess champion training for ISEF, with interests in fishing, skiing, and writing.' },
         { name: 'Damayne Anderson', image: '/staff/damayneanderson.png', bio: 'Student-athlete and Daily Math founder focused on USACO, AIME preparation, leadership, and community service.' },
         { name: 'George Paret', bio: '4x AIME qualifier with top algebra and geometry results across PUMaC, BMT, HMMT, MATHCOUNTS, and ARML.' },
-        { name: 'Gonçalo Franco', bio: "Gonçalo has won multiple national math and technology olympiads. He manages his own digital agency and works on multiple projects, including this website's design." },
+        { name: 'Gonçalo Franco', image: '/staff/goncalofranco.png', bio: "Gonçalo has won multiple national math and technology olympiads. He manages his own digital agency and works on multiple projects, including this website's design." },
         { name: 'Jacob Rotella Riggers', image: '/staff/jacobriggers.png', bio: 'VEX VRC Worlds competitor with strong math, programming, robotics, distance running, and baseball experience.' },
-        { name: 'Jayvant Rajesh', bio: "Jayvant serves as Chief of Staff at STEMise, where he leads organizational strategy, including revising the team's mission statement and shaping recruitment and overall direction." },
+        { name: 'Jayvant Rajesh', image: '/staff/jayvantrajesh.webp', bio: "Jayvant serves as Chief of Staff at STEMise, where he leads organizational strategy, including revising the team's mission statement and shaping recruitment and overall direction." },
         { name: 'Justin Guo', bio: '4x AIME qualifier, HMMT top 50 placer, USACHO qualifier, and Olympiad Insider officer.' },
-        { name: 'Karam Gill', bio: 'Karam Gill is a rising 8th grader who is passionate about math and is a 3x AIME qualifier. Outside of math, he enjoys basketball, board games, and card games.' },
+        { name: 'Karam Gill', image: '/staff/karamgill.png', bio: 'Karam Gill is a rising 8th grader who is passionate about math and is a 3x AIME qualifier. Outside of math, he enjoys playing basketball, board games, and card games.' },
         { name: 'Krish Kejriwal', image: '/staff/krishkejriwal.png', bio: 'Aspiring mathematician with MATHCOUNTS and AMC 8 distinctions, writing problems for YIMO.' },
+        { name: 'Lefteris Demosthenous', bio: 'AIME qualifier and aspiring computational biology researcher with a strong interest in weightlifting and piano.' },
         { name: 'Leo Pattison', image: '/staff/leopattison.png', bio: 'Track and soccer athlete who volunteers at local workshops to teach math and coding.' },
         { name: 'Nathan Zaltsman', image: '/staff/nathanzaltsman.png', bio: 'NXT Horizon alumnus turned mentor, competitive chess player, and regular competitive coding practitioner.' },
+        { name: 'Philip Dong', image: '/staff/philipdong.jpg', bio: 'Philip Dong is an AMC 10 DHR, AIME qualifier, and USA(J)MO qualifier who also earned Honors in the US National Chemistry Olympiad. Interested in math, coding, and chemistry, he likes to play tennis, video games, and piano — and, most importantly, eat.' },
         { name: 'Pietro Loraschi', image: '/staff/pietroloraschi.png', bio: 'USACO Silver competitor preparing for USAPhO via F=ma and World Scholar Cup top placer.' },
         { name: 'Rayoon Kim', bio: 'USAMO qualifier who enjoys difficult geometry problems and contest problem solving.' },
-        { name: 'Siddh Mistry', bio: 'Siddh Mistry is a high school senior interested in mathematics and computer science. In his free time, he likes to watch anime and play sports.' },
+        { name: 'Sean Puon', image: '/staff/seanpuon.png', bio: 'Student with a strong academic focus in STEM and multi-language proficiency. Passionate about student wellness, community and entrepreneurship projects, and athletic development — especially volleyball.' },
+        { name: 'Siddh Mistry', image: '/staff/siddhmistry.png', bio: 'Siddh Mistry is a high school senior interested in mathematics and computer science. In his free time he likes to watch anime, play sports, and coordbash.' },
         { name: 'Stanley Kem', image: '/staff/stanleykem.png', bio: 'National writing competition placer, soccer captain, regional art award recipient, and hackathon builder.' },
         { name: 'Tashi Satish', image: '/staff/tashisatish.png', bio: 'VEX VRC Worlds qualifier with robotics engineering experience and club soccer competition background.' },
-        { name: 'Vihaan Vajpeyi', bio: 'Vihaan is an AIME qualifier with AMC 10 Distinguished Honor Roll and RoboCup Nationals recognition who is interested in quantitative finance.' },
+        { name: 'Vihaan Vajpeyi', image: '/staff/vihaanvajpeyi.jpeg', bio: 'Vihaan is an AIME qualifier with AMC 10 Distinguished Honor Roll and a RoboCup Nationals win who is interested in quantitative finance. In his free time, he enjoys playing video games and learning new math concepts.' },
         { name: 'Wyatt Choi', image: '/staff/wyattchoi.png', bio: 'AIME qualifier, KMO Silver medalist, BMO distinction recipient, and olympiad problem writer for Solvefire and YIMO.' },
       ],
       faqs: [

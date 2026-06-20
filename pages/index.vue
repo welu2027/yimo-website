@@ -196,7 +196,7 @@
             <article
               v-for="member in generalStaff"
               :key="member.name"
-              class="flip-card"
+              class="flip-card flip-card-compact"
               :class="{ flipped: flipped['staff-' + member.name] }"
               @click="toggleFlip('staff-' + member.name)"
             >
@@ -993,6 +993,7 @@ export default {
 .staff-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  align-items: start;
   gap: 1rem;
   padding: 0 1.25rem 1.25rem;
 }
@@ -1135,12 +1136,35 @@ export default {
 
 .flip-front-nametag {
   justify-content: center;
+  padding: 0.55rem 0.75rem;
 }
 
 .flip-front-nametag h3 {
-  font-size: 1.2rem;
-  font-weight: 800;
+  font-size: 0.92rem;
+  font-weight: 700;
   letter-spacing: 0.01em;
+}
+
+/* Compact staff cards: tiny nametag until clicked, then expand */
+.flip-card-compact {
+  min-height: 48px;
+  transition: min-height 0.45s ease;
+}
+
+.flip-card-compact .flip-inner {
+  min-height: 48px;
+}
+
+.flip-card-compact.flipped {
+  min-height: 250px;
+}
+
+.flip-card-compact.flipped .flip-inner {
+  min-height: 250px;
+}
+
+.flip-card-compact.flipped .flip-front-nametag h3 {
+  font-size: 1.2rem;
 }
 
 .name-river {

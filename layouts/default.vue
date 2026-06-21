@@ -10,8 +10,12 @@
         <span class="nav-brand-name">YIMO</span>
       </nuxt-link>
       <div class="nav-links hidden md:flex">
-        <nuxt-link to="/archive" class="nav-link">Archive</nuxt-link>
+        <nuxt-link to="/archive" class="nav-link" style="font-weight:800;">Archive</nuxt-link>
+        <a href="/#climb" class="nav-link">Divisions</a>
+        <a href="/#format" class="nav-link">Format</a>
+        <a href="/#people" class="nav-link">Staff</a>
         <a href="/#faq" class="nav-link">FAQ</a>
+        <a href="/#partners" class="nav-link">Partners</a>
       </div>
       <div class="nav-right">
         <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener" class="nav-link hidden md:inline-flex" aria-label="Discord">

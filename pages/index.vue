@@ -128,7 +128,7 @@
 
     <section id="people" class="content-band">
       <div class="band-heading">
-        <p class="section-kicker">Team</p>
+        <p class="section-kicker">Staff</p>
         <h2>Staff.</h2>
       </div>
       <div class="accordion-stack">

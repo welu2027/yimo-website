@@ -108,6 +108,7 @@
           <div class="write-line">
             <h3>Problem Format</h3>
             <p>20 written problems: 10 multiple choice and 10 AIME-style integer answers.</p>
+            <a class="scoring-guide-link" href="/YIMO_Scoring_guide.pdf" target="_blank" rel="noopener">Open scoring guide</a>
           </div>
           <div class="write-line">
             <h3>Contest Windows</h3>
@@ -916,6 +917,15 @@ export default {
   margin: 0;
   color: var(--text-dim);
   line-height: 1.65;
+}
+
+.scoring-guide-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
 }
 
 .medal-grid {

@@ -5,6 +5,7 @@
 
     <section>
       <h2>YIMO 1</h2>
+      <img src="/IMG-20260620-WA0053.webp" alt="YIMO 1 competition statistics" style="float:right;width:240px;max-width:40%;margin:0 0 1rem 1.5rem;border-radius:10px;" />
       <ul>
         <li><strong>Written Round Problems:</strong> <a href="/solutions/yimo-1-written-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
         <li><strong>Written Round Solutions:</strong> <a href="/solutions/yimo-1-written-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>

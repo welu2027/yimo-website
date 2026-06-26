@@ -349,6 +349,7 @@ export default {
         { name: 'USAMOguide', logo: '/Test_logo.png', href: 'https://www.usamoguide.com/' },
         { name: 'Saintly', logo: '/Saintly.png', href: 'https://saintlymath.com/' },
         { name: 'Solvefire', logo: '/solvefire.png', href: 'https://solvefire.net' },
+        { name: 'Euler Circle', logo: '/eulercircle.svg', href: 'https://eulercircle.com' },
       ],
     }
   },

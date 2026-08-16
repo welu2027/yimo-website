@@ -1,4 +1,6 @@
-# gunn-math-comp
+# yimo-website
+
+Site for YIMO — the Youth International Math Olympiad.
 
 ## Build Setup
 

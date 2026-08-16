@@ -235,24 +235,47 @@
     </section>
 
     <section id="partners" class="story-panel partners-panel">
-      <div class="partner-heading">
-        <p class="section-kicker">Partners</p>
-        <h2>Partners &amp; Sponsors</h2>
+      <div id="sponsors" class="partner-group">
+        <div class="partner-heading">
+          <p class="section-kicker">Sponsors</p>
+          <h2>Sponsors.</h2>
+        </div>
+        <div class="partner-orbit" :style="{ '--partner-columns': gridColumns(sponsors) }">
+          <a
+            v-for="sponsor in sponsors"
+            :key="sponsor.name"
+            class="partner-logo-card"
+            :href="sponsor.href"
+            target="_blank"
+            rel="noopener"
+          >
+            <img :src="sponsor.logo" :alt="sponsor.name" />
+            <span>{{ sponsor.name }}</span>
+            <span v-if="sponsor.tier" class="partner-tier" :class="'tier-' + sponsor.tier.toLowerCase()">{{ sponsor.tier }} Sponsor</span>
+          </a>
+        </div>
       </div>
-      <div class="partner-orbit">
-        <a
-          v-for="partner in partners"
-          :key="partner.name"
-          class="partner-logo-card"
-          :href="partner.href"
-          target="_blank"
-          rel="noopener"
-        >
-          <img :src="partner.logo" :alt="partner.name" />
-          <span>{{ partner.name }}</span>
-          <span v-if="partner.tier" class="partner-tier" :class="'tier-' + partner.tier.toLowerCase()">{{ partner.tier }} Sponsor</span>
-        </a>
+
+      <div class="partner-group">
+        <div class="partner-heading">
+          <p class="section-kicker">Partners</p>
+          <h2>Partners.</h2>
+        </div>
+        <div class="partner-orbit" :style="{ '--partner-columns': gridColumns(partners) }">
+          <a
+            v-for="partner in partners"
+            :key="partner.name"
+            class="partner-logo-card"
+            :href="partner.href"
+            target="_blank"
+            rel="noopener"
+          >
+            <img :src="partner.logo" :alt="partner.name" />
+            <span>{{ partner.name }}</span>
+          </a>
+        </div>
       </div>
+
       <div class="closing-cta">
         <h2>Climb with us on August 29 or 30.</h2>
         <p>Registration closes August 27, 23:59 EST. Pick one window and compete from anywhere.</p>
@@ -350,10 +373,12 @@ export default {
           a: 'Use the free registration form and upload the parental consent form before August 27, 23:59 EST.',
         },
       ],
-      partners: [
+      sponsors: [
         { name: 'HRT', logo: '/hrt-logo.png', href: 'https://www.hudsonrivertrading.com/', tier: 'Platinum' },
         { name: 'PiMath', logo: '/PiMath-noBG.png', href: 'https://www.paquinmath.org/', tier: 'Silver' },
         { name: 'AoPS', logo: '/aops-logo.png', href: 'https://artofproblemsolving.com/', tier: 'Bronze' },
+      ],
+      partners: [
         { name: 'USAMOguide', logo: '/Test_logo.png', href: 'https://www.usamoguide.com/' },
         { name: 'Saintly', logo: '/Saintly.png', href: 'https://saintlymath.com/' },
         { name: 'Solvefire', logo: '/solvefire.png', href: 'https://solvefire.net' },
@@ -378,6 +403,9 @@ export default {
   methods: {
     toggleFlip(id) {
       this.$set(this.flipped, id, !this.flipped[id])
+    },
+    gridColumns(list) {
+      return Math.min(list.length, 5)
     },
     framePath(folder, frame) {
       return `/story-frames/${folder}/ezgif-frame-${String(frame).padStart(3, '0')}.jpg`
@@ -422,7 +450,9 @@ export default {
       const root = this.$refs.page
       if (!root) return
 
-      const mm = gsap.matchMedia()
+      // The word wheel is a self-running crossfade with no scroll dependency,
+      // so it is built for every visitor: the four words are absolutely
+      // stacked on each other and only this timeline separates them.
       const ctx = gsap.context(() => {
         gsap.set('.wheel-word', { autoAlpha: 0, y: 24, rotationX: -40 })
         const wordTl = gsap.timeline({ repeat: -1 })
@@ -431,7 +461,19 @@ export default {
             .to(word, { autoAlpha: 1, y: 0, rotationX: 0, duration: 0.25, ease: 'power3.out' })
             .to(word, { autoAlpha: 0, y: -18, rotationX: 24, duration: 0.22, ease: 'power3.in' }, '+=0.35')
         })
+      }, root)
 
+      // Everything below is scroll-driven, and every one of these tweens
+      // writes its `from` state to the DOM the moment it is created - the
+      // staff and FAQ cards get `opacity: 0; visibility: hidden` and stay
+      // that way until the ScrollTrigger plays them back. Building them and
+      // then calling trigger.disable() for reduced-motion visitors (as this
+      // used to do) left that hidden state on screen permanently, so the
+      // whole staff section rendered blank. Build them only when the visitor
+      // has not asked for reduced motion; the sections then keep their plain
+      // CSS appearance for everyone else.
+      const mm = gsap.matchMedia()
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
         const climbTl = gsap.timeline({
           scrollTrigger: {
             trigger: '.climb-panel',
@@ -478,11 +520,11 @@ export default {
           duration: 0.55,
           ease: 'power2.out',
         })
-      }, root)
 
-      mm.add('(prefers-reduced-motion: reduce)', () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.disable())
-      })
+        // Only worth fetching the 360 sequence frames when they will scrub.
+        this.preloadFrames('mountain', 180)
+        this.preloadFrames('podium', 180)
+      }, root)
 
       this.cleanupFns.push(() => {
         ctx.revert()
@@ -1241,15 +1283,28 @@ export default {
   text-align: center;
 }
 
+.partner-group {
+  width: min(1120px, 100%);
+}
+
+.partner-group + .partner-group {
+  margin-top: 3.5rem;
+}
+
 .partner-heading {
   margin-bottom: 2rem;
 }
 
 .partner-orbit {
   display: grid;
-  grid-template-columns: repeat(5, minmax(120px, 1fr));
+  grid-template-columns: repeat(var(--partner-columns, 5), minmax(120px, 1fr));
   gap: 1rem;
-  width: min(1120px, 100%);
+  width: 100%;
+  /* Cards stay the width they had in the combined five-across grid whatever a
+     group's item count is, and a short row is centred rather than stranded
+     against the left edge. */
+  max-width: calc(var(--partner-columns, 5) * 224px + (var(--partner-columns, 5) - 1) * 1rem);
+  margin-inline: auto;
 }
 
 .partner-logo-card {
@@ -1319,6 +1374,7 @@ export default {
 
   .partner-orbit {
     grid-template-columns: repeat(2, minmax(130px, 1fr));
+    max-width: none;
   }
 
   .rising-card,

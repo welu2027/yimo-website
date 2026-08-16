@@ -1,9 +1,14 @@
+import potdProblems from './data/potd.json'
+
 export default {
   ssr: false,
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   generate: {
-    fallback: '404.html'
+    fallback: '404.html',
+    // Every problem gets a real HTML file, so /potd/<slug> loads directly and
+    // is crawlable rather than relying on the SPA fallback.
+    routes: potdProblems.map((problem) => `/potd/${problem.slug}`)
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -27,6 +32,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/tailwind.css',
+    'katex/dist/katex.min.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

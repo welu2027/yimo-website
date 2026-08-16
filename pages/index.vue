@@ -108,12 +108,44 @@
             <h3>Final Round</h3>
             <p>The top 8 students in each division advance to a final round with computational and proof-style problems.</p>
           </div>
-          <div class="medal-grid">
-            <span><strong>30%</strong> Bronze</span>
-            <span><strong>20%</strong> Silver</span>
-            <span><strong>10%</strong> Gold</span>
-          </div>
         </div>
+      </div>
+    </section>
+
+    <section id="prizes" class="content-band">
+      <div class="band-heading">
+        <p class="section-kicker">Prizes</p>
+        <h2>Prizes.</h2>
+        <p class="format-lead">
+          Over $1,500 in prizes is available for YIMO II, awarded across both
+          divisions.
+        </p>
+      </div>
+
+      <p class="free-banner">YIMO is free to participate in.</p>
+
+      <div class="prize-grid">
+        <div class="level-card">
+          <p>Prize pool</p>
+          <h3>$1,500+</h3>
+          <span>Available for YIMO II, split across Division 1 and Division 2.</span>
+        </div>
+        <div class="level-card">
+          <p>Medals</p>
+          <h3>Gold, silver, bronze</h3>
+          <span>Awarded by placement within each division.</span>
+        </div>
+        <div class="level-card">
+          <p>Certificates</p>
+          <h3>For every winner</h3>
+          <span>Winners receive certificates, and participation certificates are available to any competitor on request.</span>
+        </div>
+      </div>
+
+      <div class="medal-grid">
+        <span><strong>Top 10%</strong> Gold medal</span>
+        <span><strong>Next 10%</strong> Silver medal</span>
+        <span><strong>Next 10%</strong> Bronze medal</span>
       </div>
     </section>
 
@@ -268,7 +300,7 @@
 
       <div class="closing-cta">
         <h2>Register for August 29 or 30.</h2>
-        <p>Registration closes August 27, 23:59 EST. Pick one contest window and compete from anywhere.</p>
+        <p>Entry is free. Registration closes August 27, 23:59 EST. Pick one contest window and compete from anywhere.</p>
         <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
       </div>
     </section>
@@ -881,6 +913,24 @@ export default {
   text-underline-offset: 0.22em;
 }
 
+.prize-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.free-banner {
+  display: inline-block;
+  margin: 0 0 2rem;
+  padding: 0.7rem 1.2rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 .medal-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1270,6 +1320,10 @@ export default {
 }
 
 @media (max-width: 900px) {
+  .prize-grid {
+    grid-template-columns: 1fr;
+  }
+
   .partner-orbit {
     grid-template-columns: repeat(2, minmax(130px, 1fr));
     max-width: none;
@@ -1295,6 +1349,7 @@ export default {
 
   .medal-grid,
   .division-grid,
+  .prize-grid,
   .partner-orbit {
     grid-template-columns: 1fr;
   }

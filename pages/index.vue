@@ -713,7 +713,6 @@ export default {
   text-transform: uppercase;
 }
 
-.hero-main h1 {
 .wheel-word {
   position: absolute;
   left: 50%;
@@ -1361,6 +1360,8 @@ export default {
   .hero-logo {
     width: 76px;
     height: 76px;
+  }
+
   .partner-orbit {
     grid-template-columns: repeat(2, minmax(130px, 1fr));
     max-width: none;

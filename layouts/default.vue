@@ -16,7 +16,6 @@
       <div class="nav-links hidden md:flex">
         <nuxt-link to="/archive" class="nav-link" style="font-weight:800;">Archive</nuxt-link>
         <nuxt-link to="/potd" class="nav-link" style="font-weight:800;">POTD</nuxt-link>
-        <a href="/#climb" class="nav-link">Divisions</a>
         <a href="/#format" class="nav-link">Format</a>
         <a href="/#people" class="nav-link">Staff</a>
         <a href="/#faq" class="nav-link">FAQ</a>

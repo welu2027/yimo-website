@@ -50,8 +50,8 @@
         <h1>YIMO</h1>
         <p class="hero-subtitle">
           Youth International Math Olympiad returns August 29 and 30, 2026.
-          A global online contest for students who like clean problems, fair
-          rounds, and a serious climb.
+          A free online contest for middle and high school students, run in two
+          divisions.
         </p>
         <div class="hero-actions">
           <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register</a>
@@ -64,47 +64,37 @@
           <a href="https://nxthorizon.org" target="_blank" rel="noopener">NXT Horizon</a>.
         </p>
       </div>
-      <a href="#climb" class="scroll-cue" aria-label="Scroll to the climb section">
+      <a href="#format" class="scroll-cue" aria-label="Scroll to the format section">
         <span></span>
       </a>
     </section>
 
-    <section id="climb" class="story-panel climb-panel">
-      <div class="climb-copy level-card rising-card">
-        <p>Division 2</p>
-        <h2>Beginner</h2>
-        <span>AMC 10 to early AIME level. Built for students who are developing contest rhythm without needing prior olympiad experience.</span>
-      </div>
-      <div class="climb-copy level-card achiever-card">
-        <p>Division 1</p>
-        <h2>Advanced</h2>
-        <span>Early AIME to high AIME level. A sharper final round with computational and proof problems for the top eight.</span>
-      </div>
-      <div class="mountain-stage frame-stage" aria-label="Mountain climb frame animation">
-        <img
-          ref="mountainSequence"
-          class="frame-sequence mountain-sequence"
-          :src="mountainFrameSrc"
-          alt="Animated mountain climb"
-        />
-      </div>
-    </section>
-
     <section id="format" class="story-panel format-panel">
-      <div class="leaderboard-side">
-        <div class="leaderboard-steps frame-stage" aria-hidden="true">
-          <img
-            ref="podiumSequence"
-            class="frame-sequence podium-sequence"
-            :src="podiumFrameSrc"
-            alt=""
-          />
+      <div class="format-inner">
+        <div class="band-heading">
+          <p class="section-kicker">Format</p>
+          <h2>Format.</h2>
+          <p class="format-lead">
+            YIMO is run in two divisions. Both divisions take a written round of
+            20 problems, and the top 8 students in each division advance to a
+            final round.
+          </p>
         </div>
-      </div>
 
-      <div class="written-side">
+        <div class="division-grid">
+          <div class="level-card">
+            <p>Division 2</p>
+            <h3>Beginner</h3>
+            <span>AMC 10 to early AIME level. For students who are new to competition math; no prior olympiad experience is required.</span>
+          </div>
+          <div class="level-card">
+            <p>Division 1</p>
+            <h3>Advanced</h3>
+            <span>Early AIME to high AIME level, for students with competition experience.</span>
+          </div>
+        </div>
+
         <div class="written-board">
-          <h2>Format</h2>
           <div class="write-line">
             <h3>Problem Format</h3>
             <p>20 written problems with integer answers.</p>
@@ -157,17 +147,6 @@
           </div>
         </details>
         <details class="accordion">
-          <summary>Leadership Emeritus</summary>
-          <div class="staff-grid">
-            <article v-for="member in formerDirectors" :key="member.name" class="compact-staff-card">
-              <img v-if="member.image" :src="member.image" :alt="member.name" />
-              <div v-else class="staff-initial">{{ member.name[0] }}</div>
-              <h3>{{ member.name }}</h3>
-              <p>{{ member.role }}</p>
-            </article>
-          </div>
-        </details>
-        <details class="accordion">
           <summary>Staff</summary>
           <p class="staff-subhead">Leadership</p>
           <div class="staff-grid">
@@ -212,6 +191,17 @@
                   <p class="flip-bio">{{ member.bio }}</p>
                 </div>
               </div>
+            </article>
+          </div>
+        </details>
+        <details class="accordion">
+          <summary>Leadership Emeritus</summary>
+          <div class="staff-grid">
+            <article v-for="member in formerDirectors" :key="member.name" class="compact-staff-card">
+              <img v-if="member.image" :src="member.image" :alt="member.name" />
+              <div v-else class="staff-initial">{{ member.name[0] }}</div>
+              <h3>{{ member.name }}</h3>
+              <p>{{ member.role }}</p>
             </article>
           </div>
         </details>
@@ -277,8 +267,8 @@
       </div>
 
       <div class="closing-cta">
-        <h2>Climb with us on August 29 or 30.</h2>
-        <p>Registration closes August 27, 23:59 EST. Pick one window and compete from anywhere.</p>
+        <h2>Register for August 29 or 30.</h2>
+        <p>Registration closes August 27, 23:59 EST. Pick one contest window and compete from anywhere.</p>
         <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
       </div>
     </section>
@@ -297,8 +287,6 @@ export default {
   data() {
     return {
       identityWords: ['Youth', 'International', 'Math', 'Olympiad'],
-      mountainFrameSrc: '/story-frames/mountain/ezgif-frame-001.jpg',
-      podiumFrameSrc: '/story-frames/podium/ezgif-frame-001.jpg',
       cleanupFns: [],
       flipped: {},
       executiveDirectors: [
@@ -387,10 +375,6 @@ export default {
     }
   },
   mounted() {
-    // Kick these off first: the mountain/podium frame sequences are what the
-    // very next scroll needs, so they shouldn't wait behind idle callbacks.
-    this.preloadFrames('mountain', 180)
-    this.preloadFrames('podium', 180)
     this.initAnimations()
     this.initLenis()
     this.initThreeMath()
@@ -406,26 +390,6 @@ export default {
     },
     gridColumns(list) {
       return Math.min(list.length, 5)
-    },
-    framePath(folder, frame) {
-      return `/story-frames/${folder}/ezgif-frame-${String(frame).padStart(3, '0')}.jpg`
-    },
-    setSequenceFrame(refName, folder, count, progress) {
-      const img = this.$refs[refName]
-      if (!img) return
-      const frame = gsap.utils.clamp(1, count, Math.round(gsap.utils.mapRange(0, 1, 1, count, progress)))
-      const nextSrc = this.framePath(folder, frame)
-      if (img.getAttribute('src') !== nextSrc) img.setAttribute('src', nextSrc)
-    },
-    preloadFrames(folder, count) {
-      // Fetch immediately rather than waiting on requestIdleCallback: these
-      // sequences are ~3MB each and drive the very next scroll animation, so
-      // deferring the fetch is what caused frames to visibly pop in late.
-      for (let index = 0; index < count; index += 1) {
-        const img = new Image()
-        img.decoding = 'async'
-        img.src = this.framePath(folder, index + 1)
-      }
     },
     async initLenis() {
       try {
@@ -474,41 +438,6 @@ export default {
       // CSS appearance for everyone else.
       const mm = gsap.matchMedia()
       mm.add('(prefers-reduced-motion: no-preference)', () => {
-        const climbTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: '.climb-panel',
-            start: 'top top',
-            end: '+=2200',
-            scrub: 1,
-            pin: true,
-            onUpdate: (self) => {
-              this.setSequenceFrame('mountainSequence', 'mountain', 180, self.progress)
-            },
-          },
-        })
-        climbTl
-          .from('.mountain-sequence', { y: 46, scale: 0.98, duration: 0.55 })
-          .fromTo('.rising-card', { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.35 }, 0.85)
-          .to('.rising-card', { autoAlpha: 0, x: 30, duration: 0.25 }, 1.55)
-          .fromTo('.achiever-card', { autoAlpha: 0, x: -70 }, { autoAlpha: 1, x: 0, duration: 0.4 }, 2.15)
-
-        const formatTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: '.format-panel',
-            start: 'top top',
-            end: '+=2100',
-            scrub: 1,
-            pin: true,
-            onUpdate: (self) => {
-              this.setSequenceFrame('podiumSequence', 'podium', 180, self.progress)
-            },
-          },
-        })
-        formatTl
-          .from('.written-board h2, .write-line, .medal-grid span', { y: 22, stagger: 0.08, duration: 0.7 }, 0.12)
-          .from('.podium-sequence', { y: 70, scale: 0.96, duration: 0.55 }, 0.18)
-          .to('.leaderboard-side', { autoAlpha: 0, y: -80, duration: 0.45 }, 1.42)
-
         gsap.from('.compact-staff-card, .flip-card, .accordion', {
           scrollTrigger: {
             trigger: '.content-band',
@@ -520,10 +449,6 @@ export default {
           duration: 0.55,
           ease: 'power2.out',
         })
-
-        // Only worth fetching the 360 sequence frames when they will scrub.
-        this.preloadFrames('mountain', 180)
-        this.preloadFrames('podium', 180)
       }, root)
 
       this.cleanupFns.push(() => {
@@ -850,50 +775,12 @@ export default {
   100% { transform: translateY(22px); opacity: 0; }
 }
 
-.mountain-stage {
-  position: relative;
-  width: min(980px, 92vw);
-  aspect-ratio: 16 / 9;
-  height: auto;
-}
-
-.frame-stage {
-  overflow: hidden;
-  background: transparent;
-}
-
-.frame-sequence {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  user-select: none;
-  pointer-events: none;
-  will-change: transform;
-}
-
-.mountain-sequence {
-  object-position: center center;
-}
-
 .level-card {
-  position: absolute;
+  position: relative;
   z-index: 4;
-  width: min(330px, 86vw);
-  padding: 1.2rem;
+  padding: 1.4rem;
   border: 1px solid rgba(246, 240, 232, 0.12);
   background: rgba(10, 8, 5, 0.72);
-  backdrop-filter: blur(14px);
-}
-
-.rising-card {
-  right: 8vw;
-  top: 39vh;
-}
-
-.achiever-card {
-  left: 8vw;
-  top: 24vh;
 }
 
 .level-card p,
@@ -906,13 +793,17 @@ export default {
   text-transform: uppercase;
 }
 
-.level-card h2,
 .band-heading h2,
 .partner-heading h2,
-.written-board h2,
 .closing-cta h2 {
   color: var(--paper);
   font-size: clamp(2rem, 5vw, 4rem);
+  margin: 0;
+}
+
+.level-card h3 {
+  color: var(--paper);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
   margin: 0;
 }
 
@@ -925,27 +816,32 @@ export default {
 }
 
 .format-panel {
-  grid-template-columns: minmax(260px, 0.75fr) minmax(320px, 1.25fr);
-  gap: clamp(2rem, 6vw, 5rem);
   align-items: center;
 }
 
-.leaderboard-side,
-.written-side {
+.format-inner {
   position: relative;
   width: 100%;
-  max-width: 580px;
-}
-
-.leaderboard-steps {
-  position: relative;
-  width: min(248px, 31vw);
-  aspect-ratio: 9 / 16;
-  height: auto;
+  max-width: 900px;
   margin-inline: auto;
 }
 
+.format-lead {
+  margin: 1.1rem 0 0;
+  max-width: 60ch;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.division-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
 .written-board {
+  margin-top: 1.25rem;
   position: relative;
   padding: clamp(1.5rem, 4vw, 3rem);
   border: 1px solid rgba(246, 240, 232, 0.14);
@@ -956,6 +852,12 @@ export default {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(246, 240, 232, 0.1);
+}
+
+.write-line:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .write-line h3 {
@@ -1368,25 +1270,9 @@ export default {
 }
 
 @media (max-width: 900px) {
-  .format-panel {
-    grid-template-columns: 1fr;
-  }
-
   .partner-orbit {
     grid-template-columns: repeat(2, minmax(130px, 1fr));
     max-width: none;
-  }
-
-  .rising-card,
-  .achiever-card {
-    left: 1rem;
-    right: 1rem;
-    top: auto;
-    bottom: 8vh;
-  }
-
-  .achiever-card {
-    bottom: 22vh;
   }
 }
 
@@ -1408,12 +1294,9 @@ export default {
   }
 
   .medal-grid,
+  .division-grid,
   .partner-orbit {
     grid-template-columns: 1fr;
-  }
-
-  .leaderboard-steps {
-    width: min(260px, 78vw);
   }
 }
 

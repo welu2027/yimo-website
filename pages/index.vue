@@ -1,7 +1,6 @@
 <template>
-  <div ref="page" class="yimo-redesign">
-    <section id="top" class="story-panel hero-panel">
-      <canvas ref="mathCanvas" class="math-canvas" aria-hidden="true"></canvas>
+  <div class="yimo-page">
+    <section id="top" class="hero-section">
       <div class="geometry-field" aria-hidden="true">
         <svg class="geometry-form form-orbit" viewBox="0 0 220 170">
           <ellipse cx="96" cy="86" rx="92" ry="36" />
@@ -34,250 +33,246 @@
           <line x1="124" y1="22" x2="150" y2="124" />
         </svg>
       </div>
-      <div class="hero-copy">
-        <div class="logo-stage" aria-label="Youth International Math Olympiad">
+
+      <div class="hero-layout content-width">
+        <div class="hero-main">
+          <p class="hero-kicker">Second edition</p>
           <img class="hero-logo" src="/yimo-logo-gold.png" alt="YIMO logo" />
-          <div class="word-wheel">
-            <span
-              v-for="word in identityWords"
-              :key="word"
-              class="wheel-word"
-            >
-              {{ word }}
-            </span>
+          <p class="hero-name">Youth International Math Olympiad</p>
+          <h1>YIMO</h1>
+          <p class="hero-subtitle">
+            A global online contest for students who like clean problems, fair rounds,
+            and a serious climb. Join us on August 29 or 30, 2026.
+          </p>
+          <div class="hero-actions">
+            <a class="action action-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register</a>
+            <a class="action action-secondary" href="#format">View format</a>
           </div>
+          <p class="hero-credit">
+            Presented by
+            <a href="https://stemise.org" target="_blank" rel="noopener">STEMise</a>
+            and
+            <a href="https://nxthorizon.org" target="_blank" rel="noopener">NXT Horizon</a>.
+          </p>
         </div>
-        <h1>YIMO</h1>
-        <p class="hero-subtitle">
-          Youth International Math Olympiad returns August 29 and 30, 2026.
-          A global online contest for students who like clean problems, fair
-          rounds, and a serious climb.
-        </p>
-        <div class="hero-actions">
-          <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register</a>
-          <a class="secondary-action" href="#format">Format</a>
-        </div>
-        <p class="hero-credit">
-          Brought to you by
-          <a href="https://stemise.org" target="_blank" rel="noopener">STEMise</a>
-          and
-          <a href="https://nxthorizon.org" target="_blank" rel="noopener">NXT Horizon</a>.
-        </p>
-      </div>
-      <a href="#climb" class="scroll-cue" aria-label="Scroll to the climb section">
-        <span></span>
-      </a>
-    </section>
 
-    <section id="climb" class="story-panel climb-panel">
-      <div class="climb-copy level-card rising-card">
-        <p>Division 2</p>
-        <h2>Beginner</h2>
-        <span>AMC 10 to early AIME level. Built for students who are developing contest rhythm without needing prior olympiad experience.</span>
-      </div>
-      <div class="climb-copy level-card achiever-card">
-        <p>Division 1</p>
-        <h2>Advanced</h2>
-        <span>Early AIME to high AIME level. A sharper final round with computational and proof problems for the top eight.</span>
-      </div>
-      <div class="mountain-stage frame-stage" aria-label="Mountain climb frame animation">
-        <img
-          ref="mountainSequence"
-          class="frame-sequence mountain-sequence"
-          :src="mountainFrameSrc"
-          alt="Animated mountain climb"
-        />
+        <aside class="hero-facts" aria-label="Contest dates">
+          <p class="fact-label">The next edition</p>
+          <p class="fact-date">August 29<br />&amp; 30</p>
+          <p class="fact-copy">Choose one contest window and compete from anywhere.</p>
+        </aside>
       </div>
     </section>
 
-    <section id="format" class="story-panel format-panel">
-      <div class="leaderboard-side">
-        <div class="leaderboard-steps frame-stage" aria-hidden="true">
-          <img
-            ref="podiumSequence"
-            class="frame-sequence podium-sequence"
-            :src="podiumFrameSrc"
-            alt=""
-          />
+    <section id="climb" class="section-shell">
+      <div class="section-intro content-width">
+        <div>
+          <h2>Choose your climb.</h2>
+          <p>Two levels, one clear standard: thoughtful solutions and careful work.</p>
         </div>
       </div>
 
-      <div class="written-side">
-        <div class="written-board">
-          <h2>Format</h2>
-          <div class="write-line">
-            <h3>Problem Format</h3>
-            <p>20 written problems with integer answers.</p>
-            <a class="scoring-guide-link" href="/YIMO_Scoring_guide.pdf" target="_blank" rel="noopener">Open scoring guide</a>
+      <div class="story-grid content-width">
+        <figure class="story-figure">
+          <div class="story-frame mountain-frame">
+            <img src="/story-frames/mountain/ezgif-frame-180.jpg" alt="A student reaching the flag at the top of a mountain." loading="lazy" />
           </div>
-          <div class="write-line">
-            <h3>Contest Windows</h3>
-            <p>Window A: August 29 at 21:30 EST. Window B: August 30 at 11:00 AM EST.</p>
-          </div>
-          <div class="write-line">
-            <h3>Final Round</h3>
-            <p>The top 8 students in each division advance to a final round with computational and proof-style problems.</p>
-          </div>
-          <div class="medal-grid">
-            <span><strong>30%</strong> Bronze</span>
-            <span><strong>20%</strong> Silver</span>
-            <span><strong>10%</strong> Gold</span>
+          <figcaption>Every division leads to the same summit.</figcaption>
+        </figure>
+
+        <div class="division-list">
+          <article class="division-entry">
+            <p class="entry-index">Division 02</p>
+            <div>
+              <h3>Beginner</h3>
+              <p>AMC 10 to early AIME level. Built for students developing contest rhythm without needing prior olympiad experience.</p>
+            </div>
+          </article>
+          <article class="division-entry">
+            <p class="entry-index">Division 01</p>
+            <div>
+              <h3>Advanced</h3>
+              <p>Early AIME to high AIME level. A sharper final round with computational and proof problems for the top eight.</p>
+            </div>
+          </article>
+          <div class="division-note">
+            <span>Open entry</span>
+            <strong>All students through middle and high school are welcome.</strong>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="people" class="content-band">
-      <div class="band-heading">
-        <p class="section-kicker">Staff</p>
-        <h2>Staff.</h2>
+    <section id="format" class="section-shell format-section">
+      <div class="section-intro content-width">
+        <div>
+          <h2>A clear contest from round one to finals.</h2>
+          <p>Know the structure before you start. Pick one window, solve carefully, and let the work speak.</p>
+        </div>
       </div>
-      <div class="accordion-stack">
-        <details class="accordion" open>
-          <summary>Competition Directors</summary>
-          <div class="staff-grid">
-            <article
-              v-for="member in executiveDirectors"
-              :key="member.name"
-              class="flip-card"
-              :class="{ flipped: flipped['exec-' + member.name] }"
-              @click="toggleFlip('exec-' + member.name)"
-            >
-              <div class="flip-inner">
-                <div class="flip-front">
-                  <img :src="member.image" :alt="member.name" />
-                  <h3>{{ member.name }}</h3>
-                </div>
-                <div class="flip-back">
-                  <h3>{{ member.name }}</h3>
-                  <p class="flip-bio">{{ member.bio }}</p>
-                </div>
+
+      <div class="format-grid content-width">
+        <figure class="story-figure podium-figure">
+          <div class="story-frame podium-frame">
+            <img src="/story-frames/podium/ezgif-frame-180.jpg" alt="A student holding a trophy on the first-place podium." loading="lazy" />
+          </div>
+          <figcaption>Recognition for careful, original work.</figcaption>
+        </figure>
+
+        <div class="format-content">
+          <div class="format-list">
+            <article class="format-row">
+              <p class="entry-index">01 / Problem format</p>
+              <div>
+                <h3>20 written problems with integer answers.</h3>
+                <a class="inline-link" href="/YIMO_Scoring_guide.pdf" target="_blank" rel="noopener">Open the scoring guide</a>
+              </div>
+            </article>
+            <article class="format-row">
+              <p class="entry-index">02 / Contest windows</p>
+              <div>
+                <h3>Choose exactly one window.</h3>
+                <p>Window A: August 29 at 21:30 EST. Window B: August 30 at 11:00 AM EST.</p>
+              </div>
+            </article>
+            <article class="format-row">
+              <p class="entry-index">03 / Final round</p>
+              <div>
+                <h3>The top eight students in each division advance.</h3>
+                <p>The final round includes computational and proof-style problems designed to distinguish the strongest solutions.</p>
               </div>
             </article>
           </div>
-        </details>
-        <details class="accordion">
-          <summary>Leadership Emeritus</summary>
-          <div class="staff-grid">
-            <article v-for="member in formerDirectors" :key="member.name" class="compact-staff-card">
-              <img v-if="member.image" :src="member.image" :alt="member.name" />
-              <div v-else class="staff-initial">{{ member.name[0] }}</div>
-              <h3>{{ member.name }}</h3>
-              <p>{{ member.role }}</p>
-            </article>
+
+          <div class="format-footer">
+            <div class="award-summary">
+              <span><strong>30%</strong> Bronze</span>
+              <span><strong>20%</strong> Silver</span>
+              <span><strong>10%</strong> Gold</span>
+            </div>
+            <div class="prize-summary">
+              <span>Prize pool</span>
+              <strong>$1,500</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="staff" class="section-shell people-section">
+      <div class="section-intro content-width">
+        <div>
+          <h2>The people behind the problems.</h2>
+          <p>Meet the students, educators, and organizers building a more thoughtful competition.</p>
+        </div>
+      </div>
+
+      <div class="people-content content-width">
+        <details class="group-panel" open>
+          <summary>Competition directors</summary>
+          <div class="person-list">
+            <details v-for="member in executiveDirectors" :key="member.name" class="person-row">
+              <summary>
+                <span class="person-identity">
+                  <img :src="member.image" :alt="member.name" loading="lazy" />
+                  <span><strong>{{ member.name }}</strong><small>Competition director</small></span>
+                </span>
+              </summary>
+              <p>{{ member.bio }}</p>
+            </details>
           </div>
         </details>
-        <details class="accordion">
-          <summary>Staff</summary>
-          <p class="staff-subhead">Leadership</p>
-          <div class="staff-grid">
-            <article
-              v-for="member in staffLeadership"
-              :key="member.name"
-              class="flip-card"
-              :class="{ flipped: flipped['lead-' + member.name] }"
-              @click="toggleFlip('lead-' + member.name)"
-            >
-              <div class="flip-inner">
-                <div class="flip-front">
-                  <img v-if="member.image" :src="member.image" :alt="member.name" />
-                  <div v-else class="staff-initial">{{ member.name[0] }}</div>
-                  <h3>{{ member.name }}</h3>
-                  <p>{{ member.role }}</p>
-                </div>
-                <div class="flip-back">
-                  <h3>{{ member.name }}</h3>
-                  <p class="flip-bio">{{ member.bio }}</p>
-                </div>
-              </div>
-            </article>
+
+        <details class="group-panel">
+          <summary>Leadership emeritus</summary>
+          <div class="former-list">
+            <div v-for="member in formerDirectors" :key="member.name" class="former-row">
+              <img v-if="member.image" :src="member.image" :alt="member.name" loading="lazy" />
+              <span v-else class="staff-initial">{{ member.name[0] }}</span>
+              <span><strong>{{ member.name }}</strong><small>{{ member.role }}</small></span>
+            </div>
           </div>
-          <p class="staff-subhead">Team</p>
-          <div class="staff-grid">
-            <article
-              v-for="member in generalStaff"
-              :key="member.name"
-              class="flip-card flip-card-compact"
-              :class="{ flipped: flipped['staff-' + member.name] }"
-              @click="toggleFlip('staff-' + member.name)"
-            >
-              <div class="flip-inner">
-                <div class="flip-front flip-front-nametag">
-                  <h3>{{ member.name }}</h3>
-                </div>
-                <div class="flip-back">
-                  <img v-if="member.image" :src="member.image" :alt="member.name" />
-                  <div v-else class="staff-initial">{{ member.name[0] }}</div>
-                  <h3>{{ member.name }}</h3>
-                  <p class="flip-bio">{{ member.bio }}</p>
-                </div>
-              </div>
-            </article>
+        </details>
+
+        <details class="group-panel">
+          <summary>Staff leadership</summary>
+          <div class="person-list">
+            <details v-for="member in staffLeadership" :key="member.name" class="person-row">
+              <summary>
+                <span class="person-identity">
+                  <img v-if="member.image" :src="member.image" :alt="member.name" loading="lazy" />
+                  <span v-else class="staff-initial">{{ member.name[0] }}</span>
+                  <span><strong>{{ member.name }}</strong><small>{{ member.role }}</small></span>
+                </span>
+              </summary>
+              <p>{{ member.bio }}</p>
+            </details>
+          </div>
+        </details>
+
+        <details class="group-panel">
+          <summary>Team</summary>
+          <div class="person-list">
+            <details v-for="member in generalStaff" :key="member.name" class="person-row">
+              <summary>
+                <span class="person-identity">
+                  <img v-if="member.image" :src="member.image" :alt="member.name" loading="lazy" />
+                  <span v-else class="staff-initial">{{ member.name[0] }}</span>
+                  <span><strong>{{ member.name }}</strong><small>{{ member.role || 'Staff' }}</small></span>
+                </span>
+              </summary>
+              <p>{{ member.bio }}</p>
+            </details>
           </div>
         </details>
       </div>
     </section>
 
-    <section id="faq" class="content-band faq-band">
-      <div class="band-heading">
-        <h2>FAQ</h2>
+    <section id="faq" class="section-shell faq-section">
+      <div class="section-intro content-width">
+        <div>
+          <h2>Good questions deserve clear answers.</h2>
+          <p>The practical details, in one place.</p>
+        </div>
       </div>
-      <div class="accordion-stack">
-        <details v-for="item in faqs" :key="item.q" class="accordion">
+
+      <div class="faq-list content-width">
+        <details v-for="item in faqs" :key="item.q" class="faq-item">
           <summary>{{ item.q }}</summary>
-          <p v-html="item.a"></p>
+          <div class="faq-answer"><p v-html="item.a"></p></div>
         </details>
       </div>
-      <p class="faq-note">
-        Still have questions? Ask them in our
-        <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a>.
-      </p>
+      <p class="faq-note content-width">Still have a question? Ask in our <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a>.</p>
     </section>
 
-    <section id="partners" class="story-panel partners-panel">
-      <div class="partner-heading">
-        <p class="section-kicker">Partners</p>
-        <h2>Partners &amp; Sponsors</h2>
+    <section id="partners" class="section-shell partners-section">
+      <div class="section-intro content-width">
+        <div>
+          <h2>Built with good company.</h2>
+          <p>Organizations supporting access, rigor, and the next generation of problem solvers.</p>
+        </div>
       </div>
-      <div class="partner-orbit">
-        <a
-          v-for="partner in partners"
-          :key="partner.name"
-          class="partner-logo-card"
-          :href="partner.href"
-          target="_blank"
-          rel="noopener"
-        >
-          <img :src="partner.logo" :alt="partner.name" />
-          <span>{{ partner.name }}</span>
-          <span v-if="partner.tier" class="partner-tier" :class="'tier-' + partner.tier.toLowerCase()">{{ partner.tier }} Sponsor</span>
+
+      <div class="partner-list content-width">
+        <a v-for="partner in partners" :key="partner.name" class="partner-row" :href="partner.href" target="_blank" rel="noopener">
+          <span class="partner-logo"><img :src="partner.logo" :alt="partner.name" loading="lazy" /></span>
+          <span class="partner-copy"><strong>{{ partner.name }}</strong><small v-if="partner.tier">{{ partner.tier }} sponsor</small></span>
         </a>
       </div>
-      <div class="closing-cta">
+
+      <div class="closing-block content-width">
         <h2>Climb with us on August 29 or 30.</h2>
-        <p>Registration closes August 27, 23:59 EST. Pick one window and compete from anywhere.</p>
-        <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
+        <p>Registration closes August 27 at 23:59 EST. Pick one window and compete from anywhere.</p>
+        <a class="action action-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-if (process.client) {
-  gsap.registerPlugin(ScrollTrigger)
-}
-
 export default {
   data() {
     return {
-      identityWords: ['Youth', 'International', 'Math', 'Olympiad'],
-      mountainFrameSrc: '/story-frames/mountain/ezgif-frame-001.jpg',
-      podiumFrameSrc: '/story-frames/podium/ezgif-frame-001.jpg',
-      cleanupFns: [],
-      flipped: {},
       executiveDirectors: [
         { name: 'Wenhao Lu', image: '/staff/wenhaolu.png', bio: 'is a USAJMO Honorable Mention who scored 11 on the AIME and competes in the USACO Platinum division. He loves combinatorics and algebra, and his club baseball team peaked at #75 nationally.' },
         { name: 'Hyunjun Yi', image: '/staff/junyi.png', bio: 'is an AMC-12 Perfect Scorer who now works as a Deputy Executive Director at STEMise. Growing up in the Netherlands, he likes to hang out with his friends and listen to music in his free time.' },
@@ -317,38 +312,14 @@ export default {
         { name: 'Wyatt Choi', image: '/staff/wyattchoi.png', bio: 'is a 1x AIME qualifier with Honor Roll, a Silver medalist in the Korean Math Olympiad (KMO), and a distinction recipient in the British Math Olympiad Round 1. He has placed in the Top 8 Teams at the Caltech Harvey Mudd Competition, Top 10 Individual at the Brown University Math Olympiad, and 3rd at his regional Math Field Competition. He writes olympiad problems for Solvefire and YIMO, and in his free time plays electric guitar and builds robots for VEX Robotics.' },
       ],
       faqs: [
-        {
-          q: 'Who can join?',
-          a: 'YIMO is open to all students. Division 2 is designed for students building competition experience.',
-        },
-        {
-          q: 'Which division should I pick?',
-          a: 'Beginner fits AMC 10 to early AIME level. Advanced fits early AIME through high AIME competitors.',
-        },
-        {
-          q: 'When is the contest?',
-          a: 'Choose exactly one window: Saturday, August 29 at 21:30 EST or Sunday, August 30 at 11:00 AM EST.',
-        },
-        {
-          q: 'What does the contest look like?',
-          a: 'The written round has 20 problems, then the top 8 in each division advance to a final round with computational and proof problems.',
-        },
-        {
-          q: 'Are calculators allowed?',
-          a: "No, calculators aren't allowed.",
-        },
-        {
-          q: 'Are awards and certificates available?',
-          a: 'Awards are given to both divisions, and participation certificates are available.',
-        },
-        {
-          q: 'Where can I study?',
-          a: 'Check the <a href="/archive">Archive</a> and <a href="https://saintlymath.com/" target="_blank" rel="noopener">Saintly</a> for practice.',
-        },
-        {
-          q: 'How do I register?',
-          a: 'Use the free registration form and upload the parental consent form before August 27, 23:59 EST.',
-        },
+        { q: 'Who can join?', a: 'YIMO is open to all students. Division 2 is designed for students building competition experience.' },
+        { q: 'Which division should I pick?', a: 'Beginner fits AMC 10 to early AIME level. Advanced fits early AIME through high AIME competitors.' },
+        { q: 'When is the contest?', a: 'Choose exactly one window: Saturday, August 29 at 21:30 EST or Sunday, August 30 at 11:00 AM EST.' },
+        { q: 'What does the contest look like?', a: 'The written round has 20 problems, then the top 8 in each division advance to a final round with computational and proof problems.' },
+        { q: 'Are calculators allowed?', a: "No, calculators aren't allowed." },
+        { q: 'Are awards and certificates available?', a: 'Awards are given to both divisions, and participation certificates are available.' },
+        { q: 'Where can I study?', a: 'Check the <a href="/archive">Archive</a> and <a href="https://saintlymath.com/" target="_blank" rel="noopener">Saintly</a> for practice.' },
+        { q: 'How do I register?', a: 'Use the free registration form and upload the parental consent form before August 27, 23:59 EST.' },
       ],
       partners: [
         { name: 'HRT', logo: '/hrt-logo.png', href: 'https://www.hudsonrivertrading.com/', tier: 'Platinum' },
@@ -361,254 +332,59 @@ export default {
       ],
     }
   },
-  mounted() {
-    this.initAnimations()
-    this.initLenis()
-    this.initThreeMath()
-  },
-  beforeDestroy() {
-    this.cleanupFns.forEach((fn) => fn())
-    this.cleanupFns = []
-    ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
-  },
-  methods: {
-    toggleFlip(id) {
-      this.$set(this.flipped, id, !this.flipped[id])
-    },
-    framePath(folder, frame) {
-      return `/story-frames/${folder}/ezgif-frame-${String(frame).padStart(3, '0')}.jpg`
-    },
-    setSequenceFrame(refName, folder, count, progress) {
-      const img = this.$refs[refName]
-      if (!img) return
-      const frame = gsap.utils.clamp(1, count, Math.round(gsap.utils.mapRange(0, 1, 1, count, progress)))
-      const nextSrc = this.framePath(folder, frame)
-      if (img.getAttribute('src') !== nextSrc) img.setAttribute('src', nextSrc)
-    },
-    preloadFrames(folder, count) {
-      const queue = Array.from({ length: count }, (_, index) => this.framePath(folder, index + 1))
-      const load = () => {
-        queue.forEach((src) => {
-          const img = new Image()
-          img.decoding = 'async'
-          img.src = src
-        })
-      }
-      if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(load, { timeout: 1800 })
-      } else {
-        window.setTimeout(load, 900)
-      }
-    },
-    async initLenis() {
-      try {
-        const LenisModule = await import('@studio-freight/lenis/dist/lenis.js')
-        const Lenis = LenisModule.default || LenisModule
-        const lenis = new Lenis({ lerp: 0.09, smoothWheel: true })
-        lenis.on('scroll', ScrollTrigger.update)
-        const ticker = (time) => {
-          lenis.raf(time * 1000)
-        }
-        gsap.ticker.add(ticker)
-        gsap.ticker.lagSmoothing(0)
-        this.cleanupFns.push(() => {
-          gsap.ticker.remove(ticker)
-          lenis.destroy()
-        })
-      } catch (error) {
-        console.warn('Lenis unavailable; native scroll remains active.', error)
-      }
-    },
-    initAnimations() {
-      const root = this.$refs.page
-      if (!root) return
-
-      const mm = gsap.matchMedia()
-      const ctx = gsap.context(() => {
-        gsap.set('.wheel-word', { autoAlpha: 0, y: 24, rotationX: -40 })
-        const wordTl = gsap.timeline({ repeat: -1 })
-        gsap.utils.toArray('.wheel-word').forEach((word) => {
-          wordTl
-            .to(word, { autoAlpha: 1, y: 0, rotationX: 0, duration: 0.25, ease: 'power3.out' })
-            .to(word, { autoAlpha: 0, y: -18, rotationX: 24, duration: 0.22, ease: 'power3.in' }, '+=0.35')
-        })
-
-        const climbTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: '.climb-panel',
-            start: 'top top',
-            end: '+=2200',
-            scrub: 1,
-            pin: true,
-            onUpdate: (self) => {
-              this.setSequenceFrame('mountainSequence', 'mountain', 180, self.progress)
-            },
-          },
-        })
-        climbTl
-          .from('.mountain-sequence', { y: 46, scale: 0.98, duration: 0.55 })
-          .fromTo('.rising-card', { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.35 }, 0.85)
-          .to('.rising-card', { autoAlpha: 0, x: 30, duration: 0.25 }, 1.55)
-          .fromTo('.achiever-card', { autoAlpha: 0, x: -70 }, { autoAlpha: 1, x: 0, duration: 0.4 }, 2.15)
-
-        const formatTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: '.format-panel',
-            start: 'top top',
-            end: '+=2100',
-            scrub: 1,
-            pin: true,
-            onUpdate: (self) => {
-              this.setSequenceFrame('podiumSequence', 'podium', 180, self.progress)
-            },
-          },
-        })
-        formatTl
-          .from('.written-board h2, .write-line, .medal-grid span', { y: 22, stagger: 0.08, duration: 0.7 }, 0.12)
-          .from('.podium-sequence', { y: 70, scale: 0.96, duration: 0.55 }, 0.18)
-          .to('.leaderboard-side', { autoAlpha: 0, y: -80, duration: 0.45 }, 1.42)
-
-        gsap.from('.compact-staff-card, .flip-card, .accordion', {
-          scrollTrigger: {
-            trigger: '.content-band',
-            start: 'top 75%',
-          },
-          autoAlpha: 0,
-          y: 28,
-          stagger: 0.05,
-          duration: 0.55,
-          ease: 'power2.out',
-        })
-
-        this.preloadFrames('mountain', 180)
-        this.preloadFrames('podium', 180)
-      }, root)
-
-      mm.add('(prefers-reduced-motion: reduce)', () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.disable())
-      })
-
-      this.cleanupFns.push(() => {
-        ctx.revert()
-        mm.revert()
-      })
-    },
-    async initThreeMath() {
-      const canvas = this.$refs.mathCanvas
-      if (!canvas) return
-
-      try {
-        const THREE = await import('three')
-        const scene = new THREE.Scene()
-        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100)
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true })
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-        camera.position.z = 7
-
-        const group = new THREE.Group()
-        const material = new THREE.MeshBasicMaterial({ color: 0xf97316, wireframe: true, transparent: true, opacity: 0.28 })
-        const geometries = [
-          new THREE.TorusKnotGeometry(0.62, 0.13, 80, 8),
-          new THREE.IcosahedronGeometry(0.78, 1),
-          new THREE.OctahedronGeometry(0.7, 0),
-        ]
-        geometries.forEach((geometry, index) => {
-          const mesh = new THREE.Mesh(geometry, material.clone())
-          const positions = [
-            [-3.8, 1.2, -1.4],
-            [3.8, 1.0, -1.8],
-            [3.2, -2.2, -2.2],
-          ]
-          mesh.position.set(positions[index][0], positions[index][1], positions[index][2])
-          group.add(mesh)
-        })
-        scene.add(group)
-
-        const resize = () => {
-          const rect = canvas.getBoundingClientRect()
-          renderer.setSize(rect.width, rect.height, false)
-          camera.aspect = rect.width / Math.max(rect.height, 1)
-          camera.updateProjectionMatrix()
-        }
-        resize()
-        window.addEventListener('resize', resize)
-
-        let rafId
-        const animate = () => {
-          group.children.forEach((mesh, index) => {
-            mesh.rotation.x += 0.003 + index * 0.001
-            mesh.rotation.y += 0.005
-          })
-          renderer.render(scene, camera)
-          rafId = window.requestAnimationFrame(animate)
-        }
-        animate()
-
-        this.cleanupFns.push(() => {
-          window.cancelAnimationFrame(rafId)
-          window.removeEventListener('resize', resize)
-          geometries.forEach((geometry) => geometry.dispose())
-          group.children.forEach((mesh) => mesh.material.dispose())
-          renderer.dispose()
-        })
-      } catch (error) {
-        console.warn('Three.js background unavailable.', error)
-      }
-    },
-  },
 }
 </script>
 
 <style scoped>
-.yimo-redesign {
-  --story-bg: #0a0805;
+.yimo-page {
+  --page-bg: #0a0805;
+  --page-bg-soft: #100c08;
   --paper: #f6f0e8;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(circle at 70% 8%, rgba(249, 115, 22, 0.18), transparent 24rem),
-    linear-gradient(180deg, #0a0805 0%, #080604 58%, #110b06 100%);
-}
-
-.story-panel {
-  position: relative;
+  --muted: #b9afa1;
+  --faint: #82786e;
+  --line: rgba(246, 240, 232, 0.16);
+  --line-soft: rgba(246, 240, 232, 0.09);
+  --accent: #f97316;
+  --accent-soft: #ffb26e;
   min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 4.5rem 2rem 5.5rem;
-}
-
-.hero-panel {
-  text-align: center;
   overflow: hidden;
+  color: var(--paper);
+  background: var(--page-bg);
 }
 
-.math-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.14;
-  filter: blur(0.2px);
+.content-width {
+  width: min(1180px, calc(100% - 4rem));
+  margin-inline: auto;
+}
+
+.hero-section,
+.section-shell {
+  position: relative;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.hero-section {
+  min-height: calc(100vh - 66px);
+  display: grid;
+  align-items: center;
+  padding: 7rem 0 6rem;
 }
 
 .geometry-field {
   position: absolute;
-  inset: 5.5rem 3rem 3rem;
-  z-index: 1;
+  inset: 3rem 2rem 2rem;
   pointer-events: none;
 }
 
 .geometry-form {
   position: absolute;
-  width: clamp(120px, 17vw, 235px);
+  width: 220px;
   height: auto;
   overflow: visible;
-  opacity: 0.18;
-  stroke: rgba(249, 115, 22, 0.56);
-  stroke-width: 1.4;
   fill: none;
-  filter: drop-shadow(0 0 18px rgba(249, 115, 22, 0.13));
+  stroke: rgba(249, 115, 22, 0.45);
+  stroke-width: 1.1;
+  opacity: 0.38;
 }
 
 .geometry-form * {
@@ -616,754 +392,726 @@ export default {
 }
 
 .form-orbit {
-  left: 5%;
-  top: 12%;
-  width: clamp(180px, 24vw, 320px);
-  opacity: 0.21;
+  top: 2%;
+  left: 1%;
+  width: 300px;
 }
 
 .form-poly {
-  right: 7%;
-  top: 17%;
+  top: 8%;
+  right: 3%;
 }
 
 .form-triangle {
-  right: 21%;
-  bottom: 2%;
-  opacity: 0.11;
+  right: 20%;
+  bottom: 1%;
 }
 
 .form-cyclic {
-  left: 8%;
-  bottom: 10%;
-  opacity: 0.12;
+  left: 7%;
+  bottom: 3%;
 }
 
 .form-prism {
-  right: 4%;
-  bottom: 22%;
-  opacity: 0.13;
+  right: 1%;
+  bottom: 24%;
 }
 
-.hero-copy {
-  isolation: isolate;
-}
-
-.hero-copy {
+.hero-layout {
   position: relative;
-  z-index: 3;
-  max-width: 820px;
-  margin: 0 auto;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 5rem;
+  align-items: end;
 }
 
-.logo-stage {
-  display: grid;
-  place-items: center;
-  margin: 0 auto 1.3rem;
+.hero-main {
+  max-width: 720px;
+}
+
+.hero-kicker,
+.entry-index,
+.fact-label {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
 }
 
 .hero-logo {
-  width: clamp(82px, 10vw, 116px);
-  height: clamp(82px, 10vw, 116px);
-  border-radius: 50%;
+  display: block;
+  width: 92px;
+  height: 92px;
+  margin: 2rem 0 1.4rem;
   object-fit: cover;
-  box-shadow: 0 0 60px rgba(249, 115, 22, 0.34);
-  will-change: transform;
 }
 
-.word-wheel {
-  position: relative;
-  min-height: 2.3rem;
-  margin-top: 0.85rem;
-  font-size: clamp(1rem, 2vw, 1.35rem);
-  font-weight: 800;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
+.hero-name {
+  max-width: 470px;
+  margin: 0 0 0.55rem;
   color: var(--accent-soft);
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.wheel-word {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
-  white-space: nowrap;
-}
-
-.hero-copy h1 {
-  font-family: 'Instrument Serif', serif !important;
-  font-size: clamp(4.4rem, 13.5vw, 9.4rem);
-  font-weight: 400;
-  line-height: 0.82;
-  color: var(--paper);
+.hero-main h1 {
   margin: 0;
+  color: var(--paper);
+  font-family: Georgia, 'Times New Roman', serif !important;
+  font-size: 8rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.8;
 }
 
 .hero-subtitle {
-  max-width: 690px;
-  margin: 1.35rem auto 0;
-  color: var(--text-dim);
-  font-size: clamp(1rem, 1.8vw, 1.22rem);
+  max-width: 620px;
+  margin: 2rem 0 0;
+  color: var(--muted);
+  font-size: 1.1rem;
   line-height: 1.75;
 }
 
-.hero-actions,
-.closing-cta {
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.action {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
   justify-content: center;
-  gap: 0.85rem;
-  margin-top: 1.55rem;
-}
-
-.hero-credit {
-  margin-top: 1.1rem;
-  color: var(--text-dim);
-  font-size: 0.95rem;
-  letter-spacing: 0.01em;
-}
-
-.hero-credit a {
-  color: var(--accent-soft);
+  padding: 0 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 0;
+  font-size: 0.9rem;
+  font-weight: 800;
   text-decoration: none;
-  font-weight: 600;
 }
 
-.hero-credit a:hover {
-  text-decoration: underline;
+.action-primary {
+  color: #1b0d04;
+  background: var(--accent);
+}
+
+.action-primary:hover,
+.action-primary:focus-visible {
+  color: #1b0d04;
+  background: var(--accent-soft);
+}
+
+.action-secondary {
+  color: var(--paper);
+  border-color: var(--line);
+  background: transparent;
+}
+
+.action-secondary:hover,
+.action-secondary:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent-soft);
+}
+
+.hero-credit,
+.faq-note {
+  margin: 1.6rem 0 0;
+  color: var(--faint);
+  font-size: 0.86rem;
 }
 
 .faq-note {
-  margin-top: 1.6rem;
   text-align: center;
-  color: var(--text-dim);
-  font-size: 1rem;
 }
 
-.faq-note a {
+.hero-credit a,
+.faq-note a,
+.inline-link {
   color: var(--accent-soft);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.faq-note a:hover {
+  font-weight: 700;
   text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
-.primary-action,
-.secondary-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 46px;
-  padding: 0 1.3rem;
-  border-radius: 6px;
-  font-weight: 800;
-  text-decoration: none;
-  transition: transform 0.2s, background 0.2s, border-color 0.2s;
+.hero-facts {
+  padding: 1.2rem 0 0 1.4rem;
+  border-left: 1px solid var(--accent);
 }
 
-.primary-action {
-  color: white;
-  background: var(--accent);
-}
-
-.secondary-action {
-  color: var(--text);
-  border: 1px solid var(--line-strong);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.primary-action:hover,
-.secondary-action:hover {
-  transform: translateY(-2px);
-}
-
-.scroll-cue {
-  position: absolute;
-  bottom: 1.3rem;
-  left: 50%;
-  z-index: 4;
-  width: 28px;
-  height: 48px;
-  margin-left: -14px;
-  border: 1px solid rgba(246, 240, 232, 0.45);
-  border-radius: 20px;
-}
-
-.scroll-cue span {
-  position: absolute;
-  left: 50%;
-  top: 9px;
-  width: 5px;
-  height: 5px;
-  margin-left: -2.5px;
-  border-radius: 50%;
-  background: var(--accent);
-  animation: cue 1.4s infinite;
-}
-
-@keyframes cue {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(22px); opacity: 0; }
-}
-
-.mountain-stage {
-  position: relative;
-  width: min(980px, 92vw);
-  aspect-ratio: 16 / 9;
-  height: auto;
-}
-
-.frame-stage {
-  overflow: hidden;
-  background: transparent;
-}
-
-.frame-sequence {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  user-select: none;
-  pointer-events: none;
-  will-change: transform;
-}
-
-.mountain-sequence {
-  object-position: center center;
-}
-
-.level-card {
-  position: absolute;
-  z-index: 4;
-  width: min(330px, 86vw);
-  padding: 1.2rem;
-  border: 1px solid rgba(246, 240, 232, 0.12);
-  background: rgba(10, 8, 5, 0.72);
-  backdrop-filter: blur(14px);
-}
-
-.rising-card {
-  right: 8vw;
-  top: 39vh;
-}
-
-.achiever-card {
-  left: 8vw;
-  top: 24vh;
-}
-
-.level-card p,
-.section-kicker {
-  margin: 0 0 0.55rem;
-  color: var(--accent);
-  font-size: 0.74rem;
-  font-weight: 900;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.level-card h2,
-.band-heading h2,
-.partner-heading h2,
-.written-board h2,
-.closing-cta h2 {
+.fact-date {
+  margin: 0.8rem 0 0;
   color: var(--paper);
-  font-size: clamp(2rem, 5vw, 4rem);
-  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.1rem;
+  line-height: 1.05;
 }
 
-.level-card span,
-.closing-cta p {
-  display: block;
-  margin-top: 0.75rem;
-  color: var(--text-dim);
-  line-height: 1.65;
-}
-
-.format-panel {
-  grid-template-columns: minmax(260px, 0.75fr) minmax(320px, 1.25fr);
-  gap: clamp(2rem, 6vw, 5rem);
-  align-items: center;
-}
-
-.leaderboard-side,
-.written-side {
-  position: relative;
-  width: 100%;
-  max-width: 580px;
-}
-
-.leaderboard-steps {
-  position: relative;
-  width: min(248px, 31vw);
-  aspect-ratio: 9 / 16;
-  height: auto;
-  margin-inline: auto;
-}
-
-.written-board {
-  position: relative;
-  padding: clamp(1.5rem, 4vw, 3rem);
-  border: 1px solid rgba(246, 240, 232, 0.14);
-  background: rgba(246, 240, 232, 0.045);
-}
-
-.write-line {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(246, 240, 232, 0.1);
-}
-
-.write-line h3 {
-  margin: 0 0 0.35rem;
-  color: var(--paper);
-  font-size: 1rem;
-}
-
-.write-line p {
-  margin: 0;
-  color: var(--text-dim);
-  line-height: 1.65;
-}
-
-.scoring-guide-link {
-  display: inline-block;
-  margin-top: 0.8rem;
-  color: var(--accent);
-  font-weight: 800;
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
-}
-
-.medal-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin-top: 1.7rem;
-}
-
-.medal-grid span {
-  border-left: 2px solid var(--accent);
-  padding: 0.85rem 1rem;
-  color: rgba(246, 240, 232, 0.86);
-  background: rgba(255, 255, 255, 0.04);
+.fact-copy {
+  margin: 1rem 0 0;
+  color: var(--muted);
   font-size: 0.88rem;
+  line-height: 1.6;
 }
 
-.medal-grid strong {
+.section-shell {
+  padding: 7rem 0 8rem;
+}
+
+.section-intro {
   display: block;
+  padding-bottom: 3rem;
+}
+
+.section-intro h2,
+.closing-block h2 {
+  margin: 0;
   color: var(--paper);
-  font-size: 1.6rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 3.7rem;
+  font-weight: 400;
+  letter-spacing: 0;
   line-height: 1;
 }
 
-.content-band {
-  position: relative;
-  z-index: 3;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 7rem 2rem;
-}
-
-.band-heading {
-  max-width: 620px;
-  margin-bottom: 2rem;
-}
-
-.accordion-stack {
-  display: grid;
-  gap: 0.85rem;
-}
-
-.accordion {
-  border: 1px solid rgba(246, 240, 232, 0.12);
-  background: rgba(255, 255, 255, 0.035);
-}
-
-.accordion summary {
-  cursor: pointer;
-  padding: 1.1rem 1.25rem;
-  color: var(--paper);
-  font-weight: 900;
-  list-style: none;
-}
-
-.accordion summary::-webkit-details-marker {
-  display: none;
-}
-
-.accordion summary::after {
-  content: '+';
-  float: right;
-  color: var(--accent);
-}
-
-.accordion[open] summary::after {
-  content: '-';
-}
-
-.accordion > p {
-  margin: 0;
-  padding: 0 1.25rem 1.25rem;
-  color: var(--text-dim);
+.section-intro div > p,
+.closing-block > p {
+  max-width: 560px;
+  margin: 1.1rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
   line-height: 1.7;
 }
 
-.staff-grid {
+.story-grid,
+.format-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+  gap: 5rem;
   align-items: start;
-  gap: 1rem;
-  padding: 0 1.25rem 1.25rem;
 }
 
-.compact-staff-card {
-  min-height: 170px;
-  padding: 1rem;
-  text-align: center;
-  background: rgba(10, 8, 5, 0.4);
-}
-
-.compact-staff-card img,
-.staff-initial {
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 0.8rem;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid rgba(246, 240, 232, 0.15);
-}
-
-.staff-initial {
-  display: grid;
-  place-items: center;
-  color: var(--accent);
-  font-weight: 900;
-  background: rgba(249, 115, 22, 0.1);
-}
-
-.compact-staff-card h3 {
+.story-figure {
   margin: 0;
-  color: var(--paper);
-  font-size: 0.96rem;
 }
 
-.compact-staff-card p {
-  margin: 0.25rem 0 0;
-  color: var(--accent-soft);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.story-frame {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #050403;
 }
 
-.staff-subhead {
-  margin: 0.25rem 0 0.85rem;
-  padding: 0 1.25rem;
-  color: var(--accent-soft);
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
+.mountain-frame {
+  aspect-ratio: 16 / 9;
 }
 
-.flip-card {
-  perspective: 1000px;
-  cursor: pointer;
-  min-height: 250px;
-  background: transparent;
-  padding: 0;
+.podium-frame {
+  width: min(100%, 390px);
+  aspect-ratio: 9 / 16;
+  margin-inline: auto;
 }
 
-.flip-inner {
-  position: relative;
+.story-frame img {
+  display: block;
   width: 100%;
-  min-height: 250px;
   height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
-
-.flip-card.flipped .flip-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-front,
-.flip-back {
-  position: absolute;
-  inset: 0;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 1.1rem;
-  border-radius: 14px;
-  border: 1px solid rgba(246, 240, 232, 0.1);
-  background: rgba(10, 8, 5, 0.45);
-}
-
-.flip-back {
-  transform: rotateY(180deg);
-  justify-content: flex-start;
-  overflow-y: auto;
-}
-
-.flip-front img,
-.flip-back img,
-.flip-card .staff-initial {
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 0.7rem;
-  border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(246, 240, 232, 0.15);
-  flex-shrink: 0;
 }
 
-.flip-front h3,
-.flip-back h3 {
-  margin: 0;
-  color: var(--paper);
-  font-size: 0.96rem;
-}
-
-.flip-front p {
-  margin: 0.3rem 0 0;
-  color: var(--accent-soft);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.flip-bio {
-  margin: 0.55rem 0 0;
-  color: var(--text-dim);
-  font-size: 0.82rem;
-  line-height: 1.5;
-}
-
-.flip-hint {
-  margin-top: 0.55rem;
-  color: var(--text-dim);
-  font-size: 0.6rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  opacity: 0.55;
-}
-
-.flip-front-nametag {
-  justify-content: center;
-  padding: 0.55rem 0.75rem;
-}
-
-.flip-front-nametag h3 {
-  font-size: 0.92rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-
-/* Compact staff cards: tiny nametag until clicked, then expand */
-.flip-card-compact {
-  min-height: 48px;
-  transition: min-height 0.45s ease;
-}
-
-.flip-card-compact .flip-inner {
-  min-height: 48px;
-}
-
-.flip-card-compact.flipped {
-  min-height: 250px;
-}
-
-.flip-card-compact.flipped .flip-inner {
-  min-height: 250px;
-}
-
-.flip-card-compact.flipped .flip-front-nametag h3 {
-  font-size: 1.2rem;
-}
-
-.name-river {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 0 1.25rem 1.25rem;
-}
-
-.staff-description-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 0.65rem;
-  padding: 0 1.25rem 1.25rem;
-}
-
-.staff-description {
-  border: 1px solid rgba(246, 240, 232, 0.1);
-  background: rgba(10, 8, 5, 0.34);
-}
-
-.staff-description summary {
-  padding: 0.85rem 0.95rem;
-  color: var(--paper);
-  font-weight: 800;
-  cursor: pointer;
-  list-style: none;
-}
-
-.staff-description summary::-webkit-details-marker {
-  display: none;
-}
-
-.staff-description p {
-  margin: 0;
-  padding: 0 0.95rem 0.95rem;
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  line-height: 1.58;
-}
-
-.name-river span {
-  padding: 0.42rem 0.62rem;
-  color: var(--text-dim);
-  border: 1px solid rgba(246, 240, 232, 0.1);
-  background: rgba(255, 255, 255, 0.035);
-  font-size: 0.84rem;
-}
-
-.partners-panel {
-  min-height: 110vh;
-  align-content: center;
-  text-align: center;
-}
-
-.partner-heading {
-  margin-bottom: 2rem;
-}
-
-.partner-orbit {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(120px, 1fr));
-  gap: 1rem;
-  width: min(1120px, 100%);
-}
-
-.partner-logo-card {
-  min-height: 150px;
-  display: grid;
-  place-items: center;
-  gap: 0.7rem;
-  padding: 1.25rem;
-  color: rgba(246, 240, 232, 0.9);
-  text-decoration: none;
-  background: transparent;
-  border: 1px solid rgba(246, 240, 232, 0.12);
-}
-
-.partner-logo-card img {
-  max-width: 150px;
-  max-height: 72px;
+.podium-frame img {
   object-fit: contain;
-  filter: none;
 }
 
-.partner-logo-card span {
-  font-size: 0.75rem;
-  font-weight: 900;
+.story-figure figcaption {
+  margin-top: 0.85rem;
+  color: var(--faint);
+  font-size: 0.8rem;
+}
+
+.division-list,
+.format-list {
+  border-top: 1px solid var(--line);
+}
+
+.division-entry,
+.format-row {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.division-entry h3,
+.format-row h3 {
+  margin: 0;
+  color: var(--paper);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.division-entry p:not(.entry-index),
+.format-row p:not(.entry-index) {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.entry-index {
+  color: var(--faint);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+}
+
+.division-note {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  color: var(--accent-soft);
+  font-size: 0.9rem;
+}
+
+.division-note span {
+  color: var(--faint);
+  font-size: 0.7rem;
+  font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
-.partner-tier {
-  margin-top: 0.15rem;
-  padding: 0.18rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.6rem !important;
-  letter-spacing: 0.1em !important;
-  border: 1px solid currentColor;
+.format-section {
+  background: var(--page-bg-soft);
 }
 
-.partner-tier.tier-platinum {
-  color: #d7dbe3;
-  background: rgba(215, 219, 227, 0.08);
+.format-grid {
+  grid-template-columns: minmax(250px, 0.7fr) minmax(0, 1.3fr);
 }
 
-.partner-tier.tier-silver {
-  color: #b8bcc4;
-  background: rgba(184, 188, 196, 0.08);
+.format-content {
+  min-width: 0;
 }
 
-.partner-tier.tier-bronze {
-  color: #d08a4e;
-  background: rgba(208, 138, 78, 0.1);
+.format-row {
+  grid-template-columns: 145px minmax(0, 1fr);
 }
 
-.closing-cta {
+.format-row .inline-link {
+  display: inline-block;
+  margin-top: 0.85rem;
+  font-size: 0.88rem;
+}
+
+.format-footer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  gap: 2rem;
+  align-items: end;
+  padding-top: 1.5rem;
+}
+
+.award-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.award-summary span {
+  padding: 0.8rem 0;
+  border-top: 2px solid var(--accent);
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.award-summary strong {
   display: block;
-  max-width: 660px;
-  margin: 4rem auto 0;
+  margin-bottom: 0.35rem;
+  color: var(--paper);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.55rem;
+  font-weight: 400;
 }
 
-.closing-cta .primary-action {
-  margin-top: 1.2rem;
+.prize-summary {
+  padding-left: 1rem;
+  border-left: 1px solid var(--accent);
 }
 
-@media (max-width: 900px) {
-  .format-panel {
+.prize-summary span {
+  display: block;
+  color: var(--faint);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.prize-summary strong {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--paper);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 2.25rem;
+  font-weight: 400;
+}
+
+.people-section,
+.faq-section,
+.partners-section {
+  background: var(--page-bg);
+}
+
+.people-content,
+.faq-list,
+.partner-list {
+  border-top: 1px solid var(--line);
+}
+
+.group-panel {
+  border-bottom: 1px solid var(--line);
+}
+
+.group-panel > summary,
+.faq-item > summary {
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  color: var(--paper);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 800;
+  list-style: none;
+}
+
+.group-panel > summary::-webkit-details-marker,
+.person-row > summary::-webkit-details-marker,
+.faq-item > summary::-webkit-details-marker {
+  display: none;
+}
+
+.group-panel > summary::after,
+.faq-item > summary::after,
+.person-row > summary::after {
+  content: '+';
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.group-panel[open] > summary::after,
+.faq-item[open] > summary::after,
+.person-row[open] > summary::after {
+  content: '-';
+}
+
+.person-list,
+.former-list {
+  padding-bottom: 0.75rem;
+}
+
+.person-row {
+  border-top: 1px solid var(--line-soft);
+}
+
+.person-row > summary {
+  display: flex;
+  min-height: 68px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.person-identity,
+.former-row {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.person-identity img,
+.former-row img,
+.staff-initial {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.person-identity > span:last-child,
+.former-row > span:last-child {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.person-identity strong,
+.former-row strong {
+  color: var(--paper);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.person-identity small,
+.former-row small {
+  color: var(--faint);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.person-row > p {
+  max-width: 760px;
+  margin: 0;
+  padding: 0 3rem 1.25rem 3.9rem;
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.7;
+}
+
+.staff-initial {
+  display: grid;
+  place-items: center;
+  color: var(--accent-soft);
+  background: var(--page-bg-soft);
+  font-weight: 800;
+}
+
+.former-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+}
+
+.former-row {
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.faq-item > summary {
+  min-height: 70px;
+}
+
+.faq-answer {
+  padding: 0 3rem 1.25rem 0;
+}
+
+.faq-answer p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.partner-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 3rem;
+}
+
+.partner-row {
+  display: flex;
+  min-height: 105px;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.partner-row:hover,
+.partner-row:focus-visible {
+  color: var(--accent-soft);
+}
+
+.partner-logo {
+  display: grid;
+  width: 130px;
+  height: 64px;
+  flex: 0 0 130px;
+  place-items: center;
+}
+
+.partner-logo img {
+  display: block;
+  max-width: 118px;
+  max-height: 52px;
+  object-fit: contain;
+}
+
+.partner-copy {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.partner-copy strong {
+  font-size: 0.95rem;
+}
+
+.partner-copy small {
+  color: var(--faint);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.closing-block {
+  margin-top: 8rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--accent);
+}
+
+.closing-block .action {
+  margin-top: 1.7rem;
+}
+
+@media (max-width: 860px) {
+  .content-width {
+    width: min(100% - 2rem, 680px);
+  }
+
+  .hero-layout,
+  .story-grid,
+  .format-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 5rem 0 6rem;
+  }
+
+  .hero-facts {
+    max-width: 240px;
+  }
+
+  .section-shell {
+    padding: 5rem 0 6rem;
+  }
+
+  .section-intro {
+    padding-bottom: 2.5rem;
+  }
+
+  .podium-frame {
+    margin-inline: 0;
+  }
+
+  .format-footer {
     grid-template-columns: 1fr;
   }
 
-  .partner-orbit {
-    grid-template-columns: repeat(2, minmax(130px, 1fr));
+  .prize-summary {
+    max-width: 180px;
   }
 
-  .rising-card,
-  .achiever-card {
-    left: 1rem;
-    right: 1rem;
-    top: auto;
-    bottom: 8vh;
-  }
-
-  .achiever-card {
-    bottom: 22vh;
+  .partner-list {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 640px) {
-  .story-panel {
-    padding: 4.5rem 1rem 5rem;
-  }
-
-  .math-canvas {
-    display: none;
+@media (max-width: 560px) {
+  .content-width {
+    width: min(100% - 2rem, 440px);
   }
 
   .geometry-field {
+    inset: 1rem -5rem 1rem;
+    opacity: 0.6;
+  }
+
+  .geometry-form {
+    width: 170px;
+  }
+
+  .form-orbit {
+    left: -4rem;
+  }
+
+  .form-poly {
+    right: -3rem;
+  }
+
+  .form-triangle,
+  .form-prism {
     display: none;
   }
 
-  .hero-copy h1 {
-    font-size: clamp(4rem, 24vw, 5.3rem);
+  .hero-main h1 {
+    font-size: 5.25rem;
   }
 
-  .medal-grid,
-  .partner-orbit {
+  .hero-logo {
+    width: 76px;
+    height: 76px;
+  }
+
+  .hero-name {
+    font-size: 0.77rem;
+    letter-spacing: 0.08em;
+  }
+
+  .section-intro h2,
+  .closing-block h2 {
+    font-size: 2.8rem;
+  }
+
+  .division-entry,
+  .format-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .award-summary {
+    gap: 0.45rem;
+  }
+
+  .award-summary span {
+    font-size: 0.72rem;
+  }
+
+  .award-summary strong {
+    font-size: 1.25rem;
+  }
+
+  .former-list {
     grid-template-columns: 1fr;
   }
 
-  .leaderboard-steps {
-    width: min(260px, 78vw);
+  .person-row > p {
+    padding-left: 0;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .scroll-cue span {
-    animation: none;
+  .faq-answer {
+    padding-right: 0;
+  }
+
+  .partner-logo {
+    width: 105px;
+    flex-basis: 105px;
   }
 }
 </style>

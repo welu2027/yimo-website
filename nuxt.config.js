@@ -1,9 +1,14 @@
+import potdProblems from './data/potd.json'
+
 export default {
   ssr: false,
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   generate: {
-    fallback: '404.html'
+    fallback: '404.html',
+    // Every problem gets a real HTML file, so /potd/<slug> loads directly and
+    // is crawlable rather than relying on the SPA fallback.
+    routes: potdProblems.map((problem) => `/potd/${problem.slug}`)
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -14,13 +19,20 @@ export default {
       { hid: 'description', name: 'description', content: 'Join YIMO - an international youth math competition for middle and high school students.' }
     ],
     link: [
-      { rel: 'icon', type: 'image/png', href: '/yimo-logo.png', sizes: '256x256' }
+      { rel: 'icon', type: 'image/png', href: '/yimo-logo.png', sizes: '256x256' },
+      // Loaded here (discovered early by the preload scanner) instead of via
+      // CSS @import, which blocks CSSOM completion behind an extra round
+      // trip and made the hero's serif headline visibly swap fonts late.
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'crossorigin' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '@/assets/css/tailwind.css',
+    'katex/dist/katex.min.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

@@ -1,3 +1,6 @@
+/* Fonts are loaded via <link> tags in nuxt.config.js head (faster than
+   @import, which blocks CSSOM behind an extra round trip). */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,6 +30,116 @@ body,
 *::after {
   font-family: Hanken Grotesk, Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
+
+/* Rendered markdown (POTD statements, solutions, notes). These are global
+   because `v-html` content carries no scoped-style attribute. */
+.md > *:first-child { margin-top: 0; }
+.md > *:last-child { margin-bottom: 0; }
+
+.md p {
+  margin: 0 0 1rem;
+  color: var(--text-dim);
+  line-height: 1.9;
+}
+
+.md h3, .md h4, .md h5, .md h6 {
+  margin: 1.75rem 0 0.75rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.md strong { color: var(--text); font-weight: 700; }
+
+.md ul, .md ol {
+  margin: 0 0 1rem;
+  padding-left: 1.4rem;
+  color: var(--text-dim);
+  line-height: 1.9;
+}
+
+.md ul { list-style: disc; }
+.md ol { list-style: decimal; }
+.md li { margin-bottom: 0.3rem; }
+
+.md code {
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-size: 0.85em;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  color: var(--accent-soft);
+}
+
+.md blockquote {
+  margin: 0 0 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--line-strong);
+  color: var(--text-faint);
+}
+
+/* Wide tables and long equations scroll inside their own box rather than
+   pushing the page sideways. */
+.md .md-table-wrap { overflow-x: auto; margin: 0 0 1rem; }
+
+.md table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.md th, .md td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line-strong);
+  text-align: left;
+  color: var(--text-dim);
+}
+
+.md th { color: var(--text); font-weight: 700; background: rgba(255, 255, 255, 0.03); }
+
+.md .md-display { overflow-x: auto; overflow-y: hidden; }
+.md .katex-display { margin: 0.4rem 0; }
+
+/* KaTeX picks a font per glyph class and relies on those metrics for radicals,
+   sums, delimiters and fraction bars. The `!important` universal rule above
+   beats KaTeX's own (unflagged) declarations no matter how specific they are,
+   so restate them here with the same flag. Keep in sync with katex.css. */
+.katex,
+.katex * { font-family: KaTeX_Main, 'Times New Roman', serif !important; }
+.katex .textrm,
+.katex .mathit,
+.katex .mathbf,
+.katex .mainrm { font-family: KaTeX_Main !important; }
+.katex .mathnormal,
+.katex .boldsymbol { font-family: KaTeX_Math !important; }
+.katex .textsf,
+.katex .mathsf,
+.katex .mathboldsf,
+.katex .textboldsf,
+.katex .mathsfit,
+.katex .mathitsf,
+.katex .textitsf { font-family: KaTeX_SansSerif !important; }
+.katex .texttt,
+.katex .mathtt { font-family: KaTeX_Typewriter !important; }
+.katex .amsrm,
+.katex .mathbb,
+.katex .textbb { font-family: KaTeX_AMS !important; }
+.katex .mathcal { font-family: KaTeX_Caligraphic !important; }
+.katex .mathfrak,
+.katex .textfrak,
+.katex .mathboldfrak,
+.katex .textboldfrak { font-family: KaTeX_Fraktur !important; }
+.katex .mathscr,
+.katex .textscr { font-family: KaTeX_Script !important; }
+.katex .delimsizing.size1,
+.katex .delimsizing.mult .delim-size1 > span,
+.katex .op-symbol.small-op { font-family: KaTeX_Size1 !important; }
+.katex .delimsizing.size2,
+.katex .op-symbol.large-op { font-family: KaTeX_Size2 !important; }
+.katex .delimsizing.size3 { font-family: KaTeX_Size3 !important; }
+.katex .delimsizing.size4,
+.katex .delimsizing.mult .delim-size4 > span { font-family: KaTeX_Size4 !important; }
 
 body {
   min-height: 100vh;

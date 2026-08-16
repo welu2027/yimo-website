@@ -261,6 +261,49 @@
       </div>
 
       <div class="closing-block content-width">
+    <section id="partners" class="story-panel partners-panel">
+      <div id="sponsors" class="partner-group">
+        <div class="partner-heading">
+          <p class="section-kicker">Sponsors</p>
+          <h2>Sponsors.</h2>
+        </div>
+        <div class="partner-orbit" :style="{ '--partner-columns': gridColumns(sponsors) }">
+          <a
+            v-for="sponsor in sponsors"
+            :key="sponsor.name"
+            class="partner-logo-card"
+            :href="sponsor.href"
+            target="_blank"
+            rel="noopener"
+          >
+            <img :src="sponsor.logo" :alt="sponsor.name" />
+            <span>{{ sponsor.name }}</span>
+            <span v-if="sponsor.tier" class="partner-tier" :class="'tier-' + sponsor.tier.toLowerCase()">{{ sponsor.tier }} Sponsor</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="partner-group">
+        <div class="partner-heading">
+          <p class="section-kicker">Partners</p>
+          <h2>Partners.</h2>
+        </div>
+        <div class="partner-orbit" :style="{ '--partner-columns': gridColumns(partners) }">
+          <a
+            v-for="partner in partners"
+            :key="partner.name"
+            class="partner-logo-card"
+            :href="partner.href"
+            target="_blank"
+            rel="noopener"
+          >
+            <img :src="partner.logo" :alt="partner.name" />
+            <span>{{ partner.name }}</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="closing-cta">
         <h2>Climb with us on August 29 or 30.</h2>
         <p>Registration closes August 27 at 23:59 EST. Pick one window and compete from anywhere.</p>
         <a class="action action-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
@@ -321,16 +364,226 @@ export default {
         { q: 'Where can I study?', a: 'Check the <a href="/archive">Archive</a> and <a href="https://saintlymath.com/" target="_blank" rel="noopener">Saintly</a> for practice.' },
         { q: 'How do I register?', a: 'Use the free registration form and upload the parental consent form before August 27, 23:59 EST.' },
       ],
-      partners: [
+      sponsors: [
         { name: 'HRT', logo: '/hrt-logo.png', href: 'https://www.hudsonrivertrading.com/', tier: 'Platinum' },
         { name: 'PiMath', logo: '/PiMath-noBG.png', href: 'https://www.paquinmath.org/', tier: 'Silver' },
         { name: 'AoPS', logo: '/aops-logo.png', href: 'https://artofproblemsolving.com/', tier: 'Bronze' },
+      ],
+      partners: [
         { name: 'USAMOguide', logo: '/Test_logo.png', href: 'https://www.usamoguide.com/' },
         { name: 'Saintly', logo: '/Saintly.png', href: 'https://saintlymath.com/' },
         { name: 'Solvefire', logo: '/solvefire.png', href: 'https://solvefire.net' },
         { name: 'Euler Circle', logo: '/eulercircle.svg', href: 'https://eulercircle.com' },
       ],
     }
+  },
+  mounted() {
+    // Kick these off first: the mountain/podium frame sequences are what the
+    // very next scroll needs, so they shouldn't wait behind idle callbacks.
+    this.preloadFrames('mountain', 180)
+    this.preloadFrames('podium', 180)
+    this.initAnimations()
+    this.initLenis()
+    this.initThreeMath()
+  },
+  beforeDestroy() {
+    this.cleanupFns.forEach((fn) => fn())
+    this.cleanupFns = []
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
+  },
+  methods: {
+    toggleFlip(id) {
+      this.$set(this.flipped, id, !this.flipped[id])
+    },
+    gridColumns(list) {
+      return Math.min(list.length, 5)
+    },
+    framePath(folder, frame) {
+      return `/story-frames/${folder}/ezgif-frame-${String(frame).padStart(3, '0')}.jpg`
+    },
+    setSequenceFrame(refName, folder, count, progress) {
+      const img = this.$refs[refName]
+      if (!img) return
+      const frame = gsap.utils.clamp(1, count, Math.round(gsap.utils.mapRange(0, 1, 1, count, progress)))
+      const nextSrc = this.framePath(folder, frame)
+      if (img.getAttribute('src') !== nextSrc) img.setAttribute('src', nextSrc)
+    },
+    preloadFrames(folder, count) {
+      // Fetch immediately rather than waiting on requestIdleCallback: these
+      // sequences are ~3MB each and drive the very next scroll animation, so
+      // deferring the fetch is what caused frames to visibly pop in late.
+      for (let index = 0; index < count; index += 1) {
+        const img = new Image()
+        img.decoding = 'async'
+        img.src = this.framePath(folder, index + 1)
+      }
+    },
+    async initLenis() {
+      try {
+        const LenisModule = await import('@studio-freight/lenis/dist/lenis.js')
+        const Lenis = LenisModule.default || LenisModule
+        const lenis = new Lenis({ lerp: 0.09, smoothWheel: true })
+        lenis.on('scroll', ScrollTrigger.update)
+        const ticker = (time) => {
+          lenis.raf(time * 1000)
+        }
+        gsap.ticker.add(ticker)
+        gsap.ticker.lagSmoothing(0)
+        this.cleanupFns.push(() => {
+          gsap.ticker.remove(ticker)
+          lenis.destroy()
+        })
+      } catch (error) {
+        console.warn('Lenis unavailable; native scroll remains active.', error)
+      }
+    },
+    initAnimations() {
+      const root = this.$refs.page
+      if (!root) return
+
+      // The word wheel is a self-running crossfade with no scroll dependency,
+      // so it is built for every visitor: the four words are absolutely
+      // stacked on each other and only this timeline separates them.
+      const ctx = gsap.context(() => {
+        gsap.set('.wheel-word', { autoAlpha: 0, y: 24, rotationX: -40 })
+        const wordTl = gsap.timeline({ repeat: -1 })
+        gsap.utils.toArray('.wheel-word').forEach((word) => {
+          wordTl
+            .to(word, { autoAlpha: 1, y: 0, rotationX: 0, duration: 0.25, ease: 'power3.out' })
+            .to(word, { autoAlpha: 0, y: -18, rotationX: 24, duration: 0.22, ease: 'power3.in' }, '+=0.35')
+        })
+      }, root)
+
+      // Everything below is scroll-driven, and every one of these tweens
+      // writes its `from` state to the DOM the moment it is created - the
+      // staff and FAQ cards get `opacity: 0; visibility: hidden` and stay
+      // that way until the ScrollTrigger plays them back. Building them and
+      // then calling trigger.disable() for reduced-motion visitors (as this
+      // used to do) left that hidden state on screen permanently, so the
+      // whole staff section rendered blank. Build them only when the visitor
+      // has not asked for reduced motion; the sections then keep their plain
+      // CSS appearance for everyone else.
+      const mm = gsap.matchMedia()
+      mm.add('(prefers-reduced-motion: no-preference)', () => {
+        const climbTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.climb-panel',
+            start: 'top top',
+            end: '+=2200',
+            scrub: 1,
+            pin: true,
+            onUpdate: (self) => {
+              this.setSequenceFrame('mountainSequence', 'mountain', 180, self.progress)
+            },
+          },
+        })
+        climbTl
+          .from('.mountain-sequence', { y: 46, scale: 0.98, duration: 0.55 })
+          .fromTo('.rising-card', { autoAlpha: 0, x: 60 }, { autoAlpha: 1, x: 0, duration: 0.35 }, 0.85)
+          .to('.rising-card', { autoAlpha: 0, x: 30, duration: 0.25 }, 1.55)
+          .fromTo('.achiever-card', { autoAlpha: 0, x: -70 }, { autoAlpha: 1, x: 0, duration: 0.4 }, 2.15)
+
+        const formatTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: '.format-panel',
+            start: 'top top',
+            end: '+=2100',
+            scrub: 1,
+            pin: true,
+            onUpdate: (self) => {
+              this.setSequenceFrame('podiumSequence', 'podium', 180, self.progress)
+            },
+          },
+        })
+        formatTl
+          .from('.written-board h2, .write-line, .medal-grid span', { y: 22, stagger: 0.08, duration: 0.7 }, 0.12)
+          .from('.podium-sequence', { y: 70, scale: 0.96, duration: 0.55 }, 0.18)
+          .to('.leaderboard-side', { autoAlpha: 0, y: -80, duration: 0.45 }, 1.42)
+
+        gsap.from('.compact-staff-card, .flip-card, .accordion', {
+          scrollTrigger: {
+            trigger: '.content-band',
+            start: 'top 75%',
+          },
+          autoAlpha: 0,
+          y: 28,
+          stagger: 0.05,
+          duration: 0.55,
+          ease: 'power2.out',
+        })
+
+        // Only worth fetching the 360 sequence frames when they will scrub.
+        this.preloadFrames('mountain', 180)
+        this.preloadFrames('podium', 180)
+      }, root)
+
+      this.cleanupFns.push(() => {
+        ctx.revert()
+        mm.revert()
+      })
+    },
+    async initThreeMath() {
+      const canvas = this.$refs.mathCanvas
+      if (!canvas) return
+
+      try {
+        const THREE = await import('three')
+        const scene = new THREE.Scene()
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100)
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true })
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+        camera.position.z = 7
+
+        const group = new THREE.Group()
+        const material = new THREE.MeshBasicMaterial({ color: 0xf97316, wireframe: true, transparent: true, opacity: 0.28 })
+        const geometries = [
+          new THREE.TorusKnotGeometry(0.62, 0.13, 80, 8),
+          new THREE.IcosahedronGeometry(0.78, 1),
+          new THREE.OctahedronGeometry(0.7, 0),
+        ]
+        geometries.forEach((geometry, index) => {
+          const mesh = new THREE.Mesh(geometry, material.clone())
+          const positions = [
+            [-3.8, 1.2, -1.4],
+            [3.8, 1.0, -1.8],
+            [3.2, -2.2, -2.2],
+          ]
+          mesh.position.set(positions[index][0], positions[index][1], positions[index][2])
+          group.add(mesh)
+        })
+        scene.add(group)
+
+        const resize = () => {
+          const rect = canvas.getBoundingClientRect()
+          renderer.setSize(rect.width, rect.height, false)
+          camera.aspect = rect.width / Math.max(rect.height, 1)
+          camera.updateProjectionMatrix()
+        }
+        resize()
+        window.addEventListener('resize', resize)
+
+        let rafId
+        const animate = () => {
+          group.children.forEach((mesh, index) => {
+            mesh.rotation.x += 0.003 + index * 0.001
+            mesh.rotation.y += 0.005
+          })
+          renderer.render(scene, camera)
+          rafId = window.requestAnimationFrame(animate)
+        }
+        animate()
+
+        this.cleanupFns.push(() => {
+          window.cancelAnimationFrame(rafId)
+          window.removeEventListener('resize', resize)
+          geometries.forEach((geometry) => geometry.dispose())
+          group.children.forEach((mesh) => mesh.material.dispose())
+          renderer.dispose()
+        })
+      } catch (error) {
+        console.warn('Three.js background unavailable.', error)
+      }
+    },
   },
 }
 </script>
@@ -461,6 +714,24 @@ export default {
 }
 
 .hero-main h1 {
+.wheel-word {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  /* Match GSAP's initial autoAlpha(0) state so words don't flash stacked
+     and visible for a frame before JS takes over. */
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hero-copy h1 {
+  font-family: 'Instrument Serif', serif !important;
+  font-size: clamp(4.4rem, 13.5vw, 9.4rem);
+  font-weight: 400;
+  line-height: 0.82;
+  color: var(--paper);
   margin: 0;
   color: var(--paper);
   font-family: Georgia, 'Times New Roman', serif !important;
@@ -1019,6 +1290,29 @@ export default {
   .podium-frame {
     margin-inline: 0;
   }
+.partner-group {
+  width: min(1120px, 100%);
+}
+
+.partner-group + .partner-group {
+  margin-top: 3.5rem;
+}
+
+.partner-heading {
+  margin-bottom: 2rem;
+}
+
+.partner-orbit {
+  display: grid;
+  grid-template-columns: repeat(var(--partner-columns, 5), minmax(120px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  /* Cards stay the width they had in the combined five-across grid whatever a
+     group's item count is, and a short row is centred rather than stranded
+     against the left edge. */
+  max-width: calc(var(--partner-columns, 5) * 224px + (var(--partner-columns, 5) - 1) * 1rem);
+  margin-inline: auto;
+}
 
   .format-footer {
     grid-template-columns: 1fr;
@@ -1067,6 +1361,9 @@ export default {
   .hero-logo {
     width: 76px;
     height: 76px;
+  .partner-orbit {
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+    max-width: none;
   }
 
   .hero-name {

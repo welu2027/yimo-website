@@ -12,6 +12,7 @@
         <li><strong>Final Round Problems:</strong> <a href="/solutions/yimo-1-final-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
         <li><strong>Final Round Solutions:</strong> <a href="/solutions/yimo-1-final-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>
         <li><strong>Estimathon Workshop:</strong> <a href="https://drive.google.com/file/d/1oh6rpw89WBEReqoPNOspdsYvr8wfMhRN/view?usp=sharing" target="_blank" rel="noopener">View →</a></li>
+        <li><strong>Public Health &amp; Math Workshop:</strong> <a href="/solutions/yimo-1-public-health-math-workshop.pdf" target="_blank" rel="noopener">View →</a></li>
         <li><strong>Window A Awards Ceremony:</strong> <a href="https://drive.google.com/file/d/1G-yiurPMI482UgBuHrC6nesXBHA9H1Vv/view?usp=sharing" target="_blank" rel="noopener">View →</a></li>
         <li><strong>Window B Awards Ceremony:</strong> <a href="https://drive.google.com/file/d/1U8lIAZQBRyUb5RTtIY40Q1zzih_q6iUM/view?usp=sharing" target="_blank" rel="noopener">View →</a></li>
       </ul>

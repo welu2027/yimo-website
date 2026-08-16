@@ -50,8 +50,8 @@
         <h1>YIMO</h1>
         <p class="hero-subtitle">
           Youth International Math Olympiad returns August 29 and 30, 2026.
-          A free online contest for middle and high school students, run in two
-          divisions.
+          A <strong>free</strong> online contest for middle and high school
+          students, run in two divisions.
         </p>
         <div class="hero-actions">
           <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register</a>
@@ -300,7 +300,7 @@
 
       <div class="closing-cta">
         <h2>Register for August 29 or 30.</h2>
-        <p>Entry is free. Registration closes August 27, 23:59 EST. Pick one contest window and compete from anywhere.</p>
+        <p>Entry is <strong>free</strong>. Registration closes August 27, 23:59 EST. Pick one contest window and compete from anywhere.</p>
         <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
       </div>
     </section>
@@ -704,6 +704,14 @@ export default {
   color: var(--text-dim);
   font-size: clamp(1rem, 1.8vw, 1.22rem);
   line-height: 1.75;
+}
+
+/* The dimmed body colour swallows a plain <strong>, so emphasised words are
+   lifted back to full paper white as well as bolded. */
+.hero-subtitle strong,
+.closing-cta p strong {
+  color: var(--paper);
+  font-weight: 800;
 }
 
 .hero-actions,

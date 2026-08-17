@@ -123,7 +123,7 @@ export default {
 }
 
 .carousel-arrow:hover {
-  color: var(--accent);
+  color: var(--accent-soft);
 }
 
 .carousel-count {
@@ -141,7 +141,7 @@ export default {
   /* .content-page a underlines every link, which ran a line under every word
      of the problem statement since the whole card is one link. */
   text-decoration: none;
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--panel);
   border: 1px solid var(--line-strong);
   border-radius: 12px;
   padding: 1.5rem;
@@ -149,8 +149,8 @@ export default {
 }
 
 .potd-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(249, 115, 22, 0.3);
+  background: var(--surface-strong);
+  border-color: rgba(240, 168, 104, 0.75);
 }
 
 .potd-date {
@@ -158,7 +158,7 @@ export default {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-soft);
   margin: 0 0 0.5rem;
 }
 
@@ -173,7 +173,7 @@ export default {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--accent);
+  color: var(--accent-soft);
 }
 
 .potd-card:hover .potd-open {

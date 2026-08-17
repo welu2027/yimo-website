@@ -115,7 +115,7 @@ export default {
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  color: var(--accent);
+  color: var(--accent-soft);
 }
 
 .potd-back:hover {
@@ -127,7 +127,7 @@ export default {
 }
 
 .potd-reveal {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--panel);
   border: 1px solid var(--line-strong);
   border-radius: 12px;
   padding: 1rem 1.5rem;
@@ -139,7 +139,7 @@ export default {
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-soft);
   list-style: none;
 }
 
@@ -173,7 +173,7 @@ export default {
 .potd-nav-link {
   font-size: 0.82rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-soft);
 }
 
 .potd-nav-link:hover {

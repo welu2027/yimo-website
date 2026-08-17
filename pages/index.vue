@@ -2,38 +2,6 @@
   <div ref="page" class="yimo-redesign">
     <section id="top" class="story-panel hero-panel">
       <canvas ref="mathCanvas" class="math-canvas" aria-hidden="true"></canvas>
-      <div class="geometry-field" aria-hidden="true">
-        <svg class="geometry-form form-orbit" viewBox="0 0 220 170">
-          <ellipse cx="96" cy="86" rx="92" ry="36" />
-          <ellipse cx="118" cy="84" rx="92" ry="36" transform="rotate(58 118 84)" />
-          <ellipse cx="112" cy="85" rx="92" ry="36" transform="rotate(-47 112 85)" />
-          <circle cx="112" cy="85" r="80" />
-          <path d="M28 84 L112 22 L194 126 L62 138 Z" />
-        </svg>
-        <svg class="geometry-form form-poly" viewBox="0 0 180 180">
-          <polygon points="88,12 160,54 144,140 70,168 18,104" />
-          <polygon points="88,12 144,140 18,104 160,54 70,168" />
-          <circle cx="90" cy="90" r="70" />
-        </svg>
-        <svg class="geometry-form form-triangle" viewBox="0 0 170 150">
-          <polygon points="22,124 78,18 148,116" />
-          <circle cx="82" cy="86" r="48" />
-          <line x1="78" y1="18" x2="82" y2="124" />
-          <line x1="22" y1="124" x2="148" y2="116" />
-        </svg>
-        <svg class="geometry-form form-cyclic" viewBox="0 0 180 180">
-          <circle cx="90" cy="90" r="70" />
-          <polygon points="44,55 132,36 148,124 62,144" />
-          <line x1="44" y1="55" x2="148" y2="124" />
-          <line x1="132" y1="36" x2="62" y2="144" />
-        </svg>
-        <svg class="geometry-form form-prism" viewBox="0 0 190 160">
-          <polygon points="42,34 124,22 166,74 82,88" />
-          <polygon points="42,34 82,88 72,136 28,82" />
-          <polygon points="82,88 166,74 150,124 72,136" />
-          <line x1="124" y1="22" x2="150" y2="124" />
-        </svg>
-      </div>
       <div class="hero-copy">
         <div class="logo-stage" aria-label="Youth International Math Olympiad">
           <img class="hero-logo" src="/yimo-logo-gold.png" alt="YIMO logo" />
@@ -59,9 +27,9 @@
         </div>
         <p class="hero-credit">
           Brought to you by
-          <a href="https://stemise.org" target="_blank" rel="noopener">STEMise</a>
+          <a href="https://nxthorizon.org" target="_blank" rel="noopener">NXT Horizon</a>
           and
-          <a href="https://nxthorizon.org" target="_blank" rel="noopener">NXT Horizon</a>.
+          <a href="https://stemise.org" target="_blank" rel="noopener">STEMise</a>.
         </p>
       </div>
       <a href="#format" class="scroll-cue" aria-label="Scroll to the format section">
@@ -256,28 +224,36 @@
       </p>
     </section>
 
-    <section id="partners" class="story-panel partners-panel">
-      <div id="sponsors" class="partner-group">
-        <div class="partner-heading">
-          <p class="section-kicker">Sponsors</p>
-          <h2>Sponsors.</h2>
-        </div>
-        <div class="partner-orbit" :style="{ '--partner-columns': gridColumns(sponsors) }">
+    <section id="sponsors" class="content-band sponsor-band">
+      <div class="partner-heading">
+        <p class="section-kicker">Sponsors</p>
+        <h2>Sponsors.</h2>
+      </div>
+
+      <div
+        v-for="group in sponsorTiers"
+        :key="group.tier"
+        class="sponsor-tier-group"
+        :class="'tier-' + group.tier.toLowerCase()"
+      >
+        <p class="sponsor-tier-label">{{ group.tier }}</p>
+        <div class="partner-orbit" :style="{ '--partner-columns': gridColumns(group.sponsors) }">
           <a
-            v-for="sponsor in sponsors"
+            v-for="sponsor in group.sponsors"
             :key="sponsor.name"
-            class="partner-logo-card"
+            class="partner-logo-card sponsor-card-tiered"
             :href="sponsor.href"
             target="_blank"
             rel="noopener"
           >
             <img :src="sponsor.logo" :alt="sponsor.name" />
             <span>{{ sponsor.name }}</span>
-            <span v-if="sponsor.tier" class="partner-tier" :class="'tier-' + sponsor.tier.toLowerCase()">{{ sponsor.tier }} Sponsor</span>
           </a>
         </div>
       </div>
+    </section>
 
+    <section id="partners" class="story-panel partners-panel">
       <div class="partner-group">
         <div class="partner-heading">
           <p class="section-kicker">Partners</p>
@@ -406,6 +382,18 @@ export default {
       ],
     }
   },
+  computed: {
+    /* Sponsors are shown one row per tier, richest first. A tier with nobody in
+       it yet is dropped rather than rendered as an empty row. */
+    sponsorTiers() {
+      return ['Platinum', 'Gold', 'Silver', 'Bronze']
+        .map((tier) => ({
+          tier,
+          sponsors: this.sponsors.filter((sponsor) => sponsor.tier === tier),
+        }))
+        .filter((group) => group.sponsors.length > 0)
+    },
+  },
   mounted() {
     this.initAnimations()
     this.initLenis()
@@ -498,26 +486,61 @@ export default {
         const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100)
         const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true })
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-        camera.position.z = 7
+        camera.position.z = 8
 
-        const group = new THREE.Group()
-        const material = new THREE.MeshBasicMaterial({ color: 0xf97316, wireframe: true, transparent: true, opacity: 0.28 })
-        const geometries = [
-          new THREE.TorusKnotGeometry(0.62, 0.13, 80, 8),
-          new THREE.IcosahedronGeometry(0.78, 1),
-          new THREE.OctahedronGeometry(0.7, 0),
-        ]
-        geometries.forEach((geometry, index) => {
-          const mesh = new THREE.Mesh(geometry, material.clone())
-          const positions = [
-            [-3.8, 1.2, -1.4],
-            [3.8, 1.0, -1.8],
-            [3.2, -2.2, -2.2],
-          ]
-          mesh.position.set(positions[index][0], positions[index][1], positions[index][2])
-          group.add(mesh)
-        })
-        scene.add(group)
+        // One shared look for every figure: ink-green wireframe on the paper.
+        const geometries = []
+        const materials = []
+        const wire = (geometry, opacity) => {
+          const material = new THREE.MeshBasicMaterial({
+            color: 0x1e3a34,
+            wireframe: true,
+            transparent: true,
+            opacity,
+          })
+          geometries.push(geometry)
+          materials.push(material)
+          return new THREE.Mesh(geometry, material)
+        }
+
+        const stage = new THREE.Group()
+        scene.add(stage)
+
+        // 1. The torus knot, kept from before: a steady tumble.
+        const knotGeometry = new THREE.TorusKnotGeometry(0.66, 0.15, 110, 10)
+        const knot = wire(knotGeometry, 0.5)
+        knot.position.set(-4.0, 1.4, -1.2)
+        stage.add(knot)
+
+        // 2. A grid that ripples: two travelling sine waves summed per vertex,
+        //    rewritten into the position buffer every frame.
+        const sheetGeometry = new THREE.PlaneGeometry(3.2, 3.2, 15, 15)
+        const sheet = wire(sheetGeometry, 0.34)
+        sheet.position.set(-4.1, -2.0, -3.0)
+        sheet.rotation.set(-1.05, 0.35, 0.45)
+        stage.add(sheet)
+        const sheetPositions = sheetGeometry.attributes.position
+        const sheetRest = Float32Array.from(sheetPositions.array)
+
+        // 3. An icosahedron that breathes in and out while it tumbles.
+        const breather = wire(new THREE.IcosahedronGeometry(0.85, 1), 0.45)
+        breather.position.set(4.0, 1.5, -1.8)
+        stage.add(breather)
+
+        // 4. A tilted ring with three satellites running around it, each
+        //    spinning on its own axis as the whole system turns.
+        const orbit = new THREE.Group()
+        orbit.position.set(3.4, -2.0, -2.2)
+        orbit.rotation.set(1.0, 0, 0.35)
+        orbit.add(wire(new THREE.TorusGeometry(1.05, 0.015, 3, 64), 0.4))
+        const satellites = []
+        for (let i = 0; i < 3; i += 1) {
+          const satellite = wire(new THREE.OctahedronGeometry(0.2, 0), 0.55)
+          satellite.userData.phase = (i / 3) * Math.PI * 2
+          satellites.push(satellite)
+          orbit.add(satellite)
+        }
+        stage.add(orbit)
 
         const resize = () => {
           const rect = canvas.getBoundingClientRect()
@@ -528,22 +551,74 @@ export default {
         resize()
         window.addEventListener('resize', resize)
 
-        let rafId
-        const animate = () => {
-          group.children.forEach((mesh, index) => {
-            mesh.rotation.x += 0.003 + index * 0.001
-            mesh.rotation.y += 0.005
-          })
-          renderer.render(scene, camera)
-          rafId = window.requestAnimationFrame(animate)
+        // The pointer tilts the whole stage a few degrees; `eased` chases the
+        // raw pointer so the parallax glides instead of snapping.
+        const pointer = { x: 0, y: 0 }
+        const eased = { x: 0, y: 0 }
+        const onPointerMove = (event) => {
+          pointer.x = (event.clientX / window.innerWidth) * 2 - 1
+          pointer.y = (event.clientY / window.innerHeight) * 2 - 1
         }
-        animate()
+        window.addEventListener('pointermove', onPointerMove)
+
+        const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        const clock = new THREE.Clock()
+
+        const frame = () => {
+          const t = clock.getElapsedTime()
+
+          knot.rotation.x = t * 0.28
+          knot.rotation.y = t * 0.42
+
+          breather.rotation.x = t * 0.2
+          breather.rotation.y = t * 0.33
+          const breath = 1 + Math.sin(t * 1.1) * 0.09
+          breather.scale.setScalar(breath)
+
+          orbit.rotation.z = t * 0.22
+          satellites.forEach((satellite) => {
+            const angle = t * 0.9 + satellite.userData.phase
+            satellite.position.set(Math.cos(angle) * 1.05, Math.sin(angle) * 1.05, 0)
+            satellite.rotation.x = t * 1.4
+            satellite.rotation.y = t * 1.1
+          })
+
+          for (let i = 0; i < sheetPositions.count; i += 1) {
+            const x = sheetRest[i * 3]
+            const y = sheetRest[i * 3 + 1]
+            sheetPositions.setZ(
+              i,
+              Math.sin(x * 1.7 + t * 1.3) * 0.32 + Math.cos(y * 1.3 - t * 0.9) * 0.26
+            )
+          }
+          sheetPositions.needsUpdate = true
+
+          eased.x += (pointer.x - eased.x) * 0.04
+          eased.y += (pointer.y - eased.y) * 0.04
+          stage.rotation.y = eased.x * 0.16
+          stage.rotation.x = eased.y * 0.1
+
+          renderer.render(scene, camera)
+        }
+
+        let rafId
+        if (still) {
+          // Visitors who asked for less motion get the composition, held still.
+          frame()
+        } else {
+          const loop = () => {
+            frame()
+            rafId = window.requestAnimationFrame(loop)
+          }
+          loop()
+        }
 
         this.cleanupFns.push(() => {
           window.cancelAnimationFrame(rafId)
           window.removeEventListener('resize', resize)
+          window.removeEventListener('pointermove', onPointerMove)
           geometries.forEach((geometry) => geometry.dispose())
-          group.children.forEach((mesh) => mesh.material.dispose())
+          materials.forEach((material) => material.dispose())
           renderer.dispose()
         })
       } catch (error) {
@@ -556,13 +631,15 @@ export default {
 
 <style scoped>
 .yimo-redesign {
-  --story-bg: #0a0805;
-  --paper: #f6f0e8;
+  --story-bg: #f6f2e9;
+  /* "paper" is the high-contrast heading colour; on the off-white theme that
+     role is the deep forest green rather than a near-white. */
+  --paper: #1e3a34;
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(circle at 70% 8%, rgba(249, 115, 22, 0.18), transparent 24rem),
-    linear-gradient(180deg, #0a0805 0%, #080604 58%, #110b06 100%);
+    radial-gradient(circle at 70% 8%, rgba(240, 168, 104, 0.22), transparent 24rem),
+    linear-gradient(180deg, #f9f6ee 0%, #f6f2e9 58%, #f1ece0 100%);
 }
 
 .story-panel {
@@ -583,61 +660,7 @@ export default {
   inset: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.14;
-  filter: blur(0.2px);
-}
-
-.geometry-field {
-  position: absolute;
-  inset: 5.5rem 3rem 3rem;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.geometry-form {
-  position: absolute;
-  width: clamp(120px, 17vw, 235px);
-  height: auto;
-  overflow: visible;
-  opacity: 0.18;
-  stroke: rgba(249, 115, 22, 0.56);
-  stroke-width: 1.4;
-  fill: none;
-  filter: drop-shadow(0 0 18px rgba(249, 115, 22, 0.13));
-}
-
-.geometry-form * {
-  vector-effect: non-scaling-stroke;
-}
-
-.form-orbit {
-  left: 5%;
-  top: 12%;
-  width: clamp(180px, 24vw, 320px);
-  opacity: 0.21;
-}
-
-.form-poly {
-  right: 7%;
-  top: 17%;
-}
-
-.form-triangle {
-  right: 21%;
-  bottom: 2%;
-  opacity: 0.11;
-}
-
-.form-cyclic {
-  left: 8%;
-  bottom: 10%;
-  opacity: 0.12;
-}
-
-.form-prism {
-  right: 4%;
-  bottom: 22%;
-  opacity: 0.13;
+  opacity: 0.62;
 }
 
 .hero-copy {
@@ -662,7 +685,7 @@ export default {
   height: clamp(82px, 10vw, 116px);
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 60px rgba(249, 115, 22, 0.34);
+  box-shadow: 0 10px 40px rgba(30, 58, 52, 0.18);
   will-change: transform;
 }
 
@@ -771,14 +794,14 @@ export default {
 }
 
 .primary-action {
-  color: white;
+  color: var(--on-accent);
   background: var(--accent);
 }
 
 .secondary-action {
   color: var(--text);
   border: 1px solid var(--line-strong);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--surface);
 }
 
 .primary-action:hover,
@@ -794,7 +817,7 @@ export default {
   width: 28px;
   height: 48px;
   margin-left: -14px;
-  border: 1px solid rgba(246, 240, 232, 0.45);
+  border: 1px solid var(--line-strong);
   border-radius: 20px;
 }
 
@@ -819,14 +842,14 @@ export default {
   position: relative;
   z-index: 4;
   padding: 1.4rem;
-  border: 1px solid rgba(246, 240, 232, 0.12);
-  background: rgba(10, 8, 5, 0.72);
+  border: 1px solid var(--line);
+  background: var(--panel);
 }
 
 .level-card p,
 .section-kicker {
   margin: 0 0 0.55rem;
-  color: var(--accent);
+  color: var(--accent-soft);
   font-size: 0.74rem;
   font-weight: 900;
   letter-spacing: 0.18em;
@@ -884,14 +907,14 @@ export default {
   margin-top: 1.25rem;
   position: relative;
   padding: clamp(1.5rem, 4vw, 3rem);
-  border: 1px solid rgba(246, 240, 232, 0.14);
-  background: rgba(246, 240, 232, 0.045);
+  border: 1px solid var(--line);
+  background: var(--panel);
 }
 
 .write-line {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(246, 240, 232, 0.1);
+  border-top: 1px solid var(--line);
 }
 
 .write-line:first-child {
@@ -915,7 +938,7 @@ export default {
 .scoring-guide-link {
   display: inline-block;
   margin-top: 0.8rem;
-  color: var(--accent);
+  color: var(--accent-soft);
   font-weight: 800;
   text-decoration: underline;
   text-underline-offset: 0.22em;
@@ -932,7 +955,7 @@ export default {
   margin: 0 0 2rem;
   padding: 0.7rem 1.2rem;
   border: 1px solid var(--accent);
-  color: var(--accent);
+  color: var(--accent-soft);
   font-size: 0.95rem;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -949,8 +972,8 @@ export default {
 .medal-grid span {
   border-left: 2px solid var(--accent);
   padding: 0.85rem 1rem;
-  color: rgba(246, 240, 232, 0.86);
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-dim);
+  background: var(--surface);
   font-size: 0.88rem;
 }
 
@@ -980,8 +1003,8 @@ export default {
 }
 
 .accordion {
-  border: 1px solid rgba(246, 240, 232, 0.12);
-  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line);
+  background: var(--panel);
 }
 
 .accordion summary {
@@ -999,7 +1022,7 @@ export default {
 .accordion summary::after {
   content: '+';
   float: right;
-  color: var(--accent);
+  color: var(--accent-soft);
 }
 
 .accordion[open] summary::after {
@@ -1025,7 +1048,7 @@ export default {
   min-height: 170px;
   padding: 1rem;
   text-align: center;
-  background: rgba(10, 8, 5, 0.4);
+  background: var(--panel);
 }
 
 .compact-staff-card img,
@@ -1035,15 +1058,15 @@ export default {
   margin: 0 auto 0.8rem;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(246, 240, 232, 0.15);
+  border: 1px solid var(--line-strong);
 }
 
 .staff-initial {
   display: grid;
   place-items: center;
-  color: var(--accent);
+  color: var(--accent-soft);
   font-weight: 900;
-  background: rgba(249, 115, 22, 0.1);
+  background: rgba(240, 168, 104, 0.22);
 }
 
 .compact-staff-card h3 {
@@ -1104,8 +1127,8 @@ export default {
   text-align: center;
   padding: 1.1rem;
   border-radius: 14px;
-  border: 1px solid rgba(246, 240, 232, 0.1);
-  background: rgba(10, 8, 5, 0.45);
+  border: 1px solid var(--line);
+  background: var(--panel);
 }
 
 .flip-back {
@@ -1122,7 +1145,7 @@ export default {
   margin: 0 auto 0.7rem;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(246, 240, 232, 0.15);
+  border: 1px solid var(--line-strong);
   flex-shrink: 0;
 }
 
@@ -1205,8 +1228,8 @@ export default {
 }
 
 .staff-description {
-  border: 1px solid rgba(246, 240, 232, 0.1);
-  background: rgba(10, 8, 5, 0.34);
+  border: 1px solid var(--line);
+  background: var(--panel);
 }
 
 .staff-description summary {
@@ -1232,8 +1255,8 @@ export default {
 .name-river span {
   padding: 0.42rem 0.62rem;
   color: var(--text-dim);
-  border: 1px solid rgba(246, 240, 232, 0.1);
-  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--line);
+  background: var(--panel);
   font-size: 0.84rem;
 }
 
@@ -1273,10 +1296,10 @@ export default {
   place-items: center;
   gap: 0.7rem;
   padding: 1.25rem;
-  color: rgba(246, 240, 232, 0.9);
+  color: var(--text);
   text-decoration: none;
   background: transparent;
-  border: 1px solid rgba(246, 240, 232, 0.12);
+  border: 1px solid var(--line);
 }
 
 .partner-logo-card img {
@@ -1293,28 +1316,82 @@ export default {
   text-transform: uppercase;
 }
 
-.partner-tier {
-  margin-top: 0.15rem;
-  padding: 0.18rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.6rem !important;
-  letter-spacing: 0.1em !important;
-  border: 1px solid currentColor;
+/* One --tier-* colour drives the label, the card border and the chip for a
+   whole tier row, so a new tier only needs its two custom properties. */
+.sponsor-band {
+  text-align: center;
 }
 
-.partner-tier.tier-platinum {
-  color: #d7dbe3;
-  background: rgba(215, 219, 227, 0.08);
+.sponsor-tier-group {
+  margin-top: 2.75rem;
 }
 
-.partner-tier.tier-silver {
-  color: #b8bcc4;
-  background: rgba(184, 188, 196, 0.08);
+.sponsor-tier-group:first-of-type {
+  margin-top: 2rem;
 }
 
-.partner-tier.tier-bronze {
-  color: #d08a4e;
-  background: rgba(208, 138, 78, 0.1);
+/* Card width and height fall with the tier, so rank reads at a glance even
+   when a tier holds a single sponsor. */
+.sponsor-tier-group.tier-platinum {
+  --tier: #4f6d7a;
+  --tier-wash: rgba(79, 109, 122, 0.12);
+  --tier-card: 470px;
+  --tier-height: 280px;
+}
+
+.sponsor-tier-group.tier-gold {
+  --tier: #a37b16;
+  --tier-wash: rgba(163, 123, 22, 0.13);
+  --tier-card: 425px;
+  --tier-height: 255px;
+}
+
+.sponsor-tier-group.tier-silver {
+  --tier: #7c868d;
+  --tier-wash: rgba(124, 134, 141, 0.14);
+  --tier-card: 390px;
+  --tier-height: 235px;
+}
+
+.sponsor-tier-group.tier-bronze {
+  --tier: #a2652f;
+  --tier-wash: rgba(162, 101, 47, 0.13);
+  --tier-card: 355px;
+  --tier-height: 215px;
+}
+
+.sponsor-tier-group .partner-orbit {
+  grid-template-columns: repeat(var(--partner-columns, 1), minmax(0, var(--tier-card)));
+  justify-content: center;
+  max-width: calc(
+    var(--partner-columns, 1) * var(--tier-card) +
+    (var(--partner-columns, 1) - 1) * 1rem
+  );
+}
+
+.sponsor-tier-label {
+  margin: 0 0 0.9rem;
+  color: var(--tier);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.sponsor-card-tiered img {
+  max-width: 230px;
+  max-height: 108px;
+}
+
+.sponsor-card-tiered {
+  /* Pack the logo and name as one centred block; without this the grid rows
+     stretch to the taller card and leave a hole under the name. */
+  align-content: center;
+  gap: 1.1rem;
+  min-height: var(--tier-height);
+  border-color: var(--tier);
+  border-top-width: 3px;
+  background: var(--tier-wash);
 }
 
 .closing-cta {
@@ -1332,7 +1409,8 @@ export default {
     grid-template-columns: 1fr;
   }
 
-  .partner-orbit {
+  .partner-orbit,
+  .sponsor-tier-group .partner-orbit {
     grid-template-columns: repeat(2, minmax(130px, 1fr));
     max-width: none;
   }
@@ -1347,10 +1425,6 @@ export default {
     display: none;
   }
 
-  .geometry-field {
-    display: none;
-  }
-
   .hero-copy h1 {
     font-size: clamp(4rem, 24vw, 5.3rem);
   }
@@ -1358,7 +1432,8 @@ export default {
   .medal-grid,
   .division-grid,
   .prize-grid,
-  .partner-orbit {
+  .partner-orbit,
+  .sponsor-tier-group .partner-orbit {
     grid-template-columns: 1fr;
   }
 }

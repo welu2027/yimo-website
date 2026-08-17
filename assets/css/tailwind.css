@@ -6,15 +6,23 @@
 @tailwind utilities;
 
 :root {
-  --bg-deep: #0a0805;
-  --line: rgba(255,255,255,0.055);
-  --line-strong: rgba(255,255,255,0.10);
-  --text: #f3ece2;
-  --text-dim: #b8a995;
-  --text-faint: #806f5a;
-  --accent: #f97316;
-  --accent-strong: #ea580c;
-  --accent-soft: #fbb474;
+  /* Off-white page, deep forest-green ink, light apricot-orange accent. */
+  --bg-deep: #f6f2e9;
+  --line: rgba(30,58,52,0.12);
+  --line-strong: rgba(30,58,52,0.20);
+  --text: #1e3a34;
+  --text-dim: #4c635c;
+  --text-faint: #7e938c;
+  --accent: #f0a868;
+  --accent-strong: #e0904e;
+  /* Light apricot fails contrast as text on off-white, so orange type uses a
+     darker burnt tone of the same hue. */
+  --accent-soft: #9c5518;
+  --on-accent: #1e3a34;
+  /* Card fills: a whisper of green over the paper, and solid white panels. */
+  --surface: rgba(30,58,52,0.045);
+  --surface-strong: rgba(30,58,52,0.08);
+  --panel: rgba(255,255,255,0.72);
 }
 
 html, *, *::before, *::after {
@@ -56,7 +64,7 @@ html, *, *::before, *::after {
 .md code {
   font-family: 'JetBrains Mono', ui-monospace, monospace !important;
   font-size: 0.85em;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(30, 58, 52, 0.07);
   border-radius: 4px;
   padding: 0.1em 0.35em;
   color: var(--accent-soft);
@@ -86,7 +94,7 @@ html, *, *::before, *::after {
   color: var(--text-dim);
 }
 
-.md th { color: var(--text); font-weight: 700; background: rgba(255, 255, 255, 0.03); }
+.md th { color: var(--text); font-weight: 700; background: var(--surface); }
 
 .md .md-display { overflow-x: auto; overflow-y: hidden; }
 .md .katex-display { margin: 0.4rem 0; }
@@ -132,7 +140,7 @@ html, *, *::before, *::after {
 .katex .delimsizing.mult .delim-size4 > span { font-family: KaTeX_Size4 !important; }
 
 body {
-  background: #0a0805;
+  background: var(--bg-deep);
   color: var(--text);
   min-height: 100vh;
 }
@@ -156,9 +164,9 @@ body {
   .page-bg, .page-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
   .page-bg {
     background:
-      radial-gradient(ellipse 55% 45% at 22% 22%, rgba(249,115,22,0.22), transparent 70%),
-      radial-gradient(ellipse 70% 50% at 90% 100%, rgba(180,70,15,0.32), transparent 70%),
-      linear-gradient(180deg, #160d05 0%, #0a0805 100%);
+      radial-gradient(ellipse 55% 45% at 22% 22%, rgba(240,168,104,0.20), transparent 70%),
+      radial-gradient(ellipse 70% 50% at 90% 100%, rgba(30,58,52,0.10), transparent 70%),
+      linear-gradient(180deg, #fbf8f1 0%, #f2eee3 100%);
   }
   .page-grid {
     background-image:
@@ -171,7 +179,7 @@ body {
     position: relative;
     z-index: 40;
     height: 3px;
-    background: linear-gradient(90deg, #ea580c, #f97316, #fb923c, #f97316);
+    background: linear-gradient(90deg, #e0904e, #f0a868, #f4b183, #f0a868);
   }
 
   /* ── nav ── */
@@ -184,7 +192,7 @@ body {
     gap: 2rem;
     padding: 0 2rem;
     height: 60px;
-    background: rgba(10, 8, 5, 0.88);
+    background: rgba(246, 242, 233, 0.88);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line-strong);
   }
@@ -234,7 +242,7 @@ body {
   .nav-register {
     font-size: 0.875rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--on-accent);
     background: var(--accent);
     padding: 0.45rem 1.1rem;
     border-radius: 999px;
@@ -272,11 +280,11 @@ body {
     left: 0;
     display: flex;
     flex-direction: column;
-    background: rgba(10, 8, 5, 0.95);
+    background: rgba(250, 247, 240, 0.98);
     border: 1px solid var(--line-strong);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 32px rgba(30, 58, 52, 0.16);
     z-index: 50;
   }
   .nav-dropdown-item {
@@ -307,8 +315,8 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin: 0 auto 1.5rem;
-    border: 2px solid rgba(249,115,22,0.4);
-    box-shadow: 0 0 32px rgba(249,115,22,0.25);
+    border: 2px solid rgba(240,168,104,0.7);
+    box-shadow: 0 8px 28px rgba(30,58,52,0.12);
   }
   .hero-eyebrow {
     display: inline-flex;
@@ -319,8 +327,8 @@ body {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent-soft);
-    background: rgba(249,115,22,0.1);
-    border: 1px solid rgba(249,115,22,0.2);
+    background: rgba(240,168,104,0.18);
+    border: 1px solid rgba(240,168,104,0.45);
     padding: 0.35rem 1rem;
     border-radius: 999px;
     margin-bottom: 1.75rem;
@@ -346,7 +354,7 @@ body {
     margin-bottom: 1.5rem;
   }
   .accent-word {
-    color: var(--accent);
+    color: var(--accent-soft);
     font-style: italic;
     font-family: 'Instrument Serif', serif !important;
   }
@@ -404,7 +412,7 @@ body {
   }
   .btn-primary {
     background: var(--accent);
-    color: #fff;
+    color: var(--on-accent);
   }
   .btn-primary:hover { background: var(--accent-strong); transform: translateY(-1px); }
   .btn-secondary {
@@ -412,7 +420,7 @@ body {
     color: var(--text);
     border: 1px solid var(--line-strong);
   }
-  .btn-secondary:hover { background: rgba(255,255,255,0.12); }
+  .btn-secondary:hover { background: var(--surface-strong); }
 
   /* ── sections ── */
   .section {
@@ -427,7 +435,7 @@ body {
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-soft);
     margin-bottom: 0.75rem;
   }
   .section-title {
@@ -450,13 +458,13 @@ body {
 
   /* ── cards ── */
   .division-card {
-    background: rgba(255,255,255,0.04);
+    background: var(--surface);
     border: 1px solid var(--line-strong);
     border-radius: 16px;
     padding: 1.75rem;
     transition: border-color 0.2s, background 0.2s;
   }
-  .division-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(249,115,22,0.3); }
+  .division-card:hover { background: var(--surface-strong); border-color: rgba(240,168,104,0.7); }
   .division-card-badge {
     display: inline-block;
     font-size: 0.7rem;
@@ -467,16 +475,16 @@ body {
     border-radius: 999px;
     margin-bottom: 1rem;
   }
-  .badge-advanced { background: rgba(249,115,22,0.18); color: var(--accent-soft); border: 1px solid rgba(249,115,22,0.25); }
-  .badge-beginner { background: rgba(255,255,255,0.07); color: var(--text-dim); border: 1px solid var(--line-strong); }
+  .badge-advanced { background: rgba(240,168,104,0.25); color: var(--accent-soft); border: 1px solid rgba(240,168,104,0.55); }
+  .badge-beginner { background: var(--surface-strong); color: var(--text-dim); border: 1px solid var(--line-strong); }
   .division-card h3 { font-size: 1.25rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem; }
   .division-card p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1rem; }
   .division-card ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.4rem; }
   .division-card li { font-size: 0.875rem; color: var(--text-dim); display: flex; align-items: baseline; gap: 0.5rem; }
-  .division-card li::before { content: '-'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+  .division-card li::before { content: '-'; color: var(--accent-soft); font-weight: 700; flex-shrink: 0; }
 
   .format-card {
-    background: rgba(255,255,255,0.04);
+    background: var(--surface);
     border: 1px solid var(--line-strong);
     border-radius: 12px;
     padding: 1.5rem;
@@ -486,14 +494,14 @@ body {
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-soft);
     margin-bottom: 0.5rem;
   }
   .format-card h3 { font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 0.4rem; }
   .format-card p { font-size: 0.875rem; color: var(--text-dim); line-height: 1.6; }
 
   .window-card {
-    background: rgba(255,255,255,0.04);
+    background: var(--surface);
     border: 1px solid var(--line-strong);
     border-radius: 12px;
     padding: 1.5rem;
@@ -506,13 +514,13 @@ body {
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-soft);
   }
   .window-card h3 { font-size: 1rem; font-weight: 800; color: var(--text); }
   .window-card p { font-size: 0.875rem; color: var(--text-dim); }
 
   .partner-card {
-    background: rgba(255,255,255,0.92);
+    background: #ffffff;
     border-radius: 12px;
     padding: 1.25rem 1.75rem;
     display: flex;
@@ -520,16 +528,16 @@ body {
     justify-content: center;
     transition: transform 0.15s, box-shadow 0.15s;
   }
-  .partner-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .partner-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,58,52,0.14); }
   .partner-card img { height: 56px; width: auto; object-fit: contain; }
 
   /* ── cta strip ── */
   .cta-strip {
     position: relative;
     z-index: 1;
-    background: rgba(249,115,22,0.08);
-    border-top: 1px solid rgba(249,115,22,0.15);
-    border-bottom: 1px solid rgba(249,115,22,0.15);
+    background: rgba(240,168,104,0.14);
+    border-top: 1px solid rgba(240,168,104,0.4);
+    border-bottom: 1px solid rgba(240,168,104,0.4);
     padding: 3.5rem 2rem;
     text-align: center;
   }
@@ -576,7 +584,7 @@ body {
 
   /* ── staff cards ── */
   .staff-card {
-    background: rgba(255,255,255,0.04);
+    background: var(--surface);
     border: 1px solid var(--line-strong);
     border-radius: 14px;
     padding: 1.25rem;
@@ -586,14 +594,14 @@ body {
     text-align: center;
     transition: border-color 0.2s;
   }
-  .staff-card:hover { border-color: rgba(249,115,22,0.3); }
+  .staff-card:hover { border-color: rgba(240,168,104,0.75); }
   .staff-avatar {
     width: 80px;
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 0.75rem;
-    background: rgba(249,115,22,0.1);
+    background: rgba(240,168,104,0.2);
     border: 2px solid var(--line-strong);
   }
   .staff-avatar-placeholder {
@@ -601,17 +609,17 @@ body {
     height: 80px;
     border-radius: 50%;
     margin-bottom: 0.75rem;
-    background: rgba(249,115,22,0.1);
+    background: rgba(240,168,104,0.2);
     border: 2px solid var(--line-strong);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--accent);
+    color: var(--accent-soft);
   }
   .staff-name { font-size: 0.95rem; font-weight: 800; color: var(--text); margin-bottom: 0.2rem; }
-  .staff-role { font-size: 0.75rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
+  .staff-role { font-size: 0.75rem; font-weight: 600; color: var(--accent-soft); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
   .staff-bio { font-size: 0.8rem; color: var(--text-dim); line-height: 1.55; }
 
   /* ── faq items ── */

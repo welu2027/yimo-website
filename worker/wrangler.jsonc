@@ -1,0 +1,15 @@
+{
+  "name": "yimo-contact",
+  "main": "index.js",
+  "compatibility_date": "2026-08-01",
+  "vars": {
+    "MAIL_TO": "info@nxthorizon.org",
+    // Must be on a domain verified in Resend. Until nxthorizon.org is
+    // verified, "onboarding@resend.dev" works but only delivers to the
+    // address that owns the Resend account.
+    "MAIL_FROM": "YIMO <noreply@nxthorizon.org>",
+    "ALLOWED_ORIGIN": "https://compete.gunnmathcircle.org,http://localhost:3000"
+  }
+  // RESEND_API_KEY is NOT set here. It is a secret:
+  //   npx wrangler secret put RESEND_API_KEY
+}

@@ -24,6 +24,10 @@
         <div class="hero-actions">
           <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register</a>
           <a class="secondary-action" href="#format">Format</a>
+          <a class="flyer-peek" href="/YIMO_2026_Flyer.pdf" target="_blank" rel="noopener">
+            <img src="/yimo-2026-flyer.png" alt="" aria-hidden="true" />
+            <span>Check out our flyer <em>&rarr;</em></span>
+          </a>
         </div>
         <p class="hero-credit">
           Brought to you by
@@ -40,8 +44,7 @@
     <section id="format" class="story-panel format-panel">
       <div class="format-inner">
         <div class="band-heading">
-          <p class="section-kicker">Format</p>
-          <h2>Format.</h2>
+            <h2>Format</h2>
           <p class="format-lead">
             YIMO is run in two divisions. Both divisions take a written round of
             20 problems, and the top 8 students in each division advance to a
@@ -82,15 +85,20 @@
 
     <section id="prizes" class="content-band">
       <div class="band-heading">
-        <p class="section-kicker">Prizes</p>
-        <h2>Prizes.</h2>
+        <h2>Prizes</h2>
         <p class="format-lead">
           Over $1,500 in prizes is available for YIMO II, awarded across both
           divisions.
         </p>
       </div>
 
-      <p class="free-banner">YIMO is free to participate in.</p>
+      <p class="free-banner">
+        <span class="free-seal">100%<em>free</em></span>
+        <span class="free-text">
+          <strong>YIMO is free to participate in.</strong>
+          No entry fee, no travel, no geographic barriers.
+        </span>
+      </p>
 
       <div class="prize-grid">
         <div class="level-card">
@@ -111,16 +119,17 @@
       </div>
 
       <div class="medal-grid">
-        <span><strong>Top 10%</strong> Gold medal</span>
-        <span><strong>Next 10%</strong> Silver medal</span>
-        <span><strong>Next 10%</strong> Bronze medal</span>
+        <div v-for="medal in medals" :key="medal.name" class="medal-card" :class="'medal-' + medal.name.toLowerCase()">
+          <span class="medal-disc">{{ medal.rank }}</span>
+          <strong>{{ medal.name }}</strong>
+          <span class="medal-band">{{ medal.band }}</span>
+        </div>
       </div>
     </section>
 
     <section id="people" class="content-band">
       <div class="band-heading">
-        <p class="section-kicker">Staff</p>
-        <h2>Staff.</h2>
+        <h2>Staff</h2>
       </div>
       <div class="accordion-stack">
         <details class="accordion" open>
@@ -226,8 +235,7 @@
 
     <section id="sponsors" class="content-band sponsor-band">
       <div class="partner-heading">
-        <p class="section-kicker">Sponsors</p>
-        <h2>Sponsors.</h2>
+        <h2>Sponsors</h2>
       </div>
 
       <div
@@ -247,7 +255,6 @@
             rel="noopener"
           >
             <img :src="sponsor.logo" :alt="sponsor.name" />
-            <span>{{ sponsor.name }}</span>
           </a>
         </div>
       </div>
@@ -256,8 +263,7 @@
     <section id="partners" class="story-panel partners-panel">
       <div class="partner-group">
         <div class="partner-heading">
-          <p class="section-kicker">Partners</p>
-          <h2>Partners.</h2>
+            <h2>Partners</h2>
         </div>
         <div class="partner-orbit" :style="{ '--partner-columns': gridColumns(partners) }">
           <a
@@ -280,6 +286,50 @@
         <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
       </div>
     </section>
+
+    <section id="contact" class="content-band contact-band">
+      <div class="partner-heading">
+        <h2>Get in touch</h2>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-copy">
+          <h3>Business inquiries</h3>
+          <p>
+            If you are interested in sponsoring or partnering with YIMO, we
+            will send over our pitch deck. Contact us about anything else too!
+          </p>
+          <a class="contact-mail" href="mailto:info@nxthorizon.org?subject=YIMO%20business%20inquiry">info@nxthorizon.org</a>
+        </div>
+
+        <form class="contact-form" @submit.prevent="sendInquiry">
+          <div class="field-row">
+            <label class="field">
+            <span>First name <em>*</em></span>
+            <input v-model.trim="inquiry.firstName" type="text" name="firstName" autocomplete="given-name" required />
+            </label>
+            <label class="field">
+            <span>Last name <em>*</em></span>
+            <input v-model.trim="inquiry.lastName" type="text" name="lastName" autocomplete="family-name" required />
+            </label>
+          </div>
+          <label class="field">
+            <span>Email <em>*</em></span>
+            <input v-model.trim="inquiry.email" type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="field">
+            <span>Message</span>
+            <textarea v-model.trim="inquiry.message" name="message" rows="4"></textarea>
+          </label>
+          <button class="primary-action" type="submit">Send</button>
+        </form>
+      </div>
+
+      <p class="contact-note">
+        Competitor questions are answered fastest in our
+        <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a>.
+      </p>
+    </section>
   </div>
 </template>
 
@@ -295,7 +345,14 @@ export default {
   data() {
     return {
       identityWords: ['Youth', 'International', 'Math', 'Olympiad'],
+      /* Ranked top-down; the card styling keys off name.toLowerCase(). */
+      medals: [
+        { name: 'Gold', rank: '1st', band: 'Top 10%' },
+        { name: 'Silver', rank: '2nd', band: 'Next 10%' },
+        { name: 'Bronze', rank: '3rd', band: 'Next 10%' },
+      ],
       cleanupFns: [],
+      inquiry: { firstName: '', lastName: '', email: '', message: '' },
       flipped: {},
       executiveDirectors: [
         { name: 'Wenhao Lu', image: '/staff/wenhaolu.png', bio: 'is a USAJMO Honorable Mention who scored 11 on the AIME and competes in the USACO Platinum division. He loves combinatorics and algebra, and his club baseball team peaked at #75 nationally.' },
@@ -405,6 +462,23 @@ export default {
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
   },
   methods: {
+    /* The site is statically generated with no backend of its own, so Send
+       hands the filled-in fields to the visitor's mail client rather than
+       POSTing them anywhere. */
+    sendInquiry() {
+      const { firstName, lastName, email, message } = this.inquiry
+      const subject = `YIMO business inquiry from ${firstName} ${lastName}`
+      const body = [
+        `Name: ${firstName} ${lastName}`,
+        `Email: ${email}`,
+        '',
+        message,
+      ].join('\n')
+      window.location.href =
+        `mailto:info@nxthorizon.org?subject=${encodeURIComponent(subject)}` +
+        `&body=${encodeURIComponent(body)}`
+    },
+
     toggleFlip(id) {
       this.$set(this.flipped, id, !this.flipped[id])
     },
@@ -950,38 +1024,140 @@ export default {
   gap: 1.25rem;
 }
 
+/* The free banner is the single loudest claim on the page, so it gets a
+   filled seal rather than the outlined chip it used to be. */
 .free-banner {
-  display: inline-block;
-  margin: 0 0 2rem;
-  padding: 0.7rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 0 0 2.4rem;
+  padding: 1rem 1.6rem 1rem 1rem;
   border: 1px solid var(--accent);
-  color: var(--accent-soft);
-  font-size: 0.95rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    100deg,
+    rgba(240, 168, 104, 0.26) 0%,
+    rgba(240, 168, 104, 0.08) 55%,
+    rgba(240, 168, 104, 0) 100%
+  );
+  text-align: left;
+}
+
+.free-seal {
+  flex: none;
+  display: grid;
+  place-content: center;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 1.32rem;
   font-weight: 900;
-  letter-spacing: 0.06em;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  box-shadow: 0 6px 18px rgba(224, 144, 78, 0.35);
+}
+
+.free-seal em {
+  display: block;
+  margin-top: 0.2rem;
+  font-style: normal;
+  font-size: 0.66rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
+.free-text {
+  color: var(--text-dim);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.free-text strong {
+  display: block;
+  color: var(--paper);
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 900;
+}
+
+/* --- Medals ------------------------------------------------------------ */
+/* Ranked cards: each tier carries its own metal colour, and the row steps
+   down in height so the podium order reads before the text does. */
 .medal-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin-top: 1.7rem;
+  align-items: end;
+  gap: 1rem;
+  margin-top: 2.2rem;
 }
 
-.medal-grid span {
-  border-left: 2px solid var(--accent);
-  padding: 0.85rem 1rem;
-  color: var(--text-dim);
-  background: var(--surface);
-  font-size: 0.88rem;
+.medal-card {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.55rem;
+  padding: 1.9rem 1.1rem 1.5rem;
+  border: 1px solid var(--metal);
+  border-top: 3px solid var(--metal);
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at 50% 0%, var(--metal-wash), transparent 70%),
+    var(--panel);
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.medal-grid strong {
-  display: block;
+.medal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(30, 58, 52, 0.13);
+}
+
+.medal-gold {
+  --metal: #c8971f;
+  --metal-wash: rgba(200, 151, 31, 0.24);
+  padding-top: 2.6rem;
+}
+
+.medal-silver {
+  --metal: #8d979d;
+  --metal-wash: rgba(141, 151, 157, 0.24);
+  padding-top: 2.15rem;
+}
+
+.medal-bronze {
+  --metal: #a2652f;
+  --metal-wash: rgba(162, 101, 47, 0.22);
+}
+
+.medal-disc {
+  display: grid;
+  place-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--metal);
+  background: var(--metal-wash);
+  color: var(--metal);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+
+.medal-card strong {
   color: var(--paper);
-  font-size: 1.6rem;
-  line-height: 1;
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  line-height: 1.1;
+}
+
+.medal-band {
+  color: var(--text-dim);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .content-band {
@@ -1291,6 +1467,7 @@ export default {
 }
 
 .partner-logo-card {
+  position: relative;
   min-height: 150px;
   display: grid;
   place-items: center;
@@ -1298,15 +1475,52 @@ export default {
   padding: 1.25rem;
   color: var(--text);
   text-decoration: none;
-  background: transparent;
+  background: var(--panel);
   border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+/* A diagonal sheen that sits off-card until hover, then sweeps across. */
+.partner-logo-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+
+.partner-logo-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 16px 34px rgba(30, 58, 52, 0.14);
+}
+
+.partner-logo-card:hover::after {
+  transform: translateX(120%);
 }
 
 .partner-logo-card img {
   max-width: 150px;
   max-height: 72px;
   object-fit: contain;
-  filter: none;
+  /* Logos sit slightly muted until the card is hovered, so a row of them
+     reads as one block rather than competing for attention. */
+  filter: saturate(0.85);
+  transition: filter 0.28s ease, transform 0.28s ease;
+}
+
+.partner-logo-card:hover img {
+  filter: saturate(1.1);
+  transform: scale(1.05);
 }
 
 .partner-logo-card span {
@@ -1314,6 +1528,12 @@ export default {
   font-weight: 900;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color 0.28s ease;
+}
+
+.partner-logo-card:hover span {
+  color: var(--paper);
 }
 
 /* One --tier-* colour drives the label, the card border and the chip for a
@@ -1369,13 +1589,30 @@ export default {
   );
 }
 
+/* The tier name is the ranking signal for the whole row, so it is sized as a
+   heading and flanked by rules that run out to the edge of the group. */
 .sponsor-tier-label {
-  margin: 0 0 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  margin: 0 0 1.5rem;
   color: var(--tier);
-  font-size: 0.74rem;
+  font-size: clamp(1.35rem, 3.2vw, 2.1rem);
   font-weight: 900;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.sponsor-tier-label::before,
+.sponsor-tier-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--tier));
+}
+
+.sponsor-tier-label::after {
+  background: linear-gradient(90deg, var(--tier), transparent);
 }
 
 .sponsor-card-tiered img {
@@ -1391,8 +1628,17 @@ export default {
   min-height: var(--tier-height);
   border-color: var(--tier);
   border-top-width: 3px;
-  background: var(--tier-wash);
+  background:
+    radial-gradient(circle at 50% 0%, var(--tier-wash), transparent 72%),
+    var(--panel);
 }
+
+.sponsor-card-tiered:hover {
+  border-color: var(--tier);
+  box-shadow: 0 18px 38px var(--tier-wash);
+}
+
+
 
 .closing-cta {
   display: block;
@@ -1417,6 +1663,19 @@ export default {
 }
 
 @media (max-width: 640px) {
+  .free-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 18px;
+    padding: 1.1rem 1.2rem;
+  }
+
+  /* The stepped podium heights read as misalignment once the cards stack. */
+  .medal-gold,
+  .medal-silver {
+    padding-top: 1.9rem;
+  }
+
   .story-panel {
     padding: 4.5rem 1rem 5rem;
   }
@@ -1435,6 +1694,196 @@ export default {
   .partner-orbit,
   .sponsor-tier-group .partner-orbit {
     grid-template-columns: 1fr;
+  }
+}
+
+/* --- Hero flyer teaser ------------------------------------------------- */
+/* A small tilted thumbnail of the flyer's first page sitting under the hero
+   buttons; the PDF itself is the click target. */
+.flyer-peek {
+  position: relative;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-left: 0.9rem;
+  padding: 0.5rem 1.1rem 0.5rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  text-decoration: none;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.flyer-peek:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-soft);
+}
+
+.flyer-peek img {
+  width: 34px;
+  height: 44px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 6px;
+  transform: rotate(-4deg);
+  box-shadow: 0 4px 12px rgba(30, 58, 52, 0.18);
+  transition: transform 0.25s ease;
+}
+
+.flyer-peek:hover img {
+  transform: rotate(0deg) scale(1.04);
+}
+
+.flyer-peek span {
+  color: var(--paper);
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.flyer-peek em {
+  font-style: normal;
+  color: var(--accent-soft);
+}
+
+/* --- Contact ----------------------------------------------------------- */
+.contact-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  max-width: 980px;
+  margin: 2.2rem auto 0;
+  padding: 2.2rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  text-align: left;
+}
+
+.contact-copy {
+  align-self: center;
+}
+
+.contact-card h3 {
+  margin: 0;
+  color: var(--paper);
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+}
+
+.contact-card p {
+  margin: 0.7rem 0 0;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+.contact-mail {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: var(--accent-soft);
+  font-weight: 800;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid transparent;
+}
+
+.contact-mail:hover {
+  border-bottom-color: currentColor;
+}
+
+/* --- Contact form ------------------------------------------------------ */
+.contact-form {
+  display: grid;
+  align-content: start;
+  gap: 0.85rem;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field > span {
+  color: var(--text-dim);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.field em {
+  font-style: normal;
+  color: var(--accent-soft);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.62rem 0.8rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--paper);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(240, 168, 104, 0.28);
+}
+
+.contact-form .primary-action {
+  justify-self: start;
+  margin-top: 0.35rem;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 900;
+}
+
+@media (max-width: 520px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-note {
+  max-width: 640px;
+  margin: 1.8rem auto 0;
+  color: var(--text-dim);
+}
+
+.contact-note a {
+  color: var(--accent-soft);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 780px) {
+  .contact-card {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    padding: 1.6rem;
+  }
+
+  /* Once .hero-actions wraps, the extra left margin throws the pill
+     off-centre against the buttons above it. */
+  .flyer-peek {
+    margin-left: 0;
   }
 }
 

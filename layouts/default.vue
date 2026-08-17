@@ -22,10 +22,11 @@
         <a href="/#faq" class="nav-link">FAQ</a>
         <a href="/#sponsors" class="nav-link">Sponsors</a>
         <a href="/#partners" class="nav-link">Partners</a>
+        <a href="/#contact" class="nav-link">Contact</a>
       </div>
       <div class="nav-right">
         <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener" class="nav-link hidden md:inline-flex" aria-label="Discord">
-          <img src="/Discord-Logo-Black.png" alt="Discord" style="height:21px;width:21px;object-fit:contain;opacity:0.75;" />
+          <img src="/Discord-Logo-Black.png" alt="Discord" style="height:28px;width:28px;object-fit:contain;opacity:0.75;" />
         </a>
         <a href="https://www.instagram.com/yimocomp_/" target="_blank" rel="noopener" class="nav-link hidden md:inline-flex" aria-label="Instagram">
           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>

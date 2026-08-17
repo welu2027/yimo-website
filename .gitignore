@@ -90,3 +90,7 @@ sw.*
 *.swp
 .yarn/
 .pnp.*
+
+# Cloudflare Worker local secrets - never commit
+.dev.vars
+worker/.dev.vars

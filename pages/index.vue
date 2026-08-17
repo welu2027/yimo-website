@@ -305,12 +305,12 @@
         <form class="contact-form" @submit.prevent="sendInquiry">
           <div class="field-row">
             <label class="field">
-            <span>First name <em>*</em></span>
-            <input v-model.trim="inquiry.firstName" type="text" name="firstName" autocomplete="given-name" required />
+              <span>First name <em>*</em></span>
+              <input v-model.trim="inquiry.firstName" type="text" name="firstName" autocomplete="given-name" required />
             </label>
             <label class="field">
-            <span>Last name <em>*</em></span>
-            <input v-model.trim="inquiry.lastName" type="text" name="lastName" autocomplete="family-name" required />
+              <span>Last name <em>*</em></span>
+              <input v-model.trim="inquiry.lastName" type="text" name="lastName" autocomplete="family-name" required />
             </label>
           </div>
           <label class="field">
@@ -321,7 +321,20 @@
             <span>Message</span>
             <textarea v-model.trim="inquiry.message" name="message" rows="4"></textarea>
           </label>
-          <button class="primary-action" type="submit">Send</button>
+
+          <!-- Honeypot: hidden from people, irresistible to bots. -->
+          <label class="field field-trap" aria-hidden="true">
+            <span>Company</span>
+            <input v-model="inquiry.company" type="text" name="company" tabindex="-1" autocomplete="off" />
+          </label>
+
+          <button class="primary-action" type="submit" :disabled="sending">
+            {{ sending ? 'Sending...' : 'Send' }}
+          </button>
+
+          <p v-if="sendStatus" class="form-status" :class="sendStatus.ok ? 'is-ok' : 'is-error'">
+            {{ sendStatus.text }}
+          </p>
         </form>
       </div>
 
@@ -352,7 +365,11 @@ export default {
         { name: 'Bronze', rank: '3rd', band: 'Next 10%' },
       ],
       cleanupFns: [],
-      inquiry: { firstName: '', lastName: '', email: '', message: '' },
+      inquiry: { firstName: '', lastName: '', email: '', message: '', company: '' },
+      /* Deployed Worker URL - see worker/README.md. */
+      contactEndpoint: 'https://yimo-contact.welu2027.workers.dev',
+      sending: false,
+      sendStatus: null,
       flipped: {},
       executiveDirectors: [
         { name: 'Wenhao Lu', image: '/staff/wenhaolu.png', bio: 'is a USAJMO Honorable Mention who scored 11 on the AIME and competes in the USACO Platinum division. He loves combinatorics and algebra, and his club baseball team peaked at #75 nationally.' },
@@ -462,21 +479,31 @@ export default {
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
   },
   methods: {
-    /* The site is statically generated with no backend of its own, so Send
-       hands the filled-in fields to the visitor's mail client rather than
-       POSTing them anywhere. */
-    sendInquiry() {
-      const { firstName, lastName, email, message } = this.inquiry
-      const subject = `YIMO business inquiry from ${firstName} ${lastName}`
-      const body = [
-        `Name: ${firstName} ${lastName}`,
-        `Email: ${email}`,
-        '',
-        message,
-      ].join('\n')
-      window.location.href =
-        `mailto:info@nxthorizon.org?subject=${encodeURIComponent(subject)}` +
-        `&body=${encodeURIComponent(body)}`
+    /* Posts to the Cloudflare Worker in worker/, which is what actually
+       holds the Resend key and calls their API. The key is never shipped to
+       the browser - see worker/README.md. */
+    async sendInquiry() {
+      if (this.sending) return
+      this.sending = true
+      this.sendStatus = null
+      try {
+        const res = await fetch(this.contactEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(this.inquiry),
+        })
+        const data = await res.json().catch(() => ({}))
+        if (!res.ok) throw new Error(data.error || 'Something went wrong.')
+        this.sendStatus = { ok: true, text: 'Thanks! We will get back to you shortly.' }
+        this.inquiry = { firstName: '', lastName: '', email: '', message: '', company: '' }
+      } catch (error) {
+        this.sendStatus = {
+          ok: false,
+          text: `${error.message} You can also email info@nxthorizon.org directly.`,
+        }
+      } finally {
+        this.sending = false
+      }
     },
 
     toggleFlip(id) {
@@ -1749,6 +1776,7 @@ export default {
 
 /* --- Contact ----------------------------------------------------------- */
 .contact-card {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
   gap: 2.5rem;
@@ -1853,6 +1881,36 @@ export default {
   cursor: pointer;
   font: inherit;
   font-weight: 900;
+}
+
+.contact-form .primary-action[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* Off-screen rather than display:none - bots skip hidden inputs, but a
+   positioned one still looks fillable to them. */
+.field-trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form-status {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.form-status.is-ok {
+  color: #2f7a5c;
+}
+
+.form-status.is-error {
+  color: #a8442c;
 }
 
 @media (max-width: 520px) {

@@ -20,6 +20,7 @@
         <a href="/#prizes" class="nav-link">Prizes</a>
         <a href="/#people" class="nav-link">Staff</a>
         <a href="/#faq" class="nav-link">FAQ</a>
+        <a href="/#sponsors" class="nav-link">Sponsors</a>
         <a href="/#partners" class="nav-link">Partners</a>
       </div>
       <div class="nav-right">

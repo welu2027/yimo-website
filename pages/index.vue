@@ -367,7 +367,7 @@ export default {
       cleanupFns: [],
       inquiry: { firstName: '', lastName: '', email: '', message: '', company: '' },
       /* Deployed Worker URL - see worker/README.md. */
-      contactEndpoint: 'https://yimo-contact.welu2027.workers.dev',
+      contactEndpoint: 'https://yimo-contact.wenhaolu2027.workers.dev',
       sending: false,
       sendStatus: null,
       flipped: {},

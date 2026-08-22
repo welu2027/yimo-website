@@ -47,7 +47,7 @@
             <h2>Format</h2>
           <p class="format-lead">
             YIMO is run in two divisions. Both divisions take a written round of
-            20 problems, and the top 8 students in each division advance to a
+            20 problems, and the top 10 students in each division advance to a
             final round.
           </p>
         </div>
@@ -77,7 +77,7 @@
           </div>
           <div class="write-line">
             <h3>Final Round</h3>
-            <p>The top 8 students in each division advance to a final round with computational and proof-style problems.</p>
+            <p>The top 10 students in each division advance to a final round with computational and proof-style problems.</p>
           </div>
         </div>
       </div>
@@ -424,7 +424,7 @@ export default {
         },
         {
           q: 'What does the contest look like?',
-          a: 'The written round has 20 problems, then the top 8 in each division advance to a final round with computational and proof problems.',
+          a: 'The written round has 20 problems, then the top 10 in each division advance to a final round with computational and proof problems.',
         },
         {
           q: 'Are calculators allowed?',

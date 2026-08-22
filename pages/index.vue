@@ -87,7 +87,7 @@
       <div class="band-heading">
         <h2>Prizes</h2>
         <p class="format-lead">
-          Over $1,500 in prizes is available for YIMO II, awarded across both
+          Over $1,100 in prizes is available for YIMO II, awarded across both
           divisions.
         </p>
       </div>
@@ -103,7 +103,7 @@
       <div class="prize-grid">
         <div class="level-card">
           <p>Prize pool</p>
-          <h3>$1,500+</h3>
+          <h3>$1,100+</h3>
           <span>Available for YIMO II, split across Division 1 and Division 2.</span>
         </div>
         <div class="level-card">

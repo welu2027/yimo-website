@@ -73,7 +73,7 @@
           </div>
           <div class="write-line">
             <h3>Contest Windows</h3>
-            <p>Window A: August 29 at 21:30 EST. Window B: August 30 at 11:00 AM EST.</p>
+            <p>Window A: August 29 at 21:30 EDT. Window B: August 30 at 11:00 AM EDT.</p>
           </div>
           <div class="write-line">
             <h3>Final Round</h3>
@@ -282,7 +282,7 @@
 
       <div class="closing-cta">
         <h2>Register for August 29 or 30.</h2>
-        <p>Entry is <strong>free</strong>. Registration closes August 27, 23:59 EST. Pick one contest window and compete from anywhere.</p>
+        <p>Entry is <strong>free</strong>. Registration closes August 27, 23:59 EDT. Pick one contest window and compete from anywhere.</p>
         <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
       </div>
     </section>
@@ -421,7 +421,7 @@ export default {
         },
         {
           q: 'When is the contest?',
-          a: 'Choose exactly one window: Saturday, August 29 at 21:30 EST or Sunday, August 30 at 11:00 AM EST.',
+          a: 'Choose exactly one window: Saturday, August 29 at 21:30 EDT or Sunday, August 30 at 11:00 AM EDT.',
         },
         {
           q: 'What does the contest look like?',
@@ -441,7 +441,7 @@ export default {
         },
         {
           q: 'How do I register?',
-          a: 'Use the free registration form and upload the parental consent form before August 27, 23:59 EST.',
+          a: 'Use the free registration form and upload the parental consent form before August 27, 23:59 EDT.',
         },
       ],
       sponsors: [

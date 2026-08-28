@@ -9,6 +9,7 @@
         <img src="/yimo-2026-flyer.png" alt="YIMO 2026 flyer" style="display:block;width:100%;border-radius:10px;" />
       </a>
       <ul>
+        <li><strong>Score Distribution:</strong> <nuxt-link to="/distribution">View →</nuxt-link></li>
         <li><strong>Written Round Problems:</strong> <a href="/solutions/yimo-1-written-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
         <li><strong>Written Round Solutions:</strong> <a href="/solutions/yimo-1-written-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>
         <li><strong>Final Round Problems:</strong> <a href="/solutions/yimo-1-final-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>

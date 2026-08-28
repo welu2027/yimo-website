@@ -2,7 +2,8 @@
   <div class="content-page">
     <h1>Score Distribution</h1>
     <p class="page-intro">
-      Award cutoffs and medians for YIMO 1, listed by contest window and division.
+      Award cutoffs and medians for YIMO 1, listed by contest window and
+      division. All scores are out of 105.
     </p>
 
     <section>
@@ -24,7 +25,7 @@
       <div class="cutoff-table">
         <div v-for="row in group.rows" :key="row.label" class="cutoff-row" :class="row.className">
           <span class="cutoff-label">{{ row.label }}</span>
-          <span class="cutoff-value">{{ row.value }}</span>
+          <span class="cutoff-value">{{ row.value }}<em>/{{ maxScore }}</em></span>
         </div>
       </div>
     </section>
@@ -49,11 +50,12 @@ const build = (title, finalist, gold, silver, bronze, median) => ({
 export default {
   data() {
     return {
+      maxScore: 105,
       distributions: [
-        build('Window A — Division 1', 31, 59, 48, 37, 23),
-        build('Window A — Division 2', 71, 81, 64, 48, 31),
-        build('Window B — Division 1', 30, 58, 50, 30, 11),
-        build('Window B — Division 2', 81, 88, 81, 67, 47),
+        build('Window A, Division 1', 31, 59, 48, 37, 23),
+        build('Window A, Division 2', 71, 81, 64, 48, 31),
+        build('Window B, Division 1', 30, 58, 50, 30, 11),
+        build('Window B, Division 2', 81, 88, 81, 67, 47),
       ],
     }
   },
@@ -114,6 +116,13 @@ export default {
 .cutoff-value {
   font-variant-numeric: tabular-nums;
   font-weight: 700;
-  color: var(--text-dim);
+  color: var(--text);
+}
+
+/* The denominator is the same on every row, so it sits back from the score. */
+.cutoff-value em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text-faint);
 }
 </style>

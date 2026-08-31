@@ -3,7 +3,7 @@
   "main": "index.js",
   "compatibility_date": "2026-08-01",
   "vars": {
-    "MAIL_TO": "info@nxthorizon.org",
+    "MAIL_TO": "yimostaff@gmail.com",
     // Must be on a domain verified in Resend. Until nxthorizon.org is
     // verified, "onboarding@resend.dev" works but only delivers to the
     // address that owns the Resend account.

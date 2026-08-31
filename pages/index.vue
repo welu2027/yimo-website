@@ -17,9 +17,9 @@
         </div>
         <h1>YIMO</h1>
         <p class="hero-subtitle">
-          Youth International Math Olympiad returns August 29 and 30, 2026.
-          A <strong>free</strong> online contest for middle and high school
-          students, run in two divisions.
+          <strong>YIMO II has now concluded!</strong> Thank you to everyone who
+          competed. Join our <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a>
+          for updates on the next contest.
         </p>
         <div class="hero-actions">
           <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register</a>
@@ -69,7 +69,6 @@
           <div class="write-line">
             <h3>Problem Format</h3>
             <p>20 written problems with integer answers.</p>
-            <a class="scoring-guide-link" href="/YIMO_Scoring_guide.pdf" target="_blank" rel="noopener">Open scoring guide</a>
           </div>
           <div class="write-line">
             <h3>Contest Windows</h3>
@@ -87,7 +86,7 @@
       <div class="band-heading">
         <h2>Prizes</h2>
         <p class="format-lead">
-          Over $1,100 in prizes is available for YIMO II, awarded across both
+          Over $2,500 in total prize money has been given out across both
           divisions.
         </p>
       </div>
@@ -103,8 +102,8 @@
       <div class="prize-grid">
         <div class="level-card">
           <p>Prize pool</p>
-          <h3>$1,100+</h3>
-          <span>Available for YIMO II, split across Division 1 and Division 2.</span>
+          <h3>$2,500+</h3>
+          <span>Total prize money given out, split across Division 1 and Division 2.</span>
         </div>
         <div class="level-card">
           <p>Medals</p>
@@ -299,7 +298,7 @@
             If you are interested in sponsoring or partnering with YIMO, we
             will send over our pitch deck. Contact us about anything else too!
           </p>
-          <a class="contact-mail" href="mailto:info@nxthorizon.org?subject=YIMO%20business%20inquiry">info@nxthorizon.org</a>
+          <a class="contact-mail" href="mailto:yimostaff@gmail.com?subject=YIMO%20business%20inquiry">yimostaff@gmail.com</a>
         </div>
 
         <form class="contact-form" @submit.prevent="sendInquiry">
@@ -428,6 +427,10 @@ export default {
           a: 'The written round has 20 problems, then the top 10 in each division advance to a final round with computational and proof problems.',
         },
         {
+          q: 'How many points is each round worth?',
+          a: 'Both written rounds are 20 questions. YIMO I used a weighted written round, while YIMO II scored the written round as a raw count of correct answers. In the final round, each proof problem is worth 7 points and each computational problem is worth 3.',
+        },
+        {
           q: 'Are calculators allowed?',
           a: "No, calculators aren't allowed.",
         },
@@ -500,7 +503,7 @@ export default {
       } catch (error) {
         this.sendStatus = {
           ok: false,
-          text: `${error.message} You can also email info@nxthorizon.org directly.`,
+          text: `${error.message} You can also email yimostaff@gmail.com directly.`,
         }
       } finally {
         this.sending = false
@@ -1035,15 +1038,6 @@ export default {
   margin: 0;
   color: var(--text-dim);
   line-height: 1.65;
-}
-
-.scoring-guide-link {
-  display: inline-block;
-  margin-top: 0.8rem;
-  color: var(--accent-soft);
-  font-weight: 800;
-  text-decoration: underline;
-  text-underline-offset: 0.22em;
 }
 
 .prize-grid {

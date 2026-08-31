@@ -836,6 +836,20 @@ export default {
 
 /* The dimmed body colour swallows a plain <strong>, so emphasised words are
    lifted back to full paper white as well as bolded. */
+/* Without this the link inherits the dimmed body colour and reads as plain
+   text, matching the treatment on .faq-note and .contact-note. */
+.hero-subtitle a {
+  color: var(--accent-soft);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+.hero-subtitle a:hover {
+  text-decoration-thickness: 2px;
+}
+
 .hero-subtitle strong,
 .closing-cta p strong {
   color: var(--paper);

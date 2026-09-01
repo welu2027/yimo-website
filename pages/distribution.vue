@@ -20,7 +20,7 @@
     </section>
 
     <template v-for="contest in contests">
-      <section :key="contest.name" class="contest-block">
+      <section :key="contest.name" :id="contest.anchor" class="contest-block">
         <h2>{{ contest.name }}</h2>
         <p>All scores are out of {{ contest.maxScore }}.</p>
 
@@ -67,6 +67,7 @@ export default {
       contests: [
         {
           name: 'YIMO II',
+          anchor: 'yimo-ii',
           maxScore: 20,
           groups: [
             build('Division 1, Window A', { finalist: 17, gold: 18, silver: 16, bronze: 13 }),
@@ -77,6 +78,7 @@ export default {
         },
         {
           name: 'YIMO 1',
+          anchor: 'yimo-1',
           maxScore: 105,
           groups: [
             build('Window A, Division 1', { finalist: 31, gold: 59, silver: 48, bronze: 37, median: 23 }),

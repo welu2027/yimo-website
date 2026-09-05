@@ -3,7 +3,8 @@
   "main": "index.js",
   "compatibility_date": "2026-08-01",
   "vars": {
-    "MAIL_TO": "yimostaff@gmail.com",
+    // Comma-separated; the Worker splits this into Resend's `to` array.
+    "MAIL_TO": "rayoon.kim@yimo-official.org,bryan.bu@yimo-official.org,karam.gill@yimo-official.org,jun.yi@yimo-official.org,neil.iyer@yimo-official.org",
     // Must be on a domain verified in Resend. Until nxthorizon.org is
     // verified, "onboarding@resend.dev" works but only delivers to the
     // address that owns the Resend account.

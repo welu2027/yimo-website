@@ -9,7 +9,8 @@
  *
  * Secrets/vars (set with `npx wrangler secret put` / in wrangler.jsonc):
  *   RESEND_API_KEY  - secret. The Resend key.
- *   MAIL_TO         - where inquiries are delivered.
+ *   MAIL_TO         - where inquiries are delivered (comma-separated for
+ *                     multiple recipients).
  *   MAIL_FROM       - sender, on a domain verified in Resend.
  *   ALLOWED_ORIGIN  - site origin permitted to POST here.
  */
@@ -86,7 +87,7 @@ export default {
       },
       body: JSON.stringify({
         from: env.MAIL_FROM,
-        to: [env.MAIL_TO],
+        to: env.MAIL_TO.split(',').map((a) => a.trim()).filter(Boolean),
         // So hitting reply in the inbox goes to the person who wrote in,
         // rather than back to the Worker's sending address.
         reply_to: email,

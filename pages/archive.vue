@@ -7,31 +7,37 @@
       <h2>YIMO II</h2>
       <div class="section-split">
         <div class="section-links">
-        <ul>
-        <li><strong>Written Exam Rankings:</strong> <nuxt-link to="/rankings">View →</nuxt-link></li>
-        <li><strong>Score Distribution:</strong> <nuxt-link to="/distribution#yimo-ii">View →</nuxt-link></li>
-        <li><strong>Written Round Problems:</strong> <a href="/solutions/yimo-2-written-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
-        <li><strong>Written Round Solutions:</strong> <a href="/solutions/yimo-2-written-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>
-        <li><strong>Final Round Problems:</strong> <a href="/solutions/yimo-2-final-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
-        <li><strong>Final Round Solutions:</strong> <a href="/solutions/yimo-2-final-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>
-        <li><strong>Awards Ceremony:</strong> <a href="https://www.youtube.com/watch?v=_ggXrGdegq8" target="_blank" rel="noopener">Watch →</a></li>
-        <li><strong>Awards Ceremony Slideshow:</strong> <a href="/solutions/yimo-2-awards-ceremony.pdf" target="_blank" rel="noopener">View →</a></li>
-      </ul>
+          <p class="subhead">Results</p>
+          <ul>
+            <li><strong>Written Exam Rankings:</strong> <nuxt-link to="/rankings">View →</nuxt-link></li>
+            <li><strong>Final Exam Rankings:</strong> <nuxt-link to="/final-rankings">View →</nuxt-link></li>
+            <li><strong>Score Distribution:</strong> <nuxt-link to="/distribution#yimo-ii">View →</nuxt-link></li>
+            <li><strong>Awards Ceremony:</strong> <a href="https://www.youtube.com/watch?v=_ggXrGdegq8" target="_blank" rel="noopener">Watch →</a></li>
+            <li><strong>Awards Ceremony Slideshow:</strong> <a href="/solutions/yimo-2-awards-ceremony.pdf" target="_blank" rel="noopener">View →</a></li>
+          </ul>
 
-      <p class="subhead">Workshops</p>
-      <ul>
-        <li v-for="workshop in yimo2Workshops" :key="workshop.href">
-          <strong>{{ workshop.title }}:</strong>
-          <a :href="workshop.href" target="_blank" rel="noopener">Watch →</a>
-        </li>
-        </ul>
+          <p class="subhead">Problems</p>
+          <ul>
+            <li><strong>Written Round Problems:</strong> <a href="/solutions/yimo-2-written-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
+            <li><strong>Written Round Solutions:</strong> <a href="/solutions/yimo-2-written-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>
+            <li><strong>Final Round Problems:</strong> <a href="/solutions/yimo-2-final-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
+            <li><strong>Final Round Solutions:</strong> <a href="/solutions/yimo-2-final-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>
+          </ul>
+
+          <p class="subhead">Workshops</p>
+          <ul>
+            <li v-for="workshop in yimo2Workshops" :key="workshop.href">
+              <strong>{{ workshop.title }}:</strong>
+              <a :href="workshop.href" target="_blank" rel="noopener">Watch →</a>
+            </li>
+          </ul>
         </div>
 
         <aside class="section-stats">
           <p class="subhead">Participation</p>
           <table class="stats-table">
             <thead>
-              <tr><th>Division</th><th>Window</th><th>Registrants</th><th>Countries</th></tr>
+              <tr><th>Division</th><th>Window</th><th>Registrants</th><th>Countries*</th></tr>
             </thead>
             <tbody>
               <tr v-for="row in yimo2Stats" :key="row.division + row.window">
@@ -42,6 +48,7 @@
               </tr>
             </tbody>
           </table>
+          <p class="stats-note">* Self-disclosed, so undercounted.</p>
         </aside>
       </div>
     </section>
@@ -56,30 +63,35 @@
       <h2>YIMO 1</h2>
       <div class="section-split">
         <div class="section-links">
-      <ul>
-        <li><strong>Score Distribution:</strong> <nuxt-link to="/distribution#yimo-1">View →</nuxt-link></li>
-        <li><strong>Written Round Problems:</strong> <a href="/solutions/yimo-1-written-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
-        <li><strong>Written Round Solutions:</strong> <a href="/solutions/yimo-1-written-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>
-        <li><strong>Final Round Problems:</strong> <a href="/solutions/yimo-1-final-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
-        <li><strong>Final Round Solutions:</strong> <a href="/solutions/yimo-1-final-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>
-        <li><strong>Window A Awards Ceremony:</strong> <a href="https://drive.google.com/file/d/1G-yiurPMI482UgBuHrC6nesXBHA9H1Vv/view?usp=sharing" target="_blank" rel="noopener">Watch →</a></li>
-        <li><strong>Window B Awards Ceremony:</strong> <a href="https://drive.google.com/file/d/1U8lIAZQBRyUb5RTtIY40Q1zzih_q6iUM/view?usp=sharing" target="_blank" rel="noopener">Watch →</a></li>
-      </ul>
+          <p class="subhead">Results</p>
+          <ul>
+            <li><strong>Score Distribution:</strong> <nuxt-link to="/distribution#yimo-1">View →</nuxt-link></li>
+            <li><strong>Window A Awards Ceremony:</strong> <a href="https://drive.google.com/file/d/1G-yiurPMI482UgBuHrC6nesXBHA9H1Vv/view?usp=sharing" target="_blank" rel="noopener">Watch →</a></li>
+            <li><strong>Window B Awards Ceremony:</strong> <a href="https://drive.google.com/file/d/1U8lIAZQBRyUb5RTtIY40Q1zzih_q6iUM/view?usp=sharing" target="_blank" rel="noopener">Watch →</a></li>
+          </ul>
 
-      <p class="subhead">Workshops</p>
-      <ul>
-        <li v-for="workshop in yimo1Workshops" :key="workshop.href">
-          <strong>{{ workshop.title }}:</strong>
-          <a :href="workshop.href" target="_blank" rel="noopener">View →</a>
-        </li>
-        </ul>
+          <p class="subhead">Problems</p>
+          <ul>
+            <li><strong>Written Round Problems:</strong> <a href="/solutions/yimo-1-written-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
+            <li><strong>Written Round Solutions:</strong> <a href="/solutions/yimo-1-written-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>
+            <li><strong>Final Round Problems:</strong> <a href="/solutions/yimo-1-final-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
+            <li><strong>Final Round Solutions:</strong> <a href="/solutions/yimo-1-final-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>
+          </ul>
+
+          <p class="subhead">Workshops</p>
+          <ul>
+            <li v-for="workshop in yimo1Workshops" :key="workshop.href">
+              <strong>{{ workshop.title }}:</strong>
+              <a :href="workshop.href" target="_blank" rel="noopener">View →</a>
+            </li>
+          </ul>
         </div>
 
         <aside class="section-stats">
           <p class="subhead">Participation</p>
           <table class="stats-table">
             <thead>
-              <tr><th>Division</th><th>Window</th><th>Registrants</th><th>Countries</th></tr>
+              <tr><th>Division</th><th>Window</th><th>Registrants</th><th>Countries*</th></tr>
             </thead>
             <tbody>
               <tr v-for="row in yimo1Stats" :key="row.division + row.window">
@@ -90,20 +102,32 @@
               </tr>
             </tbody>
           </table>
+          <p class="stats-note">* Self-disclosed, so undercounted.</p>
         </aside>
       </div>
     </section>
 
     <section>
-      <p class="subhead">Problem of the Day</p>
-      <ul>
-        <li><strong>POTD Archive:</strong> <nuxt-link to="/potd">View →</nuxt-link></li>
-      </ul>
+      <h2>Problem of the Day</h2>
+      <p>One problem per division, every day. Open a problem to see the full worked solution.</p>
+      <div class="potd-columns">
+        <div v-for="group in potdByDivision" :key="group.division">
+          <p class="subhead">Division {{ group.division }}</p>
+          <ul>
+            <li v-for="entry in group.entries" :key="entry.slug">
+              <nuxt-link :to="`/potd/${entry.slug}`">{{ formatDate(entry.date) }} →</nuxt-link>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
   </div>
 </template>
 
 <script>
+import potdProblems from '~/data/potd'
+import { formatDate } from '~/utils/potd'
+
 export default {
   data() {
     return {
@@ -115,16 +139,16 @@ export default {
       ],
       /* Registration counts by division and window. */
       yimo2Stats: [
-        { division: 'Div 1 (Advanced)', window: 'A', registrants: 404, countries: '~62' },
-        { division: 'Div 1 (Advanced)', window: 'B', registrants: 363, countries: '~70' },
-        { division: 'Div 2 (Beginner)', window: 'A', registrants: 921, countries: '~82' },
-        { division: 'Div 2 (Beginner)', window: 'B', registrants: 946, countries: '~104' },
+        { division: 'Div 1 (Advanced)', window: 'A', registrants: 404, countries: 62 },
+        { division: 'Div 1 (Advanced)', window: 'B', registrants: 363, countries: 70 },
+        { division: 'Div 2 (Beginner)', window: 'A', registrants: 921, countries: 82 },
+        { division: 'Div 2 (Beginner)', window: 'B', registrants: 946, countries: 104 },
       ],
       yimo1Stats: [
-        { division: 'Div 1 (Advanced)', window: 'A', registrants: 50, countries: '~20' },
-        { division: 'Div 1 (Advanced)', window: 'B', registrants: 52, countries: '~22' },
-        { division: 'Div 2 (Beginner)', window: 'A', registrants: 100, countries: '~28' },
-        { division: 'Div 2 (Beginner)', window: 'B', registrants: 100, countries: '~32' },
+        { division: 'Div 1 (Advanced)', window: 'A', registrants: 50, countries: 20 },
+        { division: 'Div 1 (Advanced)', window: 'B', registrants: 52, countries: 22 },
+        { division: 'Div 2 (Beginner)', window: 'A', registrants: 100, countries: 28 },
+        { division: 'Div 2 (Beginner)', window: 'B', registrants: 100, countries: 32 },
       ],
       yimo1Workshops: [
         { title: 'Estimathon Workshop', href: 'https://drive.google.com/file/d/1oh6rpw89WBEReqoPNOspdsYvr8wfMhRN/view?usp=sharing' },
@@ -132,6 +156,20 @@ export default {
       ],
     }
   },
+  computed: {
+    /* Newest first, one column per division. */
+    potdByDivision() {
+      const divisions = [...new Set(potdProblems.map((entry) => entry.division))].sort()
+      return divisions.map((division) => ({
+        division,
+        entries: potdProblems
+          .filter((entry) => entry.division === division)
+          .slice()
+          .sort((a, b) => b.date.localeCompare(a.date)),
+      }))
+    },
+  },
+  methods: { formatDate },
 }
 </script>
 
@@ -184,6 +222,13 @@ export default {
   font-weight: 700;
 }
 
+.stats-note {
+  margin: 0.6rem 0 0;
+  color: var(--text-faint);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
 .flyer-section {
   display: flex;
   justify-content: center;
@@ -194,6 +239,12 @@ export default {
   width: 420px;
   max-width: 100%;
   border-radius: 10px;
+}
+
+.potd-columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
 /* Below this the table would squeeze the link list, so it drops underneath. */
@@ -217,5 +268,12 @@ export default {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.16em;
+}
+
+/* The first subhead in a column sits directly under the section heading. */
+.section-links > .subhead:first-child,
+.section-stats > .subhead:first-child,
+.potd-columns .subhead {
+  margin-top: 0;
 }
 </style>

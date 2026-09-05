@@ -17,8 +17,9 @@
         </div>
         <h1>YIMO</h1>
         <p class="hero-subtitle">
-          <strong>YIMO II has now concluded!</strong> Thank you to everyone who
-          competed. Join our <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a>
+          <strong>YIMO II has now concluded!</strong>
+          <nuxt-link to="/archive#yimo-ii">Check the results</nuxt-link>, and join our
+          <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a>
           for updates on the next contest.
         </p>
         <div class="hero-actions">
@@ -84,7 +85,8 @@
 
     <section id="prizes" class="content-band">
       <div class="band-heading">
-        <h2>Prizes</h2>
+        <p class="subsection-kicker">Format</p>
+        <h3 class="subsection-title">Prizes</h3>
         <p class="format-lead">
           Over $2,500 in total prize money has been given out across both
           divisions.
@@ -132,10 +134,10 @@
       </div>
       <div class="accordion-stack">
         <details class="accordion" open>
-          <summary>Competition Directors</summary>
+          <summary>Directors</summary>
           <div class="staff-grid">
             <article
-              v-for="member in executiveDirectors"
+              v-for="member in directors"
               :key="member.name"
               class="flip-card"
               :class="{ flipped: flipped['exec-' + member.name] }"
@@ -143,8 +145,10 @@
             >
               <div class="flip-inner">
                 <div class="flip-front">
-                  <img :src="member.image" :alt="member.name" />
+                  <img v-if="member.image" :src="member.image" :alt="member.name" />
+                  <div v-else class="staff-initial">{{ member.name[0] }}</div>
                   <h3>{{ member.name }}</h3>
+                  <a v-if="member.email" class="staff-email" :href="'mailto:' + member.email" @click.stop>{{ member.email }}</a>
                 </div>
                 <div class="flip-back">
                   <h3>{{ member.name }}</h3>
@@ -171,6 +175,7 @@
                   <div v-else class="staff-initial">{{ member.name[0] }}</div>
                   <h3>{{ member.name }}</h3>
                   <p>{{ member.role }}</p>
+                  <a v-if="member.email" class="staff-email" :href="'mailto:' + member.email" @click.stop>{{ member.email }}</a>
                 </div>
                 <div class="flip-back">
                   <h3>{{ member.name }}</h3>
@@ -185,12 +190,13 @@
               v-for="member in generalStaff"
               :key="member.name"
               class="flip-card flip-card-compact"
-              :class="{ flipped: flipped['staff-' + member.name] }"
+              :class="{ flipped: flipped['staff-' + member.name], 'has-email': member.email }"
               @click="toggleFlip('staff-' + member.name)"
             >
               <div class="flip-inner">
                 <div class="flip-front flip-front-nametag">
                   <h3>{{ member.name }}</h3>
+                  <a v-if="member.email" class="staff-email" :href="'mailto:' + member.email" @click.stop>{{ member.email }}</a>
                 </div>
                 <div class="flip-back">
                   <img v-if="member.image" :src="member.image" :alt="member.name" />
@@ -262,7 +268,8 @@
     <section id="partners" class="story-panel partners-panel">
       <div class="partner-group">
         <div class="partner-heading">
-            <h2>Partners</h2>
+          <p class="subsection-kicker">Sponsors</p>
+          <h3 class="subsection-title">Partners</h3>
         </div>
         <div class="partner-orbit" :style="{ '--partner-columns': gridColumns(partners) }">
           <a
@@ -298,7 +305,12 @@
             If you are interested in sponsoring or partnering with YIMO, we
             will send over our pitch deck. Contact us about anything else too!
           </p>
-          <a class="contact-mail" href="mailto:yimostaff@gmail.com?subject=YIMO%20business%20inquiry">yimostaff@gmail.com</a>
+          <ul class="contact-people">
+            <li v-for="person in contactPeople" :key="person.email">
+              <span>{{ person.name }}</span>
+              <a class="contact-mail" :href="'mailto:' + person.email + '?subject=YIMO%20business%20inquiry'">{{ person.email }}</a>
+            </li>
+          </ul>
         </div>
 
         <form class="contact-form" @submit.prevent="sendInquiry">
@@ -364,50 +376,58 @@ export default {
         { name: 'Bronze', rank: '3rd', band: 'Next 10%' },
       ],
       cleanupFns: [],
+      contactPeople: [
+        { name: 'Rayoon Kim', email: 'rayoon.kim@yimo-official.org' },
+        { name: 'Bryan Bu', email: 'bryan.bu@yimo-official.org' },
+        { name: 'Karam Gill', email: 'karam.gill@yimo-official.org' },
+        { name: 'Jun Yi', email: 'jun.yi@yimo-official.org' },
+        { name: 'Neil Iyer', email: 'neil.iyer@yimo-official.org' },
+      ],
       inquiry: { firstName: '', lastName: '', email: '', message: '', company: '' },
       /* Deployed Worker URL - see worker/README.md. */
       contactEndpoint: 'https://yimo-contact.wenhaolu2027.workers.dev',
       sending: false,
       sendStatus: null,
       flipped: {},
-      executiveDirectors: [
-        { name: 'Wenhao Lu', image: '/staff/wenhaolu.png', bio: 'is a USAJMO Honorable Mention who scored 11 on the AIME and competes in the USACO Platinum division. He loves combinatorics and algebra, and his club baseball team peaked at #75 nationally.' },
-        { name: 'Hyunjun Yi', image: '/staff/junyi.png', bio: 'is an AMC-12 Perfect Scorer who now works as a Deputy Executive Director at STEMise. Growing up in the Netherlands, he likes to hang out with his friends and listen to music in his free time.' },
-        { name: 'Daniel Edouard', image: '/staff/danieledouard.png', bio: 'is a Merit-Based Harvard Fellow who has conducted independent computational neuropsychology research under the supervision of a Yale professor. His work sits at the intersection of AI, applied math, and neuroscience, with a focus on developing computational applications for neurodivergent developmental disorders. A frequent presenter at national research conferences, he also serves on the Workshop and Outreach team for NXT Horizon. He is the founder of Les Enfants du Monde, a nonprofit focused on STEM, AI, and entrepreneurship education for youth in the Democratic Republic of the Congo. In his free time, he is an avid tennis and pickleball player and has played violin for six years.' },
-        { name: 'Kristen Zhou', image: '/staff/kristenzhou.png', bio: 'is a student who enjoys competition math and teaching it. Despite missing AIME by 1.5 points, she has placed first and fourth at many regional MATHLEAGUE.ORG competitions. She is a four-year cross country runner who has qualified for the Central Coast Section three times. In her free time, she enjoys playing PJSK, watching Danganronpa, and listening to indie music.' },
-        { name: 'Abhiram Jetty', image: '/staff/abhiramjetty.png', bio: 'is a USAJMO qualifier, TXSEF finalist, Thermo Fisher finalist, and AMC 10 Distinguished Honor Roll recipient. As a 9th grader, he likes to play video games, swim, and write math problems for contests like YIMO.' },
+      directors: [
+        { name: 'Hyunjun Yi', email: 'jun.yi@yimo-official.org', image: '/staff/junyi.png', bio: 'is an AMC-12 Perfect Scorer who now works as a Deputy Executive Director at STEMise. Growing up in the Netherlands, he likes to hang out with his friends and listen to music in his free time.' },
+        { name: 'Neil Iyer', email: 'neil.iyer@yimo-official.org', bio: 'Bio coming soon.' },
+        { name: 'Karam Gill', email: 'karam.gill@yimo-official.org', image: '/staff/karamgill.png', bio: 'is a rising 8th grader who is passionate about math and is a 3x AIME qualifier. Outside of math, he enjoys playing basketball, board games, and card games.' },
+        { name: 'Rayoon Kim', email: 'rayoon.kim@yimo-official.org', bio: 'is a USAMO qualifier who can be found coordbashing the most diabolical geometry problem. In his free time, he enjoys playing various PvP games, watching murderous media, and listening to Ado, Billie Eilish, and various indie groups.' },
+        { name: 'Bryan Bu', email: 'bryan.bu@yimo-official.org', bio: 'Bio coming soon.' },
+        { name: 'Shining Sun', bio: 'is a 6x AIME qualifier and 2x USAJMO qualifier. He also works as a problem writer for national competitions in Nepal. In his free time, he enjoys playing video games and exploring random places with friends.' },
       ],
+      /* Team leads. Each person's team doubles as their role label. */
       staffLeadership: [
-        { name: 'Rayoon Kim', role: 'Head of Logistics', bio: 'is a USAMO qualifier who can be found coordbashing the most diabolical geometry problem. In his free time, he enjoys playing various PvP games, watching murderous media, and listening to Ado, Billie Eilish, and various indie groups.' },
-        { name: 'Shining Sun', role: 'Problem Czar', bio: 'is a 6x AIME qualifier and 2x USAJMO qualifier. He also works as a problem writer for national competitions in Nepal. In his free time, he enjoys playing video games and exploring random places with friends.' },
-        { name: 'Karam Gill', role: 'Problem Czar', image: '/staff/karamgill.png', bio: 'is a rising 8th grader who is passionate about math and is a 3x AIME qualifier. Outside of math, he enjoys playing basketball, board games, and card games.' },
-        { name: 'Neil Iyer', role: 'Problem Czar', bio: 'Bio coming soon.' },
-      ],
-      formerDirectors: [
-        { name: 'Ryan Ahn', role: 'Former Competition Director', image: '/staff/ryanahn.png' },
-        { name: 'Andrew Zhang', role: 'Former Competition Director', image: '/staff/andrewzhang.png' },
+        { name: 'Philip Zhang', role: 'Problem Writing', email: 'philip.zhang@yimo-official.org', bio: 'Bio coming soon.' },
+        { name: 'Vihaan Vajpeyi', role: 'Problem Writing', email: 'vihaan.vajpeyi@yimo-official.org', image: '/staff/vihaanvajpeyi.jpeg', bio: 'Vihaan is an AIME qualifier with AMC 10 Distinguished Honor Roll and RoboCup Nationals winner who is interested in quantitative finance. In his free time, he enjoys playing video games and learning new math concepts.' },
+        { name: 'Siddh Mistry', role: 'Marketing', email: 'siddh.mistry@yimo-official.org', image: '/staff/siddhmistry.png', bio: 'Siddh Mistry is a high school senior interested in mathematics and computer science. In his free time he likes to watch anime and play sports (coordbashing).' },
+        { name: 'Lefteris Demosthenous', role: 'Marketing', email: 'lefteris.demosthenous@yimo-official.org', bio: 'is an AIME qualifier with distinction and a USACO Silver competitive coder. He likes to play piano and lift weights.' },
+        { name: 'Daniel Edouard', role: 'Outreach', image: '/staff/danieledouard.png', bio: 'is a Merit-Based Harvard Fellow who has conducted independent computational neuropsychology research under the supervision of a Yale professor. His work sits at the intersection of AI, applied math, and neuroscience, with a focus on developing computational applications for neurodivergent developmental disorders. A frequent presenter at national research conferences, he also serves on the Workshop and Outreach team for NXT Horizon. He is the founder of Les Enfants du Monde, a nonprofit focused on STEM, AI, and entrepreneurship education for youth in the Democratic Republic of the Congo. In his free time, he is an avid tennis and pickleball player and has played violin for six years.' },
+        { name: 'Kunal Modi', role: 'Outreach', image: '/staff/kunalmodi.jpeg', bio: 'Student interested in business and entrepreneurship who competes in numerous math competitions, with competitive tennis as a hobby.' },
+        { name: 'Gonçalo Franco', role: 'Website', email: 'goncalo.franco@yimo-official.org', image: '/staff/goncalofranco.png', bio: "Gonçalo has won multiple national math and technology olympiads. Currently, he manages his own digital agency and works on multiple projects, including this website's design." },
+        { name: 'Adithya Balakumar', role: 'Chapter', email: 'adi.balakumar@yimo-official.org', image: '/staff/adithyabalakumar.png', bio: 'is an AIME qualifier (2026) with a Bronze Medal at the Math League International Competition and a state-level robotics innovation award. He loves exploring local parks and drinking matcha.' },
+        { name: 'Abhiram Jetty', role: 'Logistics', email: 'abhi.jetty@yimo-official.org', image: '/staff/abhiramjetty.png', bio: 'is a USAJMO qualifier, TXSEF finalist, Thermo Fisher finalist, and AMC 10 Distinguished Honor Roll recipient. As a 9th grader, he likes to play video games, swim, and write math problems for contests like YIMO.' },
       ],
       generalStaff: [
-        { name: 'Adithya Balakumar', image: '/staff/adithyabalakumar.png', bio: 'is an AIME qualifier (2026) with a Bronze Medal at the Math League International Competition and a state-level robotics innovation award. He loves exploring local parks and drinking matcha.' },
-        { name: 'Bryan Bu', bio: 'Bio coming soon.' },
         { name: 'Chloe Jin', bio: 'Bio coming soon.' },
         { name: 'Christopher Huang', image: '/staff/christopherhuang.png', bio: 'serves as the Executive of Education at STEMise, where he leads initiatives to make STEM learning more accessible. As a Senior SAT Tutor at Schoolhouse.world, he has mentored over 65 students across 20 countries and overseen more than 1,200 certifications. Beyond education, he has a personal interest in the intersection of dentistry and materials science.' },
         { name: 'George Paret', bio: 'is a 4x AIME qualifier, AMC 10/12 Distinguished Honor Roll recipient, PUMaC Top 10 Geometry, BMT Top 10 Geometry, BMT Top 10 Algebra, HMMT Top 25 Geometry, MATHCOUNTS Nationals Qualifier, ARML Perfect Scorer, and co-founder of GPMO. In his free time, he enjoys playing ping-pong and listening to music.' },
-        { name: 'Gonçalo Franco', image: '/staff/goncalofranco.png', bio: "Gonçalo has won multiple national math and technology olympiads. Currently, he manages his own digital agency and works on multiple projects, including this website's design." },
         { name: 'Ira KC', bio: 'Bio coming soon.' },
         { name: 'Jacob Blais', bio: 'Bio coming soon.' },
         { name: 'Jayvant Rajesh', image: '/staff/jayvantrajesh.webp', bio: "Jayvant serves as Chief of Staff at STEMise, where he leads organizational strategy, including revising the team's mission statement and shaping recruitment and overall direction." },
         { name: 'Justin Guo', bio: 'is a 4x AIME qualifier, HMMT top 50 placer, USACHO qualifier, and Olympiad Insider officer. He enjoys chess, running, community service, and programming.' },
-        { name: 'Kunal Modi', image: '/staff/kunalmodi.jpeg', bio: 'Student interested in business and entrepreneurship who competes in numerous math competitions, with competitive tennis as a hobby.' },
-        { name: 'Lefteris Demosthenous', bio: 'is an AIME qualifier with distinction and a USACO Silver competitive coder. He likes to play piano and lift weights.' },
         { name: 'Philip Dong', image: '/staff/philipdong.jpg', bio: 'Philip Dong is an AMC 10 DHM, AIME qualifier, and USA(J)MO qualifier. He also competes in the US National Chemistry Olympiad and got Honors this year. He is interested in math, coding, and chemistry, and during his free time, he likes to play tennis, video games, and the piano and most importantly, eat.' },
-        { name: 'Philip Zhang', bio: 'Bio coming soon.' },
-        { name: 'Saahil Jain', bio: 'Bio coming soon.' },
-        { name: 'Sean Puon', image: '/staff/seanpuon.png', bio: 'Student with strong academic focus in STEM and multi-language proficiency. Passionate about student wellness, community and entrepreneurship projects, along with athletic development (especially in volleyball).' },
-        { name: 'Siddh Mistry', image: '/staff/siddhmistry.png', bio: 'Siddh Mistry is a high school senior interested in mathematics and computer science. In his free time he likes to watch anime and play sports (coordbashing).' },
+        { name: 'Saahil Jain', email: 'saahil.jain@yimo-official.org', bio: 'Bio coming soon.' },
+        { name: 'Sean Puon', email: 'sean.puon@yimo-official.org', image: '/staff/seanpuon.png', bio: 'Student with strong academic focus in STEM and multi-language proficiency. Passionate about student wellness, community and entrepreneurship projects, along with athletic development (especially in volleyball).' },
         { name: 'Utkarsh Tewari', bio: 'Bio coming soon.' },
-        { name: 'Vihaan Vajpeyi', image: '/staff/vihaanvajpeyi.jpeg', bio: 'Vihaan is an AIME qualifier with AMC 10 Distinguished Honor Roll and RoboCup Nationals winner who is interested in quantitative finance. In his free time, he enjoys playing video games and learning new math concepts.' },
         { name: 'Wyatt Choi', image: '/staff/wyattchoi.png', bio: 'is a 1x AIME qualifier with Honor Roll, a Silver medalist in the Korean Math Olympiad (KMO), and a distinction recipient in the British Math Olympiad Round 1. He has placed in the Top 8 Teams at the Caltech Harvey Mudd Competition, Top 10 Individual at the Brown University Math Olympiad, and 3rd at his regional Math Field Competition. He writes olympiad problems for Solvefire and YIMO, and in his free time plays electric guitar and builds robots for VEX Robotics.' },
+      ],
+      formerDirectors: [
+        { name: 'Ryan Ahn', role: 'Former Competition Director', image: '/staff/ryanahn.png' },
+        { name: 'Andrew Zhang', role: 'Former Competition Director', image: '/staff/andrewzhang.png' },
+        { name: 'Wenhao Lu', role: 'Former Competition Director', image: '/staff/wenhaolu.png' },
+        { name: 'Kristen Zhou', role: 'Former Competition Director', image: '/staff/kristenzhou.png' },
       ],
       faqs: [
         {
@@ -503,7 +523,7 @@ export default {
       } catch (error) {
         this.sendStatus = {
           ok: false,
-          text: `${error.message} You can also email yimostaff@gmail.com directly.`,
+          text: `${error.message} You can also email one of the addresses above directly.`,
         }
       } finally {
         this.sending = false
@@ -975,6 +995,24 @@ export default {
   text-transform: uppercase;
 }
 
+/* Prizes and Partners read as subsections of Format and Sponsors, so they get
+   a parent kicker and a heading a step down from the section h2s. */
+.subsection-kicker {
+  margin: 0 0 0.5rem;
+  color: var(--accent-soft);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.subsection-title {
+  margin: 0;
+  color: var(--paper);
+  font-size: clamp(1.6rem, 3.6vw, 2.7rem);
+  font-weight: 900;
+}
+
 .band-heading h2,
 .partner-heading h2,
 .closing-cta h2 {
@@ -1295,6 +1333,21 @@ export default {
   letter-spacing: 0.08em;
 }
 
+/* @click.stop on the link keeps the card from flipping back mid-click. */
+.staff-email {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--accent-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.staff-email:hover {
+  text-decoration: underline;
+}
+
 .staff-subhead {
   margin: 0.25rem 0 0.85rem;
   padding: 0 1.25rem;
@@ -1411,6 +1464,24 @@ export default {
 
 .flip-card-compact .flip-inner {
   min-height: 48px;
+}
+
+/* The nametag front is absolutely positioned, so it cannot grow to fit an
+   address - cards carrying one need the height reserved up front. */
+.flip-card-compact.has-email,
+.flip-card-compact.has-email .flip-inner {
+  min-height: 78px;
+}
+
+.flip-card-compact.flipped.has-email,
+.flip-card-compact.flipped.has-email .flip-inner {
+  min-height: 250px;
+}
+
+.flip-front-nametag .staff-email {
+  margin-top: 0.3rem;
+  font-size: 0.63rem;
+  line-height: 1.25;
 }
 
 .flip-card-compact.flipped {
@@ -1814,9 +1885,27 @@ export default {
   line-height: 1.65;
 }
 
+.contact-people {
+  list-style: none;
+  margin: 1.1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.contact-people li {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.contact-people span {
+  color: var(--paper);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
 .contact-mail {
   display: inline-block;
-  margin-top: 0.7rem;
   color: var(--accent-soft);
   font-weight: 800;
   text-decoration: none;

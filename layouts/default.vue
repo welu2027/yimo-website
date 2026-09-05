@@ -15,13 +15,10 @@
       </nuxt-link>
       <div class="nav-links hidden md:flex">
         <nuxt-link to="/archive" class="nav-link" style="font-weight:800;">Archive</nuxt-link>
-        <nuxt-link to="/potd" class="nav-link" style="font-weight:800;">POTD</nuxt-link>
         <a href="/#format" class="nav-link">Format</a>
-        <a href="/#prizes" class="nav-link">Prizes</a>
         <a href="/#people" class="nav-link">Staff</a>
         <a href="/#faq" class="nav-link">FAQ</a>
         <a href="/#sponsors" class="nav-link">Sponsors</a>
-        <a href="/#partners" class="nav-link">Partners</a>
         <a href="/#contact" class="nav-link">Contact</a>
       </div>
       <div class="nav-right">

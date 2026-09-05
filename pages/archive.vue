@@ -3,9 +3,10 @@
     <h1>Contest Archive</h1>
     <p class="page-intro">Download contest materials from past YIMO competitions below.</p>
 
-    <section>
+    <section id="yimo-ii">
       <h2>YIMO II</h2>
       <ul>
+        <li><strong>Written Exam Rankings:</strong> <nuxt-link to="/rankings">View →</nuxt-link></li>
         <li><strong>Score Distribution:</strong> <nuxt-link to="/distribution#yimo-ii">View →</nuxt-link></li>
         <li><strong>Written Round Problems:</strong> <a href="/solutions/yimo-2-written-round-problems.pdf" target="_blank" rel="noopener">View →</a></li>
         <li><strong>Written Round Solutions:</strong> <a href="/solutions/yimo-2-written-round-solutions.pdf" target="_blank" rel="noopener">View →</a></li>
@@ -45,6 +46,13 @@
           <strong>{{ workshop.title }}:</strong>
           <a :href="workshop.href" target="_blank" rel="noopener">View →</a>
         </li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="subhead">Problem of the Day</p>
+      <ul>
+        <li><strong>POTD Archive:</strong> <nuxt-link to="/potd">View →</nuxt-link></li>
       </ul>
     </section>
   </div>

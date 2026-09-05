@@ -1,5 +1,5 @@
 <template>
-  <div class="chapters-page">
+  <div class="content-page chapters-page">
     <header class="chapters-hero">
       <p class="chapters-kicker">YIMO chapters</p>
       <h1>Bring competitive math to your community.</h1>
@@ -18,17 +18,8 @@
       </p>
     </header>
 
-    <div class="chapters-layout">
-      <nav class="chapters-index" aria-label="Chapter information">
-        <a href="#what-is-a-chapter">What a chapter is</a>
-        <a href="#chapter-leads">What leads do</a>
-        <a href="#benefits">Benefits</a>
-        <a href="#application">Application</a>
-      </nav>
-
-      <div class="chapters-content">
+    <div class="chapters-content">
         <section id="what-is-a-chapter">
-          <p class="chapter-number">01</p>
           <h2>What a chapter is</h2>
           <p>
             A YIMO Chapter is a school math club, local math circle, or local organization or nonprofit that partners with YIMO to bring our competitions and workshops to its community. We provide the event materials and branding; chapters provide the local student reach.
@@ -36,7 +27,6 @@
         </section>
 
         <section id="chapter-leads">
-          <p class="chapter-number">02</p>
           <h2>What chapter leads do</h2>
           <ul class="chapter-list">
             <li>Host 1-2 YIMO events per semester in collaboration with a local math club or organization. YIMO provides the full event kit: slides, problems, scoring, and promotional graphics. <strong>Our first chapter event will be a YIMO Estimathon, with the full event kit provided by us.</strong></li>
@@ -52,7 +42,6 @@
         </section>
 
         <section id="benefits">
-          <p class="chapter-number">03</p>
           <h2>Benefits for chapter leaders</h2>
           <ul class="benefit-list">
             <li>Official chapter title for your resume</li>
@@ -65,7 +54,6 @@
         </section>
 
         <section id="application" class="application-section">
-          <p class="chapter-number">04</p>
           <h2>Form a founding chapter</h2>
           <p>Use the application form to bring YIMO to your school or local math community.</p>
           <a class="chapter-action chapter-action-primary" href="https://forms.gle/HkeVEqEBevGdxWN4A" target="_blank" rel="noopener">Open the application form</a>
@@ -75,7 +63,6 @@
           <p>Questions?</p>
           <p>DM <strong>_dragon123_</strong> or contact <a href="mailto:adithya.balakumar@nxthorizon.org">adithya.balakumar@nxthorizon.org</a>.</p>
         </footer>
-      </div>
     </div>
   </div>
 </template>
@@ -99,37 +86,30 @@ export default {
 
 <style scoped>
 .chapters-page {
-  --chapters-bg: #0a0805;
-  --chapters-bg-soft: #100c08;
-  --chapters-paper: #f6f0e8;
-  --chapters-muted: #b9afa1;
-  --chapters-faint: #82786e;
-  --chapters-line: rgba(246, 240, 232, 0.16);
-  --chapters-line-soft: rgba(246, 240, 232, 0.09);
-  --chapters-accent: #f97316;
-  --chapters-accent-soft: #ffb26e;
+  --chapters-bg: transparent;
+  --chapters-bg-soft: var(--panel);
+  --chapters-paper: var(--text);
+  --chapters-muted: var(--text-dim);
+  --chapters-faint: var(--text-faint);
+  --chapters-line: var(--line-strong);
+  --chapters-line-soft: var(--line);
+  --chapters-accent: var(--accent);
+  --chapters-accent-soft: var(--accent-soft);
   min-height: 100vh;
   color: var(--chapters-paper);
   background: var(--chapters-bg);
 }
 
-.chapters-hero,
-.chapters-layout {
-  width: min(1180px, calc(100% - 4rem));
-  margin-inline: auto;
-}
-
 .chapters-hero {
-  padding: 7rem 0 5.5rem;
+  padding: 0 0 2.5rem;
   border-bottom: 1px solid var(--chapters-line-soft);
 }
 
 .chapters-kicker,
-.chapter-number,
 .chapter-contact > p:first-child,
 .time-commitment > span {
   margin: 0;
-  color: var(--chapters-accent);
+  color: var(--chapters-accent-soft);
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -138,31 +118,29 @@ export default {
 }
 
 .chapters-hero h1 {
-  max-width: 780px;
-  margin: 1.3rem 0 1.5rem;
+  max-width: 620px;
+  margin: 0 0 0.5rem;
   color: var(--chapters-paper);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 5.5rem;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 0.98;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  line-height: 1.15;
 }
 
 .chapters-lead,
 .chapters-intro {
-  max-width: 770px;
+  max-width: 560px;
   color: var(--chapters-muted);
   line-height: 1.75;
 }
 
 .chapters-lead {
   margin: 0;
-  font-size: 1.22rem;
+  font-size: 1.05rem;
 }
 
 .chapters-intro {
-  margin: 1.2rem 0 0;
-  font-size: 1rem;
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
 }
 
 .chapters-page a {
@@ -185,26 +163,27 @@ export default {
   justify-content: center;
   padding: 0 1.1rem;
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 800;
   text-decoration: none !important;
 }
 
 .chapter-action-primary {
-  color: #1b0d04 !important;
+  color: var(--on-accent) !important;
   background: var(--chapters-accent);
 }
 
 .chapter-action-primary:hover,
 .chapter-action-primary:focus-visible {
-  color: #1b0d04 !important;
+  color: var(--on-accent) !important;
   background: var(--chapters-accent-soft);
 }
 
 .chapter-action-secondary {
-  color: var(--chapters-paper) !important;
+  color: var(--text) !important;
   border-color: var(--chapters-line);
+  background: var(--surface);
 }
 
 .chapter-action-secondary:hover,
@@ -227,59 +206,29 @@ export default {
   color: var(--chapters-paper);
 }
 
-.chapters-layout {
-  display: grid;
-  grid-template-columns: 190px minmax(0, 760px);
-  gap: 5rem;
-  align-items: start;
-  padding: 5rem 0 7rem;
-}
-
-.chapters-index {
-  position: sticky;
-  top: 5.5rem;
-  display: grid;
-  gap: 0.9rem;
-  align-content: start;
-}
-
-.chapters-index a {
-  color: var(--chapters-faint);
-  font-size: 0.8rem;
-  font-weight: 700;
-  line-height: 1.4;
-  text-decoration: none;
-}
-
-.chapters-index a:hover,
-.chapters-index a:focus-visible {
-  color: var(--chapters-accent-soft);
-}
-
 .chapters-content section {
-  padding: 2rem 0 3.5rem;
+  padding: 2.5rem 0 0;
   border-top: 1px solid var(--chapters-line);
 }
 
 .chapters-content h2 {
-  margin: 0.9rem 0 1rem;
-  color: var(--chapters-paper);
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 3rem;
-  font-weight: 400;
-  line-height: 1;
+  margin: 0 0 1rem;
+  color: var(--chapters-accent-soft);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.15;
 }
 
-.chapters-content section > p:not(.chapter-number),
+.chapters-content section > p,
 .chapter-list,
 .benefit-list {
-  max-width: 720px;
+  max-width: 620px;
   color: var(--chapters-muted);
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.75;
 }
 
-.chapters-content section > p:not(.chapter-number) {
+.chapters-content section > p {
   margin: 0;
 }
 
@@ -337,13 +286,15 @@ export default {
 }
 
 .application-section {
-  padding-bottom: 4rem !important;
+  padding: 2rem 1.5rem 4rem !important;
   background: var(--chapters-bg-soft);
+  border: 1px solid var(--chapters-line) !important;
+  border-radius: 12px;
 }
 
 .application-section > * {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .application-section .chapter-action {
@@ -366,38 +317,14 @@ export default {
 }
 
 @media (max-width: 860px) {
-  .chapters-hero,
-  .chapters-layout {
-    width: min(100% - 2rem, 680px);
-  }
-
   .chapters-hero {
-    padding: 5rem 0 4.5rem;
-  }
-
-  .chapters-hero h1 {
-    font-size: 4.25rem;
-  }
-
-  .chapters-layout {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding-top: 4rem;
-  }
-
-  .chapters-index {
-    position: static;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem 1.3rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--chapters-line);
+    padding-bottom: 2.5rem;
   }
 }
 
 @media (max-width: 560px) {
   .chapters-hero h1 {
-    font-size: 3.2rem;
+    font-size: 2.4rem;
   }
 
   .chapters-lead {
@@ -420,9 +347,13 @@ export default {
     columns: 1;
   }
 
+  .application-section {
+    padding: 1.5rem 1rem 2.75rem !important;
+  }
+
   .application-section > * {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 </style>

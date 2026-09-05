@@ -1,0 +1,11 @@
+{
+  "name": "yimo-website",
+  "short_name": "yimo-website",
+  "description": "Site for YIMO — the Youth International Math Olympiad.",
+  "icons": [],
+  "start_url": "/?standalone=true",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3B82F6",
+  "lang": "en"
+}

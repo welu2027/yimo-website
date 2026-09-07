@@ -2,6 +2,9 @@ name: cd
 
 on: [push, pull_request]
 
+permissions:
+  contents: write
+
 jobs:
   cd:
     runs-on: ${{ matrix.os }}

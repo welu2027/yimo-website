@@ -15,6 +15,7 @@
       </nuxt-link>
       <div class="nav-links hidden md:flex">
         <nuxt-link to="/archive" class="nav-link" style="font-weight:800;">Archive</nuxt-link>
+        <nuxt-link to="/chapters" class="nav-link nav-chapters" style="font-weight:800;">Chapters</nuxt-link>
         <a href="/#format" class="nav-link">Format</a>
         <a href="/#people" class="nav-link">Staff</a>
         <a href="/#faq" class="nav-link">FAQ</a>

@@ -1,36 +1,57 @@
-name: cd
+name: website
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
 
+# Pull requests may execute untrusted repository code, so every validation job
+# is read-only. Only a reviewed push to the protected default branch can run
+# the publication job with contents:write.
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  cd:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [22.x]
-
+  validate:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
-      - name: Setup node env
-        uses: actions/setup-node@v4
+      - name: Setup node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 22.x
 
       - name: Install dependencies
-        run: yarn
+        run: yarn --frozen-lockfile
 
       - name: Generate
         run: yarn generate
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout reviewed main
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Setup node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22.x
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Generate
+        run: yarn generate
+
+      - name: Deploy reviewed main
+        uses: peaceiris/actions-gh-pages@329bcc8f12caed2cefe5a5b80781499a6f3b361b
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist

@@ -13,17 +13,24 @@
  *                     multiple recipients).
  *   MAIL_FROM       - sender, on a domain verified in Resend.
  *   ALLOWED_ORIGIN  - site origin permitted to POST here.
+ *   CONTACT_IP_LIMITER    - Wrangler rate-limit binding, 5 requests/minute.
+ *   CONTACT_EMAIL_LIMITER - Wrangler rate-limit binding, 3 requests/minute.
  */
 
 const MAX_FIELD = 200
 const MAX_MESSAGE = 5000
+const MAX_BODY_BYTES = 32 * 1024
+
+function allowedOrigins(env) {
+  return (env.ALLOWED_ORIGIN || '').split(',').map((o) => o.trim()).filter(Boolean)
+}
 
 function corsHeaders(env, request) {
-  const allowed = (env.ALLOWED_ORIGIN || '').split(',').map((o) => o.trim()).filter(Boolean)
+  const allowed = allowedOrigins(env)
   const origin = request.headers.get('Origin') || ''
   // Echo the origin back only when it is one we recognise, so the browser
   // refuses cross-site posts from anywhere else.
-  const allowOrigin = allowed.includes(origin) ? origin : allowed[0] || ''
+  const allowOrigin = allowed.includes(origin) ? origin : ''
   return {
     'Access-Control-Allow-Origin': allowOrigin,
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -40,6 +47,29 @@ function json(body, status, headers) {
   })
 }
 
+async function checkRateLimit(limiter, key) {
+  if (!limiter || typeof limiter.limit !== 'function') return 'unavailable'
+
+  try {
+    const result = await limiter.limit({ key })
+    if (typeof result?.success !== 'boolean') return 'unavailable'
+    return result.success ? 'allowed' : 'limited'
+  } catch (error) {
+    console.error('Contact rate limiter error', error)
+    return 'unavailable'
+  }
+}
+
+function clientIp(request) {
+  return request.headers.get('CF-Connecting-IP') || 'unknown'
+}
+
+async function digest(value) {
+  const bytes = new TextEncoder().encode(value)
+  const hash = await crypto.subtle.digest('SHA-256', bytes)
+  return Array.from(new Uint8Array(hash), (byte) => byte.toString(16).padStart(2, '0')).join('')
+}
+
 // Header injection guard: a newline in the subject line would otherwise let a
 // submitter append their own mail headers.
 const clean = (v, max) => String(v || '').replace(/[\r\n]+/g, ' ').trim().slice(0, max)
@@ -51,15 +81,38 @@ const escapeHtml = (v) =>
 
 export default {
   async fetch(request, env) {
+    const allowed = allowedOrigins(env)
     const cors = corsHeaders(env, request)
+    const origin = request.headers.get('Origin') || ''
 
-    if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors })
+    if (request.method === 'OPTIONS') {
+      if (!allowed.includes(origin)) return json({ error: 'Origin not allowed.' }, 403, cors)
+      return new Response(null, { status: 204, headers: cors })
+    }
     if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405, cors)
+    if (!allowed.includes(origin)) return json({ error: 'Origin not allowed.' }, 403, cors)
+
+    const ipLimit = await checkRateLimit(env.CONTACT_IP_LIMITER, `ip:${clientIp(request)}`)
+    if (ipLimit === 'limited') return json({ error: 'Too many requests. Please try again later.' }, 429, cors)
+    if (ipLimit === 'unavailable') return json({ error: 'Contact service unavailable.' }, 503, cors)
+
+    const contentLength = request.headers.get('Content-Length')
+    if (contentLength && (!/^\d+$/.test(contentLength) || Number(contentLength) > MAX_BODY_BYTES)) {
+      return json({ error: 'Request body is too large.' }, 413, cors)
+    }
 
     let payload
     try {
-      payload = await request.json()
+      const rawBody = await request.text()
+      if (new TextEncoder().encode(rawBody).byteLength > MAX_BODY_BYTES) {
+        return json({ error: 'Request body is too large.' }, 413, cors)
+      }
+      payload = JSON.parse(rawBody)
     } catch {
+      return json({ error: 'Invalid request body.' }, 400, cors)
+    }
+
+    if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
       return json({ error: 'Invalid request body.' }, 400, cors)
     }
 
@@ -76,6 +129,13 @@ export default {
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return json({ error: 'Please enter a valid email address.' }, 400, cors)
+    }
+
+    const emailLimit = await checkRateLimit(env.CONTACT_EMAIL_LIMITER, `email:${await digest(email.toLowerCase())}`)
+    if (emailLimit === 'limited') return json({ error: 'Too many requests. Please try again later.' }, 429, cors)
+    if (emailLimit === 'unavailable') return json({ error: 'Contact service unavailable.' }, 503, cors)
+    if (!env.RESEND_API_KEY || !env.MAIL_FROM || !env.MAIL_TO) {
+      return json({ error: 'Contact service unavailable.' }, 503, cors)
     }
 
     const name = `${firstName} ${lastName}`

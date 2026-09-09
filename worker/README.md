@@ -29,6 +29,11 @@ Non-secret settings are in `wrangler.jsonc`:
 | `MAIL_FROM` | Sender address, on a domain verified in Resend. |
 | `ALLOWED_ORIGIN` | Comma-separated origins allowed to POST here. |
 
+The `CONTACT_IP_LIMITER` and `CONTACT_EMAIL_LIMITER` bindings in
+`wrangler.jsonc` cap submissions at 5 per IP per minute and 3 per email per
+minute. Their numeric `namespace_id` values must stay unique within the
+Cloudflare account.
+
 `RESEND_API_KEY` is deliberately absent — it is a Cloudflare secret, set with
 the command above. **Never put it in this file or anywhere else in the repo.**
 

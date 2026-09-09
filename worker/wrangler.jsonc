@@ -9,8 +9,27 @@
     // verified, "onboarding@resend.dev" works but only delivers to the
     // address that owns the Resend account.
     "MAIL_FROM": "YIMO <noreply@nxthorizon.org>",
-    "ALLOWED_ORIGIN": "https://yimo-official.org,https://www.yimo-official.org,https://compete.gunnmathcircle.org,http://localhost:3000"
-  }
+    "ALLOWED_ORIGIN": "https://yimo-official.org,https://www.yimo-official.org,https://compete.gunnmathcircle.org,http://localhost:3000",
+    "ENVIRONMENT": "production"
+  },
+  "ratelimits": [
+    {
+      "name": "CONTACT_IP_LIMITER",
+      "namespace_id": "26090801",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    },
+    {
+      "name": "CONTACT_EMAIL_LIMITER",
+      "namespace_id": "26090802",
+      "simple": {
+        "limit": 3,
+        "period": 60
+      }
+    }
+  ]
   // RESEND_API_KEY is NOT set here. It is a secret:
   //   npx wrangler secret put RESEND_API_KEY
 }

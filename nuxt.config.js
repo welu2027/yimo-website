@@ -57,7 +57,9 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     workbox: {
-      enabled: process.env.NODE_ENV === 'production'
+      // Do not ship a service worker that executes an unpinned CDN script.
+      // Re-enable only after a reviewed, vendored Workbox artifact is added.
+      enabled: false
     },
     manifest: {
       lang: 'en'

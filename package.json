@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^3.3.5",
-    "@studio-freight/lenis": "^0.2.28",
     "@tailwindcss/typography": "^0.5.9",
     "core-js": "^3.9.1",
     "d3-geo": "3",

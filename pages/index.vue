@@ -494,7 +494,6 @@ export default {
   },
   mounted() {
     this.initAnimations()
-    this.initLenis()
     this.initThreeMath()
   },
   beforeDestroy() {
@@ -535,25 +534,6 @@ export default {
     },
     gridColumns(list) {
       return Math.min(list.length, 5)
-    },
-    async initLenis() {
-      try {
-        const LenisModule = await import('@studio-freight/lenis/dist/lenis.js')
-        const Lenis = LenisModule.default || LenisModule
-        const lenis = new Lenis({ lerp: 0.09, smoothWheel: true })
-        lenis.on('scroll', ScrollTrigger.update)
-        const ticker = (time) => {
-          lenis.raf(time * 1000)
-        }
-        gsap.ticker.add(ticker)
-        gsap.ticker.lagSmoothing(0)
-        this.cleanupFns.push(() => {
-          gsap.ticker.remove(ticker)
-          lenis.destroy()
-        })
-      } catch (error) {
-        console.warn('Lenis unavailable; native scroll remains active.', error)
-      }
     },
     initAnimations() {
       const root = this.$refs.page

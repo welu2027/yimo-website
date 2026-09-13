@@ -1,5 +1,5 @@
 <template>
-  <div class="content-page">
+  <div class="content-page chapters-page">
     <h1>Chapters</h1>
     <p class="page-intro">
       Our chapters focus on providing accessible math and computer science
@@ -20,7 +20,43 @@
         </div>
       </div>
 
-      <div class="chapter-countries">
+      <ChapterMap :countries="chapters" :selected="selectedCountry" @select="selectCountry" />
+
+      <div ref="detail" class="chapter-detail" aria-live="polite">
+        <template v-if="selected">
+          <div class="chapter-detail-head">
+            <p class="chapter-country-head">
+              <span class="chapter-flag" aria-hidden="true">{{ selected.flag }}</span>
+              <span class="chapter-country-name">{{ selected.country }}</span>
+              <span class="chapter-count">
+                {{ selected.locations.length }}
+                {{ selected.locations.length === 1 ? 'chapter' : 'chapters' }}
+              </span>
+            </p>
+            <button type="button" class="chapter-clear" @click="selectedCountry = null">Clear</button>
+          </div>
+          <ul class="chapter-location-list chapter-detail-list">
+            <li v-for="location in selected.locations" :key="location.name">
+              <span class="chapter-location-name">{{ location.name }}</span>
+              <span class="chapter-lead">{{ location.lead }}</span>
+              <a :href="'mailto:' + location.contact">{{ location.contact }}</a>
+            </li>
+          </ul>
+        </template>
+        <p v-else class="chapter-detail-empty">Select a country on the map to see its chapters.</p>
+      </div>
+
+      <button
+        type="button"
+        class="chapter-list-toggle"
+        :aria-expanded="String(showList)"
+        aria-controls="chapter-list"
+        @click="showList = !showList"
+      >
+        {{ showList ? 'Hide list of chapters' : 'Show list of chapters' }}
+      </button>
+
+      <div v-show="showList" id="chapter-list" class="chapter-countries">
         <div v-for="country in chapters" :key="country.country" class="chapter-country">
           <p class="chapter-country-head">
             <span class="chapter-flag" aria-hidden="true">{{ country.flag }}</span>
@@ -47,6 +83,9 @@
 export default {
   data() {
     return {
+      /* Country picked on the map; null until the visitor chooses one. */
+      selectedCountry: null,
+      showList: false,
       /* Chapters grouped by country, most chapters first. Generated from the
          chapter tracker; `continent` only drives the continent count in the
          stats row. */
@@ -54,22 +93,22 @@ export default {
         {
           country: 'United States', flag: '🇺🇸', continent: 'North America',
           locations: [
-            { name: 'Alpharetta', lead: 'Lakshiet Dasari', contact: 'lakshietdasari@gmail.com' },
+            { name: 'Alpharetta, GA', lead: 'Lakshiet Dasari', contact: 'lakshietdasari@gmail.com' },
             { name: 'Brentwood', lead: 'Shiping Shan', contact: 'shanshiping@gmail.com' },
-            { name: 'Charlotte', lead: 'Daniel Dimitrov', contact: 'dansdim10@gmail.com' },
+            { name: 'Charlotte, NC', lead: 'Daniel Dimitrov', contact: 'dansdim10@gmail.com' },
             { name: 'Germantown', lead: 'Prince Wang', contact: 'princezixuanwang@gmail.com' },
-            { name: 'Houston', lead: 'Aaron Qin', contact: 'whsmathhonor@gmail.com' },
-            { name: 'Ithaca', lead: 'Benjamin You', contact: 'bennyyou716@gmail.com' },
-            { name: 'Memphis', lead: 'Shay Mukatira', contact: 'mukatirashay@gmail.com' },
-            { name: 'Mountain House', lead: 'Shrikoustubh Veldanda', contact: '1074656@lammersvilleusd.net' },
-            { name: 'Rochester', lead: 'Bhuvan Tej Nadakuditi', contact: 'bhuvantej.nadakuditi@gmail.com' },
-            { name: 'Saint Peters', lead: 'Arnav Gupta', contact: 'arnav.gupta2806@gmail.com' },
-            { name: 'Sammamish', lead: 'Utkarsh Tewari', contact: 'utkarsh.tewari@hotmail.com' },
-            { name: 'San Ramon A', lead: 'Ashwika Nukala', contact: 'ashwikanukala18@gmail.com' },
-            { name: 'San Ramon K', lead: 'Kaushik Atla', contact: 'kaushik.atla@gmail.com' },
-            { name: 'Silver Spring', lead: 'James Wang', contact: 'james.wang3.14159@gmail.com' },
-            { name: 'South Pasadena', lead: 'Ziqi Yao', contact: 'ziqiyao18@gmail.com' },
-            { name: 'Tampa', lead: 'Nathalie Martin', contact: 'nathaliemartinpujol22@gmail.com' },
+            { name: 'Houston, TX', lead: 'Aaron Qin', contact: 'whsmathhonor@gmail.com' },
+            { name: 'Ithaca, NY', lead: 'Benjamin You', contact: 'bennyyou716@gmail.com' },
+            { name: 'Memphis, TN', lead: 'Shay Mukatira', contact: 'mukatirashay@gmail.com' },
+            { name: 'Mountain House, CA', lead: 'Shrikoustubh Veldanda', contact: '1074656@lammersvilleusd.net' },
+            { name: 'Rochester, NY', lead: 'Bhuvan Tej Nadakuditi', contact: 'bhuvantej.nadakuditi@gmail.com' },
+            { name: 'Saint Peters, MO', lead: 'Arnav Gupta', contact: 'arnav.gupta2806@gmail.com' },
+            { name: 'Sammamish, WA', lead: 'Utkarsh Tewari', contact: 'utkarsh.tewari@hotmail.com' },
+            { name: 'San Ramon A, CA', lead: 'Ashwika Nukala', contact: 'ashwikanukala18@gmail.com' },
+            { name: 'San Ramon K, CA', lead: 'Kaushik Atla', contact: 'kaushik.atla@gmail.com' },
+            { name: 'Silver Spring, MD', lead: 'James Wang', contact: 'james.wang3.14159@gmail.com' },
+            { name: 'South Pasadena, CA', lead: 'Ziqi Yao', contact: 'ziqiyao18@gmail.com' },
+            { name: 'Tampa, FL', lead: 'Nathalie Martin', contact: 'nathaliemartinpujol22@gmail.com' },
           ],
         },
         {
@@ -345,6 +384,9 @@ export default {
     }
   },
   computed: {
+    selected() {
+      return this.chapters.find((c) => c.country === this.selectedCountry) || null
+    },
     /* Counted from the list above so the headline numbers cannot drift out of
        step with the chapters actually shown. */
     chapterStats() {
@@ -353,6 +395,13 @@ export default {
         { value: this.chapters.length, label: 'Countries' },
         { value: new Set(this.chapters.map((c) => c.continent)).size, label: 'Continents' },
       ]
+    },
+  },
+  methods: {
+    selectCountry(country) {
+      this.selectedCountry = country
+      // On narrow screens the panel sits below the map, off-screen after a tap.
+      this.$nextTick(() => this.$refs.detail.scrollIntoView({ block: 'nearest', behavior: 'smooth' }))
     },
   },
   head() {
@@ -373,7 +422,9 @@ export default {
 <style scoped>
 .chapter-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  /* Always three across: auto-fit left Continents orphaned on its own row at
+     phone width. The narrow-screen block below tightens the tiles to fit. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin: 1.75rem 0 2.25rem;
 }
@@ -476,5 +527,82 @@ export default {
 
 .chapter-location-list a:hover {
   text-decoration: underline;
+}
+@media (max-width: 520px) {
+  .chapter-stats {
+    gap: 0.5rem;
+  }
+
+  .chapter-stat {
+    padding: 0.8rem 0.35rem;
+  }
+
+  .chapter-stat span {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* The map needs more room than the default 860px reading column. */
+.chapters-page {
+  max-width: 1100px;
+}
+
+.chapter-detail {
+  margin: 0 0 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+}
+
+.chapter-detail-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.chapter-detail-list {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.9rem 1.5rem;
+}
+
+.chapter-detail-empty {
+  margin: 0;
+  color: var(--text-dim);
+}
+
+.chapter-clear,
+.chapter-list-toggle {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.chapter-clear {
+  padding: 0.3rem 0.85rem;
+  font-size: 0.78rem;
+}
+
+.chapter-list-toggle {
+  margin: 0 0 1.5rem;
+  padding: 0.6rem 1.3rem;
+}
+
+.chapter-clear:hover,
+.chapter-list-toggle:hover {
+  border-color: var(--accent);
+}
+
+.chapter-list-toggle[aria-expanded="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--on-accent);
 }
 </style>

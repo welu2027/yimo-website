@@ -81,6 +81,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    // d3-geo and its deps ship as ES modules only; webpack 4 needs them run
+    // through Babel like app code.
+    transpile: ['d3-geo', 'd3-array', 'internmap'],
     postcss: {
       plugins: {
         tailwindcss: {},

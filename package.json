@@ -14,13 +14,16 @@
     "@studio-freight/lenis": "^0.2.28",
     "@tailwindcss/typography": "^0.5.9",
     "core-js": "^3.9.1",
+    "d3-geo": "3",
     "gsap": "^3.15.0",
     "katex": "^0.18.1",
     "nuxt": "^2.15.3",
     "three": "^0.150.1",
+    "topojson-client": "3",
     "vue": "^2.7.16",
     "vue-feather-icons": "^5.1.0",
-    "vue-template-compiler": "^2.7.16"
+    "vue-template-compiler": "^2.7.16",
+    "world-atlas": "2"
   },
   "devDependencies": {
     "@nuxt/postcss8": "^1.1.3",

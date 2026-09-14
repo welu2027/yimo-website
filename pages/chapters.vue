@@ -99,6 +99,7 @@ export default {
             { name: 'Germantown', lead: 'Prince Wang', contact: 'princezixuanwang@gmail.com' },
             { name: 'Houston, TX', lead: 'Aaron Qin', contact: 'whsmathhonor@gmail.com' },
             { name: 'Ithaca, NY', lead: 'Benjamin You', contact: 'bennyyou716@gmail.com' },
+            { name: 'Massachusetts', lead: 'Mahmoud Mohamed', contact: 'almaasaraw@gmail.com' },
             { name: 'Memphis, TN', lead: 'Shay Mukatira', contact: 'mukatirashay@gmail.com' },
             { name: 'Mountain House, CA', lead: 'Shrikoustubh Veldanda', contact: '1074656@lammersvilleusd.net' },
             { name: 'Rochester, NY', lead: 'Bhuvan Tej Nadakuditi', contact: 'bhuvantej.nadakuditi@gmail.com' },
@@ -273,6 +274,10 @@ export default {
           ],
         },
         {
+          country: 'Australia', flag: '🇦🇺', continent: 'Oceania',
+          locations: [{ name: 'Sydney', lead: 'Ryan Zhang', contact: 'voidiznub@gmail.com' }],
+        },
+        {
           country: 'Canada', flag: '🇨🇦', continent: 'North America',
           locations: [
             { name: 'Canada', lead: 'Rajmika Rakshit', contact: 'rajmika.rakshit@gmail.com' },
@@ -289,6 +294,10 @@ export default {
           locations: [
             { name: 'Hong Kong', lead: 'Zion Jun Wong Ng', contact: 'zion.jw.ng@gmail.com' },
           ],
+        },
+        {
+          country: 'El Salvador', flag: '🇸🇻', continent: 'North America',
+          locations: [{ name: 'San Salvador', lead: 'Eduardo Antonio Romero Hernández', contact: 'sunshineprettyout@gmail.com' }],
         },
         {
           country: 'Indonesia', flag: '🇮🇩', continent: 'Asia',

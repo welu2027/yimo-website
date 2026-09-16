@@ -300,6 +300,10 @@ export default {
           locations: [{ name: 'San Salvador', lead: 'Eduardo Antonio Romero Hernández', contact: 'sunshineprettyout@gmail.com' }],
         },
         {
+          country: 'Honduras', flag: '🇭🇳', continent: 'North America',
+          locations: [{ name: 'Tegucigalpa', lead: 'Nathalie Cruz', contact: 'ncruz0921@hotmail.com' }],
+        },
+        {
           country: 'Indonesia', flag: '🇮🇩', continent: 'Asia',
           locations: [
             { name: 'Yogyakarta', lead: 'Bimo Fakhrul Amrullah', contact: 'bimo.amrullah@gdajogja.sch.id' },

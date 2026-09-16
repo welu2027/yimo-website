@@ -84,7 +84,7 @@ const WIDTH = 960
 const ISO_NUMERIC = {
   Afghanistan: '004', Algeria: '012', Angola: '024', Australia: '036', Bangladesh: '050', Canada: '124',
   Chile: '152', China: '156', Egypt: '818', 'El Salvador': '222', Ethiopia: '231', India: '356', Indonesia: '360',
-  Iraq: '368', Japan: '392', Kazakhstan: '398', Kyrgyzstan: '417', Lebanon: '422',
+  Honduras: '340', Iraq: '368', Japan: '392', Kazakhstan: '398', Kyrgyzstan: '417', Lebanon: '422',
   Malaysia: '458', Mauritius: '480', Mexico: '484', Mongolia: '496', Morocco: '504',
   Myanmar: '104', Nepal: '524', Pakistan: '586', Romania: '642', Russia: '643', Rwanda: '646',
   Serbia: '688', 'South Africa': '710', 'United Arab Emirates': '784', 'United Kingdom': '826',

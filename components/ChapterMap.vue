@@ -88,7 +88,7 @@ const ISO_NUMERIC = {
   Malaysia: '458', Mauritius: '480', Mexico: '484', Mongolia: '496', Morocco: '504',
   Myanmar: '104', Nepal: '524', Pakistan: '586', Romania: '642', Russia: '643', Rwanda: '646',
   Serbia: '688', 'South Africa': '710', 'United Arab Emirates': '784', 'United Kingdom': '826',
-  'United States': '840', Uzbekistan: '860', Vietnam: '704',
+  Uganda: '800', 'United States': '840', Uzbekistan: '860', Vietnam: '704',
 }
 
 /* Countries absent from the 110m shapes, placed by [longitude, latitude]. */

@@ -384,6 +384,10 @@ export default {
           ],
         },
         {
+          country: 'Uganda', flag: '🇺🇬', continent: 'Africa',
+          locations: [{ name: 'Kampala', lead: 'Ivan Sajjabi', contact: 'ivansajjabi26@gmail.com' }],
+        },
+        {
           country: 'United Kingdom', flag: '🇬🇧', continent: 'Europe',
           locations: [
             { name: 'Belfast', lead: 'Daniel Canning', contact: 'daniel.canning401@icloud.com' },

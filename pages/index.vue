@@ -134,6 +134,31 @@
       </div>
       <div class="accordion-stack">
         <details class="accordion" open>
+          <summary>Founders</summary>
+          <div class="staff-grid">
+            <article
+              v-for="member in founders"
+              :key="member.name"
+              class="flip-card"
+              :class="{ flipped: flipped['founder-' + member.name] }"
+              @click="toggleFlip('founder-' + member.name)"
+            >
+              <div class="flip-inner">
+                <div class="flip-front">
+                  <img v-if="member.image" :src="member.image" :alt="member.name" />
+                  <div v-else class="staff-initial">{{ member.name[0] }}</div>
+                  <h3>{{ member.name }}</h3>
+                  <a v-if="member.email" class="staff-email" :href="'mailto:' + member.email" @click.stop>{{ member.email }}</a>
+                </div>
+                <div class="flip-back">
+                  <h3>{{ member.name }}</h3>
+                  <p class="flip-bio">{{ member.bio }}</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </details>
+        <details class="accordion" open>
           <summary>Directors</summary>
           <div class="staff-grid">
             <article
@@ -389,6 +414,13 @@ export default {
       sending: false,
       sendStatus: null,
       flipped: {},
+      /* Founders keep their entries in Directors / Leadership Emeritus too;
+         this group is about who started YIMO, not a current role. */
+      founders: [
+        { name: 'Wenhao Lu', image: '/staff/wenhaolu.png', bio: 'Bio coming soon.' },
+        { name: 'Ryan Ahn', image: '/staff/ryanahn.png', bio: 'Bio coming soon.' },
+        { name: 'Hyunjun Yi', email: 'jun.yi@yimo-official.org', image: '/staff/junyi.png', bio: 'is an AMC-12 Perfect Scorer who now works as a Deputy Executive Director at STEMise. Growing up in the Netherlands, he likes to hang out with his friends and listen to music in his free time.' },
+      ],
       directors: [
         { name: 'Hyunjun Yi', email: 'jun.yi@yimo-official.org', image: '/staff/junyi.png', bio: 'is an AMC-12 Perfect Scorer who now works as a Deputy Executive Director at STEMise. Growing up in the Netherlands, he likes to hang out with his friends and listen to music in his free time.' },
         { name: 'Neil Iyer', email: 'neil.iyer@yimo-official.org', bio: 'Bio coming soon.' },

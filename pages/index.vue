@@ -425,9 +425,9 @@ export default {
         { name: 'Wyatt Choi', image: '/staff/wyattchoi.png', bio: 'is a 1x AIME qualifier with Honor Roll, a Silver medalist in the Korean Math Olympiad (KMO), and a distinction recipient in the British Math Olympiad Round 1. He has placed in the Top 8 Teams at the Caltech Harvey Mudd Competition, Top 10 Individual at the Brown University Math Olympiad, and 3rd at his regional Math Field Competition. He writes olympiad problems for Solvefire and YIMO, and in his free time plays electric guitar and builds robots for VEX Robotics.' },
       ],
       formerDirectors: [
+        { name: 'Wenhao Lu', role: 'Founder, Former Director', image: '/staff/wenhaolu.png' },
         { name: 'Ryan Ahn', role: 'Former Competition Director', image: '/staff/ryanahn.png' },
         { name: 'Andrew Zhang', role: 'Former Competition Director', image: '/staff/andrewzhang.png' },
-        { name: 'Wenhao Lu', role: 'Former Competition Director', image: '/staff/wenhaolu.png' },
         { name: 'Kristen Zhou', role: 'Former Competition Director', image: '/staff/kristenzhou.png' },
       ],
       faqs: [

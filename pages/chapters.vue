@@ -194,6 +194,7 @@ export default {
             { name: 'Addis Ababa A', lead: 'Aklilemariam Wondimneh', contact: 'aklilemariam923@gmail.com' },
             { name: 'Addis Ababa E', lead: 'Elbethel Shibru', contact: 'elbetheladmasu316@gmail.com' },
             { name: 'Addis Ababa F', lead: 'Fikir Getnet', contact: 'fikirgetnet123@gmail.com' },
+            { name: 'Addis Ababa T', lead: 'Tsion Wallelign Asfaw', contact: 'nsdcethiopianchapter@gmail.com' },
             { name: 'Arba Minch E', lead: 'Eyuel Admasu Mamo', contact: 'eyueladmasu720@gmail.com' },
             { name: 'Arba Minch H', lead: 'Hedase Melkamu', contact: 'hideege@gmail.com' },
             { name: 'Bahir Dar', lead: 'Maereg Kifle', contact: 'kiflemaereg08@gmail.com' },

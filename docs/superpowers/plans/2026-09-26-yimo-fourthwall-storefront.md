@@ -100,7 +100,7 @@
 
 - [x] **Step 1: Add a Merch navigation link** using the existing navigation styles.
 - [x] **Step 2: Run `corepack yarn generate`** successfully after restoring dependencies from the frozen lockfile.
-- [ ] **Step 3: Upload generated main-site assets** to the existing `yimo-website` Worker. The Cloudflare MCP asset-session token cannot be used against the upload endpoint in its sandbox; do not change apex or `www` DNS.
+- [x] **Step 3: Verify the existing `yimo-website` Worker received the generated main-site assets** through the account's Wrangler deployment path. Do not change apex or `www` DNS.
 - [x] **Step 4: Replace only the existing `merch` CNAME** with a `merch.yimo-official.org` Custom Domain for `yimo-merch`.
-- [x] **Step 5: Verify live storefront HTTPS, product loading, empty state, and keyboard bag flow.** Checkout redirect awaits at least one public product.
-- [ ] **Step 6: Push the reviewed source changes to `welu2027/yimo-website:main`** and confirm the GitHub Pages workflow completes.
+- [x] **Step 5: Verify live main-site navigation/hidden registration controls and storefront HTTPS, product loading, empty state, and keyboard bag flow.** Checkout redirect awaits at least one public product.
+- [x] **Step 6: Push the reviewed source changes to `welu2027/yimo-website:main`**; the GitHub Pages validation/deploy workflow completed successfully.

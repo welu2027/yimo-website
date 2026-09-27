@@ -23,7 +23,9 @@
           for updates on the next contest.
         </p>
         <div class="hero-actions">
+          <!-- Registration link hidden until registration reopens.
           <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register</a>
+          -->
           <a class="secondary-action" href="#format">Format</a>
           <a class="flyer-peek" href="/YIMO_2026_Flyer.pdf" target="_blank" rel="noopener">
             <img src="/yimo-2026-flyer.png" alt="" aria-hidden="true" />

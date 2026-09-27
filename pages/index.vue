@@ -311,11 +311,13 @@
         </div>
       </div>
 
+      <!-- Registration CTA hidden for now; restore this block when registration reopens.
       <div class="closing-cta">
         <h2>Register for August 29 or 30.</h2>
         <p>Entry is <strong>free</strong>. Registration closes August 27, 23:59 EDT. Pick one contest window and compete from anywhere.</p>
         <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
       </div>
+      -->
     </section>
 
     <section id="contact" class="content-band contact-band">

@@ -58,6 +58,7 @@ typings/
 
 # dotenv environment variables file
 .env
+.env.local
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -92,5 +93,7 @@ sw.*
 .pnp.*
 
 # Cloudflare Worker local secrets - never commit
+.wrangler/
 .dev.vars
 worker/.dev.vars
+merch-worker/.dev.vars

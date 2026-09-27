@@ -7,7 +7,9 @@
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "dev:merch": "npx --yes wrangler@4 dev --config merch-worker/wrangler.jsonc --port 8787",
+    "test:merch": "node --test merch-worker/tests/index.test.mjs"
   },
   "dependencies": {
     "@nuxtjs/pwa": "^3.3.5",

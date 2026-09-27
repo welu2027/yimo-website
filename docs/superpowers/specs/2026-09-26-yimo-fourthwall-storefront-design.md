@@ -26,7 +26,7 @@ Build a custom YIMO storefront at `https://merch.yimo-official.org/`. Fourthwall
 ## Integration
 
 - Create a dedicated Cloudflare Worker named `yimo-merch`; do not reuse or modify the existing `yimo-website` Worker.
-- Serve the storefront's static assets from the Worker and add a narrow same-origin API proxy for the required Fourthwall Storefront API operations: shop information, public products, cart creation/read, add-to-cart, quantity changes, and item removal.
+- Serve the storefront's static assets from `merch-worker/public` with Wrangler locally, and add a narrow same-origin API proxy for shop information, public products, cart creation/read, add-to-cart, quantity changes, and item removal. The deployed Worker serves those same assets from an inline map because the connected Cloudflare MCP sandbox cannot use the direct asset-upload token endpoint.
 - Store only `FOURTHWALL_STOREFRONT_API` as a Cloudflare Worker secret. Do not use or expose `FOURTHWALL_API_USERNAME` or `FOURTHWALL_API_PASSWORD`; those are broad Open API credentials and the storefront API is sufficient.
 - Restrict the proxy to the fixed Fourthwall Storefront API host and the product/cart/shop endpoints required by this UI. Return bounded, non-sensitive error responses to the browser.
 - Send checkout to the `publicDomain` returned by the Fourthwall shop endpoint. The currently verified shop domain is `youth-international-math-olympiad-yimo-zjv-shop.fourthwall.com`.

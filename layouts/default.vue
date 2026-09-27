@@ -23,13 +23,16 @@
         <a href="/#contact" class="nav-link">Contact</a>
       </div>
       <div class="nav-right">
+        <a href="https://merch.yimo-official.org/" class="nav-link">Merch</a>
         <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener" class="nav-link hidden md:inline-flex" aria-label="Discord">
           <img src="/Discord-Logo-Black.png" alt="Discord" style="height:28px;width:28px;object-fit:contain;opacity:0.75;" />
         </a>
         <a href="https://www.instagram.com/yimocomp_/" target="_blank" rel="noopener" class="nav-link hidden md:inline-flex" aria-label="Instagram">
           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
+        <!-- Register button hidden for now; restore when registration reopens.
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener" class="nav-register">Register</a>
+        -->
       </div>
     </nav>
 

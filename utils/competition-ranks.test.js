@@ -18,3 +18,9 @@ test('places use correct ordinals and medal colors', async () => {
     'rank-gold', 'rank-silver', 'rank-bronze', ''
   ])
 })
+
+test('scores are visible only through third place', async () => {
+  const { showsScore } = await import('./competition-ranks.mjs')
+
+  assert.deepEqual([1, 2, 3, 4, 5].map(showsScore), [true, true, true, false, false])
+})

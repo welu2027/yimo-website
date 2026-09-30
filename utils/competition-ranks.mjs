@@ -20,3 +20,7 @@ export function ordinalRank(rank) {
 export function medalClass(rank) {
   return ({ 1: 'rank-gold', 2: 'rank-silver', 3: 'rank-bronze' }[rank] || '')
 }
+
+export function showsScore(rank) {
+  return rank <= 3
+}

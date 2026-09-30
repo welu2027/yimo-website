@@ -28,7 +28,7 @@
         <li v-for="(entry, i) in window.entries" :key="i" class="rank-row">
           <span :class="['rank-place', entry.rankClass]">{{ entry.place }}</span>
           <span class="rank-name">{{ entry.name }}</span>
-          <span class="rank-score">{{ entry.score }}<em>/20</em></span>
+          <span v-if="entry.showScore" class="rank-score">{{ entry.score }}<em>/20</em></span>
         </li>
       </ol>
     </section>
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { competitionRanks, medalClass, ordinalRank } from '~/utils/competition-ranks.mjs'
+import { competitionRanks, medalClass, ordinalRank, showsScore } from '~/utils/competition-ranks.mjs'
 
 /* Final round scoring: 7 points per proof, 3 per computational problem. */
 const e = (name, score) => ({ name, score })
@@ -122,8 +122,10 @@ export default {
           title: window.title,
           entries: window.entries.map((entry, index) => ({
             ...entry,
+            rank: ranks[index],
             place: ordinalRank(ranks[index]),
             rankClass: medalClass(ranks[index]),
+            showScore: showsScore(ranks[index]),
           })),
         }
       })
@@ -203,11 +205,6 @@ export default {
 .rank-place.rank-silver { color: #45545d; background: #e2e6e8; }
 .rank-place.rank-bronze { color: #6e3e1f; background: #efd5bf; }
 
-.rank-name {
-  color: var(--text);
-  font-weight: 600;
-}
-
 .rank-score {
   font-variant-numeric: tabular-nums;
   font-weight: 700;
@@ -215,10 +212,15 @@ export default {
   text-align: right;
 }
 
-/* The denominator is the same on every row, so it sits back from the score. */
 .rank-score em {
   font-style: normal;
   font-weight: 600;
   color: var(--text-faint);
 }
+
+.rank-name {
+  color: var(--text);
+  font-weight: 600;
+}
+
 </style>

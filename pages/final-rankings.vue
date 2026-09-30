@@ -56,9 +56,9 @@ export default {
             entries: [
               e('Kalymtay Galym', 20, '1st'),
               e('Chinbuyan Tuvshintur', 20, '1st'),
-              e('Ritesh Kumar Mohapatra', 17, '2nd'),
-              e('Zaah Michael Kodzo', 17, '2nd'),
-              e('Garvit Pandey', 16, '3rd'),
+              e('Ritesh Kumar Mohapatra', 17, '3rd'),
+              e('Zaah Michael Kodzo', 17, '3rd'),
+              e('Garvit Pandey', 16, '5th'),
               e('Lim, Jovan Valencio', 15),
               e('Bera Gumruk', 14),
               e('Safarboyev Behruzbek', 13),

@@ -428,12 +428,12 @@ export default {
         { name: 'Kristen Zhou', image: '/staff/kristenzhou.png', bio: 'is a student who enjoys competition math and teaching it. Despite missing AIME by 1.5 points, she has placed first and fourth at many regional MATHLEAGUE.ORG competitions. She is a four-year cross country runner who has qualified for the Central Coast Section three times. In her free time, she enjoys playing PJSK, watching Danganronpa, and listening to indie music.' },
       ],
       directors: [
-        { name: 'Hyunjun Yi', email: 'jun.yi@yimo-official.org', image: '/staff/junyi.png', bio: 'is an AMC-12 Perfect Scorer who now works as a Deputy Executive Director at STEMise. Growing up in the Netherlands, he likes to hang out with his friends and listen to music in his free time.' },
         { name: 'Neil Iyer', email: 'neil.iyer@yimo-official.org', bio: 'Bio coming soon.' },
         { name: 'Karam Gill', email: 'karam.gill@yimo-official.org', image: '/staff/karamgill.png', bio: 'is a rising 8th grader who is passionate about math and is a 3x AIME qualifier. Outside of math, he enjoys playing basketball, board games, and card games.' },
         { name: 'Rayoon Kim', email: 'rayoon.kim@yimo-official.org', bio: 'is a USAMO qualifier who can be found coordbashing the most diabolical geometry problem. In his free time, he enjoys playing various PvP games, watching murderous media, and listening to Ado, Billie Eilish, and various indie groups.' },
         { name: 'Bryan Bu', email: 'bryan.bu@yimo-official.org', bio: 'Bio coming soon.' },
         { name: 'Shining Sun', bio: 'is a 6x AIME qualifier and 2x USAJMO qualifier. He also works as a problem writer for national competitions in Nepal. In his free time, he enjoys playing video games and exploring random places with friends.' },
+        { name: 'Abhiram Jetty', email: 'abhi.jetty@yimo-official.org', image: '/staff/abhiramjetty.png', bio: 'is a USAJMO qualifier, TXSEF finalist, Thermo Fisher finalist, and AMC 10 Distinguished Honor Roll recipient. As a 9th grader, he likes to play video games, swim, and write math problems for contests like YIMO.' },
       ],
       /* Team leads. Each person's team doubles as their role label. */
       staffLeadership: [
@@ -446,7 +446,6 @@ export default {
         { name: 'Gonçalo Franco', role: 'Technology', email: 'goncalo.franco@yimo-official.org', image: '/staff/goncalofranco.jpg', bio: "Gonçalo has won multiple national math and technology olympiads. Currently, he manages his own digital agency and works on multiple projects, including this website's design." },
         { name: 'Adithya Balakumar', role: 'Chapter', email: 'adithya.b@yimo-official.org', image: '/staff/adithyabalakumar.png', bio: 'is an AIME qualifier (2026) with a Bronze Medal at the Math League International Competition and a state-level robotics innovation award. He loves exploring local parks and drinking matcha.' },
         { name: 'Jonathan Liu', role: 'Chapter', bio: 'Bio coming soon.' },
-        { name: 'Abhiram Jetty', role: 'Logistics', email: 'abhi.jetty@yimo-official.org', image: '/staff/abhiramjetty.png', bio: 'is a USAJMO qualifier, TXSEF finalist, Thermo Fisher finalist, and AMC 10 Distinguished Honor Roll recipient. As a 9th grader, he likes to play video games, swim, and write math problems for contests like YIMO.' },
       ],
       generalStaff: [
         { name: 'Chloe Jin', bio: 'Bio coming soon.' },
@@ -467,6 +466,7 @@ export default {
         { name: 'Ryan Ahn', role: 'Former Competition Director', image: '/staff/ryanahn.png' },
         { name: 'Andrew Zhang', role: 'Former Competition Director', image: '/staff/andrewzhang.png' },
         { name: 'Kristen Zhou', role: 'Former Competition Director', image: '/staff/kristenzhou.png' },
+        { name: 'Hyunjun Yi', role: 'Former Competition Director', image: '/staff/junyi.png' },
       ],
       faqs: [
         {

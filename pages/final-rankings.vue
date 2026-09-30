@@ -26,9 +26,9 @@
       <h2>{{ window.title }}</h2>
       <ol class="rank-list">
         <li v-for="(entry, i) in window.entries" :key="i" class="rank-row">
-          <span class="rank-place">{{ entry.place || '—' }}</span>
+          <span :class="['rank-place', entry.rankClass]">{{ entry.place }}</span>
           <span class="rank-name">{{ entry.name }}</span>
-          <span v-if="entry.place" class="rank-score">{{ entry.score }}<em>/20</em></span>
+          <span class="rank-score">{{ entry.score }}<em>/20</em></span>
         </li>
       </ol>
     </section>
@@ -38,8 +38,10 @@
 </template>
 
 <script>
+import { competitionRanks, medalClass, ordinalRank } from '~/utils/competition-ranks.mjs'
+
 /* Final round scoring: 7 points per proof, 3 per computational problem. */
-const e = (name, score, place) => ({ name, score, place: place || '' })
+const e = (name, score) => ({ name, score })
 
 export default {
   data() {
@@ -54,11 +56,11 @@ export default {
           {
             title: 'Window A',
             entries: [
-              e('Kalymtay Galym', 20, '1st'),
-              e('Chinbuyan Tuvshintur', 20, '1st'),
-              e('Ritesh Kumar Mohapatra', 17, '3rd'),
-              e('Zaah Michael Kodzo', 17, '3rd'),
-              e('Garvit Pandey', 16, '5th'),
+              e('Kalymtay Galym', 20),
+              e('Chinbuyan Tuvshintur', 20),
+              e('Ritesh Kumar Mohapatra', 17),
+              e('Zaah Michael Kodzo', 17),
+              e('Garvit Pandey', 16),
               e('Lim, Jovan Valencio', 15),
               e('Bera Gumruk', 14),
               e('Safarboyev Behruzbek', 13),
@@ -71,10 +73,10 @@ export default {
           {
             title: 'Window B',
             entries: [
-              e('Aryav Karmakar', 20, '1st'),
-              e('Rishaan Bheda', 20, '1st'),
-              e('Tetteh Francis Etornam Marvin', 17, '3rd'),
-              e('Tarek Abdellatif', 17, '3rd'),
+              e('Aryav Karmakar', 20),
+              e('Rishaan Bheda', 20),
+              e('Tetteh Francis Etornam Marvin', 17),
+              e('Tarek Abdellatif', 17),
               e('Abdulaziz Safarov', 13),
               e('Mazen Abdellatif', 3),
               e('Manh Huy Luong', 0),
@@ -85,9 +87,9 @@ export default {
           {
             title: 'Window A',
             entries: [
-              e('Azizbek Gayratov', 20, '1st'),
-              e('Nguyen Dinh Trong Khang', 20, '1st'),
-              e('Deepanshu Gupta', 9, '3rd'),
+              e('Azizbek Gayratov', 20),
+              e('Nguyen Dinh Trong Khang', 20),
+              e('Deepanshu Gupta', 9),
               e('Unnamed participant', 7),
               e('Alzhan Darmen Abayuli', 6),
               e('Nathalie Martin', 6),
@@ -98,9 +100,9 @@ export default {
           {
             title: 'Window B',
             entries: [
-              e('Mohammed Hammad Zakir', 20, '1st'),
-              e('Sofiia Kvanina', 20, '1st'),
-              e('Ayan Nagar', 17, '3rd'),
+              e('Mohammed Hammad Zakir', 20),
+              e('Sofiia Kvanina', 20),
+              e('Ayan Nagar', 17),
               e('Baye Sidy Faye', 13),
               e('Shay Mukatira', 13),
               e('Altynbek Mansur', 3),
@@ -114,7 +116,17 @@ export default {
   },
   computed: {
     active() {
-      return this.results[this.activeDivision]
+      return this.results[this.activeDivision].map((window) => {
+        const ranks = competitionRanks(window.entries.map((entry) => entry.score))
+        return {
+          title: window.title,
+          entries: window.entries.map((entry, index) => ({
+            ...entry,
+            place: ordinalRank(ranks[index]),
+            rankClass: medalClass(ranks[index]),
+          })),
+        }
+      })
     },
   },
 }
@@ -178,11 +190,18 @@ export default {
 }
 
 .rank-place {
+  justify-self: start;
+  padding: 0.05rem 0.25rem;
+  border-radius: 4px;
   font-variant-numeric: tabular-nums;
   font-weight: 900;
   color: var(--accent-soft);
   font-size: 0.85rem;
 }
+
+.rank-place.rank-gold { color: #684c0d; background: #f2e4b5; }
+.rank-place.rank-silver { color: #45545d; background: #e2e6e8; }
+.rank-place.rank-bronze { color: #6e3e1f; background: #efd5bf; }
 
 .rank-name {
   color: var(--text);

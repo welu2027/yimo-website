@@ -421,7 +421,7 @@ export default {
       /* Founders keep their entries in Directors / Leadership Emeritus too;
          this group is about who started YIMO, not a current role. */
       founders: [
-        { name: 'Wenhao Lu', image: '/staff/wenhaolu.png', bio: 'Bio coming soon.' },
+        { name: 'Wenhao Lu', image: '/staff/wenhaolu.png', bio: 'is a senior from NJ and is a USAJMO Honorable Mention who scored 11 on the AIME and competes in the USACO Platinum division. He loves combinatorics and algebra, and his club baseball team peaked at #75 nationally.' },
         { name: 'Ryan Ahn', image: '/staff/ryanahn.png', bio: 'Bio coming soon.' },
         { name: 'Hyunjun Yi', email: 'jun.yi@yimo-official.org', image: '/staff/junyi.png', bio: 'is an AMC-12 Perfect Scorer who now works as a Deputy Executive Director at STEMise. Growing up in the Netherlands, he likes to hang out with his friends and listen to music in his free time.' },
         { name: 'Daniel Edouard', image: '/staff/danieledouard.png', bio: 'is a Merit-Based Harvard Fellow who has conducted independent computational neuropsychology research under the supervision of a Yale professor. His work sits at the intersection of AI, applied math, and neuroscience, with a focus on developing computational applications for neurodivergent developmental disorders. A frequent presenter at national research conferences, he also serves on the Workshop and Outreach team for NXT Horizon. He is the founder of Les Enfants du Monde, a nonprofit focused on STEM, AI, and entrepreneurship education for youth in the Democratic Republic of the Congo. In his free time, he is an avid tennis and pickleball player and has played violin for six years.' },

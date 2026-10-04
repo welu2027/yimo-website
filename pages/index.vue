@@ -510,6 +510,7 @@ export default {
         { name: 'HRT', logo: '/hrt-logo.png', href: 'https://www.hudsonrivertrading.com/', tier: 'Platinum' },
         { name: 'PiMath', logo: '/PiMath-noBG.png', href: 'https://www.paquinmath.org/', tier: 'Silver' },
         { name: 'AoPS', logo: '/aops-logo.png', href: 'https://artofproblemsolving.com/', tier: 'Bronze' },
+        { name: 'Cloudzy', logo: '/cloudzy-logo.svg', href: 'https://cloudzy.com/', tier: 'Bronze' },
       ],
       partners: [
         { name: 'Saintly', logo: '/Saintly.png', href: 'https://saintlymath.com/' },

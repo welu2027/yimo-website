@@ -23,7 +23,7 @@
         <a href="/#contact" class="nav-link">Contact</a>
       </div>
       <div class="nav-right">
-        <a href="https://merch.yimo-official.org/" class="nav-link">Merch</a>
+        <a href="https://shop.yimo-official.org/" class="nav-link">Merch</a>
         <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener" class="nav-link hidden md:inline-flex" aria-label="Discord">
           <img src="/Discord-Logo-Black.png" alt="Discord" style="height:28px;width:28px;object-fit:contain;opacity:0.75;" />
         </a>

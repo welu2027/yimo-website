@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="627" viewBox="0 0 1200 627">
+  <defs>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse">
+      <path d="M44 0H0V44" fill="none" stroke="#183a32" stroke-opacity=".055" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="627" fill="#f6f2e9"/>
+  <rect width="1200" height="627" fill="url(#grid)"/>
+  <path d="M0 9H1200" stroke="#e78331" stroke-width="8"/>
+  <circle cx="268" cy="322" r="193" fill="#eee7d7"/>
+  <circle cx="268" cy="322" r="177" fill="none" stroke="#d3bd7c" stroke-opacity=".8" stroke-width="2"/>
+  <image href="/yimo-logo-gold.png" x="115" y="169" width="306" height="306" preserveAspectRatio="xMidYMid meet"/>
+  <g fill="none" stroke="#183a32" stroke-opacity=".13" stroke-width="2">
+    <circle cx="1067" cy="135" r="50"/>
+    <path d="M1017 135h100M1067 85v100M1002 493l48-48 48 48z"/>
+  </g>
+  <text x="515" y="178" fill="#a84f12" font-family="Arial, sans-serif" font-size="19" font-weight="700">YOUTH INTERNATIONAL MATH OLYMPIAD</text>
+  <text x="510" y="294" fill="#183a32" font-family="Georgia, serif" font-size="102" font-weight="700">YIMO</text>
+  <rect x="516" y="327" width="116" height="7" rx="3.5" fill="#e78331"/>
+  <text x="515" y="390" fill="#183a32" font-family="Arial, sans-serif" font-size="28" font-weight="600">A global mathematics competition</text>
+  <text x="515" y="431" fill="#58635d" font-family="Arial, sans-serif" font-size="25">for middle and high school students.</text>
+  <text x="515" y="535" fill="#58635d" font-family="Arial, sans-serif" font-size="20">yimo-official.org</text>
+  <path d="M515 500h598" stroke="#d4cbbc" stroke-width="1.5"/>
+</svg>

@@ -71,9 +71,9 @@ export default {
       ogHost:'https://yimo-official.org',
       twitterCard:'summary_large_image',
       ogImage:{
-        path:'/og/yimo-main.png',
-        width:'1200',
-        height:'627',
+        path:'/og/yimo-main-2x.png',
+        width:'2400',
+        height:'1254',
         type:'image/png'
       }
     }

@@ -29,6 +29,9 @@ jobs:
       - name: Generate
         run: yarn generate
 
+      - name: Check social preview images
+        run: node --test scripts/social-preview.test.mjs
+
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: validate

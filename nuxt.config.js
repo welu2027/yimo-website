@@ -68,12 +68,12 @@ export default {
       name:'Youth International Math Olympiad',
       description:'YIMO: International youth math competition for middle and high school students.',
       theme_color:'#3B82F6',
-      ogHost:'https://compete.gunnmathcircle.org',
+      ogHost:'https://yimo-official.org',
       twitterCard:'summary_large_image',
       ogImage:{
-        path:'/embed-photo-large.png?dec11',
+        path:'/og/yimo-main.png',
         width:'1200',
-        height:'675',
+        height:'627',
         type:'image/png'
       }
     }

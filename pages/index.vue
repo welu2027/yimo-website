@@ -136,7 +136,7 @@
       </div>
       <div class="accordion-stack">
         <details class="accordion" open>
-          <summary>Founders</summary>
+          <summary>Founders + Former Directors</summary>
           <div class="staff-grid">
             <article
               v-for="member in founders"
@@ -434,7 +434,6 @@ export default {
         { name: 'Bryan Bu', email: 'bryan.bu@yimo-official.org', bio: 'Bio coming soon.' },
         { name: 'Shining Sun', bio: 'is a 6x AIME qualifier and 2x USAJMO qualifier. He also works as a problem writer for national competitions in Nepal. In his free time, he enjoys playing video games and exploring random places with friends.' },
         { name: 'Abhiram Jetty', email: 'abhi.jetty@yimo-official.org', image: '/staff/abhiramjetty.png', bio: 'is a USAJMO qualifier, TXSEF finalist, Thermo Fisher finalist, and AMC 10 Distinguished Honor Roll recipient. As a 9th grader, he likes to play video games, swim, and write math problems for contests like YIMO.' },
-        { name: 'Saahil Jain', email: 'saahil.jain@yimo-official.org', bio: 'Bio coming soon.' },
       ],
       /* Team leads. Each person's team doubles as their role label. */
       staffLeadership: [
@@ -447,6 +446,7 @@ export default {
         { name: 'Gonçalo Franco', role: 'Technology', email: 'goncalo.franco@yimo-official.org', image: '/staff/goncalofranco.jpg', bio: "Gonçalo has won multiple national math and technology olympiads. Currently, he manages his own digital agency and works on multiple projects, including this website's design." },
         { name: 'Adithya Balakumar', role: 'Chapter', email: 'adithya.b@yimo-official.org', image: '/staff/adithyabalakumar.png', bio: 'is an AIME qualifier (2026) with a Bronze Medal at the Math League International Competition and a state-level robotics innovation award. He loves exploring local parks and drinking matcha.' },
         { name: 'Jonathan Liu', role: 'Chapter', bio: 'Bio coming soon.' },
+        { name: 'Saahil Jain', role: 'Education', email: 'saahil.jain@yimo-official.org', bio: 'Bio coming soon.' },
       ],
       generalStaff: [
         { name: 'Chloe Jin', bio: 'Bio coming soon.' },

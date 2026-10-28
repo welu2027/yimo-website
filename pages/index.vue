@@ -32,6 +32,20 @@
             <span>Check out our flyer <em>&rarr;</em></span>
           </a>
         </div>
+        <div class="hero-promo-actions">
+          <a
+            class="secondary-action hero-promo-link"
+            href="https://sanfranciscopost.com/how-did-yimo-build-an-ai-proctoring-system-to-host-3-000-math-competitors-for-free/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >YIMO on the news</a>
+          <a
+            class="secondary-action hero-promo-link"
+            href="https://graphwar.yimo-official.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Check out our new game tournament</a>
+        </div>
         <p class="hero-credit">
           Brought to you by
           <a href="https://nxthorizon.org" target="_blank" rel="noopener">NXT Horizon</a>
@@ -39,9 +53,6 @@
           <a href="https://stemise.org" target="_blank" rel="noopener">STEMise</a>.
         </p>
       </div>
-      <a href="#format" class="scroll-cue" aria-label="Scroll to the format section">
-        <span></span>
-      </a>
     </section>
 
     <section id="format" class="story-panel format-panel">
@@ -904,6 +915,22 @@ export default {
   margin-top: 1.55rem;
 }
 
+.hero-promo-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.9rem;
+}
+
+.hero-promo-link {
+  width: min(100%, 380px);
+  min-height: 46px;
+  padding: 0.65rem 1rem;
+  text-align: center;
+  line-height: 1.25;
+}
+
 .hero-credit {
   margin-top: 1.1rem;
   color: var(--text-dim);
@@ -965,35 +992,6 @@ export default {
 .primary-action:hover,
 .secondary-action:hover {
   transform: translateY(-2px);
-}
-
-.scroll-cue {
-  position: absolute;
-  bottom: 1.3rem;
-  left: 50%;
-  z-index: 4;
-  width: 28px;
-  height: 48px;
-  margin-left: -14px;
-  border: 1px solid var(--line-strong);
-  border-radius: 20px;
-}
-
-.scroll-cue span {
-  position: absolute;
-  left: 50%;
-  top: 9px;
-  width: 5px;
-  height: 5px;
-  margin-left: -2.5px;
-  border-radius: 50%;
-  background: var(--accent);
-  animation: cue 1.4s infinite;
-}
-
-@keyframes cue {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(22px); opacity: 0; }
 }
 
 .level-card {
@@ -2062,9 +2060,4 @@ export default {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .scroll-cue span {
-    animation: none;
-  }
-}
 </style>

@@ -38,7 +38,7 @@
             href="https://sanfranciscopost.com/how-did-yimo-build-an-ai-proctoring-system-to-host-3-000-math-competitors-for-free/"
             target="_blank"
             rel="noopener noreferrer"
-          >YIMO on the news</a>
+          >YIMO on the San Francisco Post: Hyunjun Yi</a>
           <a
             class="secondary-action hero-promo-link"
             href="https://graphwar.yimo-official.org/"
@@ -315,12 +315,14 @@
             v-for="partner in partners"
             :key="partner.name"
             class="partner-logo-card"
+            :class="{ 'partner-logo-card--described': partner.description }"
             :href="partner.href"
             target="_blank"
             rel="noopener"
           >
             <img :src="partner.logo" :alt="partner.name" />
             <span>{{ partner.name }}</span>
+            <p v-if="partner.description" class="partner-description">{{ partner.description }}</p>
           </a>
         </div>
       </div>
@@ -527,6 +529,7 @@ export default {
       partners: [
         { name: 'Saintly', logo: '/Saintly.png', href: 'https://saintlymath.com/' },
         { name: 'Euler Circle', logo: '/eulercircle.svg', href: 'https://eulercircle.com' },
+        { name: 'WonderWhyPK', logo: '/wonderwhypk-logo.svg', href: 'https://wonder-why-pk.vercel.app/', description: 'Official Outreach & Education Partner. A non-profit in Pakistan helping students discover and prepare for international olympiads and STEM opportunities.' },
       ],
     }
   },
@@ -1594,6 +1597,7 @@ export default {
   position: relative;
   min-height: 150px;
   display: grid;
+  align-content: center;
   place-items: center;
   gap: 0.7rem;
   padding: 1.25rem;
@@ -2038,6 +2042,35 @@ export default {
   max-width: 640px;
   margin: 1.8rem auto 0;
   color: var(--text-dim);
+}
+
+.partner-logo-card--described {
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  min-height: 250px;
+  gap: 0.55rem;
+}
+
+.partner-logo-card--described img {
+  align-self: start;
+  max-height: 80px;
+}
+
+.partner-logo-card--described > span {
+  font-size: 0.84rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.partner-description {
+  align-self: end;
+  max-width: 34ch;
+  margin: 0;
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 .contact-note a {

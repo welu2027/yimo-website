@@ -55,6 +55,18 @@
       </div>
     </section>
 
+    <section id="impact" class="content-band">
+      <div class="band-heading">
+        <h2>Impact</h2>
+      </div>
+      <div class="impact-grid">
+        <div v-for="stat in impactStats" :key="stat.label" class="impact-stat">
+          <strong>{{ stat.value }}</strong>
+          <span>{{ stat.label }}</span>
+        </div>
+      </div>
+    </section>
+
     <section id="format" class="story-panel format-panel">
       <div class="format-inner">
         <div class="band-heading">
@@ -412,6 +424,12 @@ export default {
   data() {
     return {
       identityWords: ['Youth', 'International', 'Math', 'Olympiad'],
+      /* Headline totals across every YIMO so far. */
+      impactStats: [
+        { value: '3,300+', label: 'Competitors' },
+        { value: '120+', label: 'Countries' },
+        { value: '$2,500+', label: 'Awarded in total' },
+      ],
       /* Ranked top-down; the card styling keys off name.toLowerCase(). */
       medals: [
         { name: 'Gold', rank: '1st', band: 'Top 10%' },
@@ -1110,6 +1128,62 @@ export default {
   margin: 0;
   color: var(--text-dim);
   line-height: 1.65;
+}
+
+/* A KPI row, not a chart - three headline numbers with their labels. */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.impact-stat {
+  padding: 1.9rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  text-align: center;
+}
+
+.impact-stat strong {
+  display: block;
+  color: var(--paper);
+  /* Proportional figures: tabular digits read loose at display sizes. */
+  font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.impact-stat span {
+  display: block;
+  margin-top: 0.6rem;
+  color: var(--accent-soft);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Keep all three on one row on a phone rather than orphaning the third. */
+@media (max-width: 560px) {
+  .impact-grid {
+    gap: 0.6rem;
+  }
+
+  .impact-stat {
+    padding: 1.1rem 0.4rem;
+  }
+
+  /* "$2,500+" is the widest value and overflows the tile at the shared size. */
+  .impact-stat strong {
+    font-size: clamp(1.2rem, 5.2vw, 2rem);
+  }
+
+  .impact-stat span {
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+  }
 }
 
 .prize-grid {

@@ -473,7 +473,7 @@ export default {
         { name: 'Kunal Modi', role: 'Outreach', image: '/staff/kunalmodi.jpeg', bio: 'Student interested in business and entrepreneurship who competes in numerous math competitions, with competitive tennis as a hobby.' },
         { name: 'Gonçalo Franco', role: 'Technology', email: 'goncalo.franco@yimo-official.org', image: '/staff/goncalofranco.jpg', bio: "Gonçalo has won multiple national math and technology olympiads. Currently, he manages his own digital agency and works on multiple projects, including this website's design." },
         { name: 'Adithya Balakumar', role: 'Chapter', email: 'adithya.b@yimo-official.org', image: '/staff/adithyabalakumar.png', bio: 'is an AIME qualifier (2026) with a Bronze Medal at the Math League International Competition and a state-level robotics innovation award. He loves exploring local parks and drinking matcha.' },
-        { name: 'Jonathan Liu', role: 'Chapter', bio: 'Bio coming soon.' },
+        { name: 'Jonathan Liu', role: 'Chapter', email: 'jonathan.liu@yimo-official.org', image: '/staff/jonathanliu.jpg', bio: 'Bio coming soon.' },
         { name: 'Saahil Jain', role: 'Education', email: 'saahil.jain@yimo-official.org', bio: 'Bio coming soon.' },
       ],
       generalStaff: [

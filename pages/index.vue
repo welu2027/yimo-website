@@ -507,7 +507,7 @@ export default {
         },
         {
           q: 'When is the contest?',
-          a: 'Choose exactly one window: Saturday, August 29 at 21:30 EDT or Sunday, August 30 at 11:00 AM EDT.',
+          a: 'Choose exactly one contest window: December 19 or 20, 2026.',
         },
         {
           q: 'What does the contest look like?',

@@ -17,15 +17,13 @@
         </div>
         <h1>YIMO</h1>
         <p class="hero-subtitle">
-          <strong>YIMO II has now concluded!</strong>
-          <nuxt-link to="/archive#yimo-ii">Check the results</nuxt-link>, and join our
+          <strong>YIMO III is December 19 and 20, 2026.</strong>
+          Register now and join our
           <a href="https://discord.gg/fkyDZvDMKT" target="_blank" rel="noopener">Discord</a>
-          for updates on the next contest.
+          for contest updates.
         </p>
         <div class="hero-actions">
-          <!-- Registration link hidden until registration reopens.
-          <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register</a>
-          -->
+          <a class="primary-action" href="https://forms.gle/7KyseMi5twVhwzww9" target="_blank" rel="noopener noreferrer">Register for YIMO III</a>
           <a class="secondary-action" href="#format">Format</a>
           <a class="flyer-peek" href="/YIMO_2026_Flyer.pdf" target="_blank" rel="noopener">
             <img src="/yimo-2026-flyer.png" alt="" aria-hidden="true" />
@@ -98,7 +96,7 @@
           </div>
           <div class="write-line">
             <h3>Contest Windows</h3>
-            <p>Window A: August 29 at 21:30 EDT. Window B: August 30 at 11:00 AM EDT.</p>
+            <p>Choose one contest window: December 19 or 20, 2026.</p>
           </div>
           <div class="write-line">
             <h3>Final Round</h3>
@@ -339,13 +337,11 @@
         </div>
       </div>
 
-      <!-- Registration CTA hidden for now; restore this block when registration reopens.
       <div class="closing-cta">
-        <h2>Register for August 29 or 30.</h2>
-        <p>Entry is <strong>free</strong>. Registration closes August 27, 23:59 EDT. Pick one contest window and compete from anywhere.</p>
-        <a class="primary-action" href="https://docs.google.com/forms/d/e/1FAIpQLSeLKMy5cPHpOFhFUc8fukPBjMiJHl35aB3u7rkClPTw_VziVg/viewform" target="_blank" rel="noopener">Register for YIMO</a>
+        <h2>Join YIMO III on December 19 or 20.</h2>
+        <p>Register for the December 2026 competition and choose one contest window.</p>
+        <a class="primary-action" href="https://forms.gle/7KyseMi5twVhwzww9" target="_blank" rel="noopener noreferrer">Register for YIMO III</a>
       </div>
-      -->
     </section>
 
     <section id="contact" class="content-band contact-band">
